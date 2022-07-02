@@ -1,4 +1,5 @@
-# Starter Code Project
+
+# ADS Flutter Aps Starter
 
 This project uses FVM for manage versions
 
@@ -52,6 +53,3 @@ fvm flutter build appbundle
 # for web
 fvm flutter build web 
 ```
-
-
-

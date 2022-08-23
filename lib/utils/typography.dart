@@ -1,8 +1,10 @@
+// ignore_for_file: library_prefixes, constant_identifier_names, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 import 'colors.dart' as AppColor;
 
-const String _fontLato = 'Lato';
+const String _fontQuicksand = 'Quicksand';
 
 // textSizeSmall = 12.0;
 // textSizeSMedium = 14.0;
@@ -13,26 +15,31 @@ const String _fontLato = 'Lato';
 // textSizeXLarge = 30.0;
 // textSizeTitle = 34.0;
 
-//Font Lato
-const TextStyle LatoBold = TextStyle(
-  fontFamily: _fontLato,
-  fontSize: 16.0,
-  fontWeight: FontWeight.w700,
+//Font Quicksand
+TextStyle QsTopBar = TextStyle(
+  fontFamily: _fontQuicksand,
+  fontSize: 22.0,
+  fontWeight: FontWeight.w900,
+  color: AppColor.primary,
+);
+
+const TextStyle QsButton = TextStyle(
+  fontFamily: _fontQuicksand,
+  fontSize: 18.0,
+  fontWeight: FontWeight.w800,
   color: AppColor.textPrimary,
 );
 
-const TextStyle body1Lato = TextStyle(
-  fontFamily: _fontLato,
+const TextStyle QsTitle = TextStyle(
+  fontFamily: _fontQuicksand,
+  fontSize: 16.0,
+  fontWeight: FontWeight.w800,
+  color: AppColor.textPrimary,
+);
+
+const TextStyle QsBody = TextStyle(
+  fontFamily: _fontQuicksand,
   fontSize: 14.0,
   fontWeight: FontWeight.w400,
   color: AppColor.textPrimary,
 );
-
-const TextStyle body2Lato = TextStyle(
-  fontFamily: _fontLato,
-  fontSize: 12.0,
-  fontWeight: FontWeight.w400,
-  color: AppColor.textPrimary,
-);
-
-TextStyle body2LatoAccent = body2Lato.copyWith(color: AppColor.textSecondary);

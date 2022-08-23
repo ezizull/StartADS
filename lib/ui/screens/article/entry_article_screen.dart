@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:startercode_project/data/blocs/article/use_cubit/create_article/create_article_cubit.dart';
+import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/extensions.dart' as AppExt;
 
 class EntryArticleScreen extends StatefulWidget {
@@ -13,10 +14,10 @@ class EntryArticleScreen extends StatefulWidget {
 class _EntryArticleScreenState extends State<EntryArticleScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _titleCtrl = new TextEditingController(text: '');
-  final TextEditingController _bodyCtrl = new TextEditingController(text: '');
+  final TextEditingController _titleCtrl = TextEditingController(text: '');
+  final TextEditingController _bodyCtrl = TextEditingController(text: '');
 
-  late CreateArticleCubit _createArticleCubit = CreateArticleCubit();
+  late final CreateArticleCubit _createArticleCubit = CreateArticleCubit();
 
   @override
   void initState() {
@@ -62,31 +63,39 @@ class _EntryArticleScreenState extends State<EntryArticleScreen> {
                   );
               }
               if (state is CreateArticleFailure) {
-                print("GAGAL " + state.message);
+                debugPrint("GAGAL " + state.message);
               }
             },
           )
         ],
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: AppColor.appPrimary,
             centerTitle: true,
-            title: Text("Form Artikel"),
+            title: const Text("Form Artikel"),
           ),
           body: SingleChildScrollView(
             child: Form(
               key: _formKey,
               child: Column(
                 children: [
-                  Text("Title"),
+                  const Text("Title"),
                   TextFormField(
                     controller: _titleCtrl,
                   ),
-                  Text("Body"),
+                  const Text("Body"),
                   TextFormField(
                     controller: _bodyCtrl,
                   ),
-                  ElevatedButton(
-                      onPressed: _handleSubmit, child: Text("Submit"))
+                  TextButton(
+                    onPressed: _handleSubmit,
+                    child: const Text("Submit"),
+                    style: TextButton.styleFrom(
+                      primary: AppColor.black,
+                      backgroundColor: AppColor.primary,
+                      onSurface: AppColor.grey, // Disable color
+                    ),
+                  )
                 ],
               ),
             ),

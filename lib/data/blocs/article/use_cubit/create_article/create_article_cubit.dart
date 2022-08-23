@@ -8,15 +8,14 @@ part 'create_article_state.dart';
 class CreateArticleCubit extends Cubit<CreateArticleState> {
   CreateArticleCubit() : super(CreateArticleInitial());
 
- final ArticleRepository _articleRepository = ArticleRepository();
+  final ArticleRepository _articleRepository = ArticleRepository();
 
- Future<void> addArticle({
-    required String title,
-    required String bodyArticle
-  }) async{
+  Future<void> addArticle(
+      {required String title, required String bodyArticle}) async {
     emit(CreateArticleLoading());
     try {
-      await _articleRepository.createArticle(title: title, bodyArticle: bodyArticle);
+      await _articleRepository.createArticle(
+          title: title, bodyArticle: bodyArticle);
       emit(CreateArticleSuccess());
     } catch (e) {
       if (e is NetworkException) {
@@ -25,9 +24,5 @@ class CreateArticleCubit extends Cubit<CreateArticleState> {
       }
       emit(CreateArticleFailure.general(e.toString()));
     }
-    
- }
-
+  }
 }
-
-

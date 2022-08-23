@@ -17,16 +17,15 @@ class CreateArticleFailure extends CreateArticleState {
   final ErrorType type;
   final String message;
 
-  CreateArticleFailure({this.type = ErrorType.general, this.message = ""});
+  const CreateArticleFailure(
+      {this.type = ErrorType.general, this.message = ""});
 
-  CreateArticleFailure.network(String message)
+  const CreateArticleFailure.network(String message)
       : this(type: ErrorType.network, message: message);
 
-  CreateArticleFailure.general(String message)
+  const CreateArticleFailure.general(String message)
       : this(type: ErrorType.general, message: message);
 
   @override
   List<Object> get props => [type, message];
 }
-
-

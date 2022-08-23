@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/data/blocs/article/use_cubit/fetch_articles/fetch_articles_cubit.dart';
 import 'package:startercode_project/data/blocs/article/without_cubit/article/article_bloc.dart';
 import 'package:startercode_project/data/models/article.dart';
 import 'package:startercode_project/ui/screens/screens.dart';
@@ -44,17 +43,17 @@ class _ArticleScreenWithoutCubitScreenState
               BlocListener<ArticleBloc, ArticleState>(
                   listener: (context, state) {
                 if (state is ArticleSuccess) {
-                  print("SUKSES FETCH");
+                  debugPrint("SUKSES FETCH");
                 }
                 if (state is ArticleFailure) {
-                  print("GAGAL FETCH :" + state.message);
+                  debugPrint("GAGAL FETCH :" + state.message);
                   const SnackBar(
-                      margin: EdgeInsets.zero,
-                      duration: Duration(seconds: 2),
-                      content: Text('GAGAL'),
-                      backgroundColor: Colors.red,
-                      behavior: SnackBarBehavior.floating,
-                    );
+                    margin: EdgeInsets.zero,
+                    duration: Duration(seconds: 2),
+                    content: Text('GAGAL'),
+                    backgroundColor: Colors.red,
+                    behavior: SnackBarBehavior.floating,
+                  );
                 }
               })
             ],

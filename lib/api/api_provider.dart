@@ -1,11 +1,11 @@
 // Source:
 // https://medium.com/flutter-community/handling-network-calls-like-a-pro-in-flutter-31bd30c86be1
 
+// ignore_for_file: prefer_typing_uninitialized_variables, unused_local_variable
+
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:startercode_project/api/api.dart';
 import 'package:startercode_project/utils/constants.dart' as AppConst;
@@ -17,7 +17,8 @@ class ApiProvider {
   Future<dynamic> get(dynamic url, {Map<String, String>? headers}) async {
     var responseJson;
     try {
-      final response = await http.get(Uri.parse(_baseUrl + url) , headers: headers);
+      final response =
+          await http.get(Uri.parse(_baseUrl + url), headers: headers);
 
       responseJson = _returnResponse(response);
     } on SocketException {
@@ -26,7 +27,8 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<dynamic> getWithoutBaseurl(dynamic url, {Map<String, String>? headers}) async {
+  Future<dynamic> getWithoutBaseurl(dynamic url,
+      {Map<String, String>? headers}) async {
     var responseJson;
     try {
       final response = await http.get(url, headers: headers);
@@ -42,8 +44,8 @@ class ApiProvider {
       {dynamic body, Map<String, String>? headers}) async {
     var responseJson;
     try {
-      final response =
-          await http.post(Uri.parse(_baseUrl + url), body: body, headers: headers);
+      final response = await http.post(Uri.parse(_baseUrl + url),
+          body: body, headers: headers);
 
       responseJson = _returnResponse(response);
     } on SocketException {
@@ -56,8 +58,8 @@ class ApiProvider {
       {dynamic body, Map<String, String>? headers}) async {
     var responseJson;
     try {
-      final response =
-          await http.put(Uri.parse(_baseUrl + url) , body: body, headers: headers);
+      final response = await http.put(Uri.parse(_baseUrl + url),
+          body: body, headers: headers);
 
       responseJson = _returnResponse(response);
     } on SocketException {
@@ -69,7 +71,8 @@ class ApiProvider {
   Future<dynamic> delete(String url, {Map<String, String>? headers}) async {
     var responseJson;
     try {
-      final response = await http.delete(Uri.parse(_baseUrl + url), headers: headers);
+      final response =
+          await http.delete(Uri.parse(_baseUrl + url), headers: headers);
 
       responseJson = _returnResponse(response);
     } on SocketException {
@@ -78,11 +81,10 @@ class ApiProvider {
     return responseJson;
   }
 
-
   dynamic _returnResponse(http.Response response) {
     var responseJson = json.decode(response.body);
     // final error = responseJson['message'] ?? 'Terjadi kesalahan';
-    final error = 'Maaf,Terjadi kesalahan'; //Menyesuaikan response backend
+    const error = 'Maaf,Terjadi kesalahan'; //Menyesuaikan response backend
 
     if (kDebugMode) {
       String responseJsonStr = response.body;

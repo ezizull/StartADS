@@ -12,7 +12,7 @@ class FetchArticlesInitial extends FetchArticlesState {}
 class FetchArticlesLoading extends FetchArticlesState {}
 
 class FetchArticlesSuccess extends FetchArticlesState {
-  FetchArticlesSuccess(this.data);
+  const FetchArticlesSuccess(this.data);
 
   final List<Article> data;
 
@@ -24,12 +24,13 @@ class FetchArticlesFailure extends FetchArticlesState {
   final ErrorType type;
   final String message;
 
-  FetchArticlesFailure({this.type = ErrorType.general, this.message = ""});
+  const FetchArticlesFailure(
+      {this.type = ErrorType.general, this.message = ""});
 
-  FetchArticlesFailure.network(String message)
+  const FetchArticlesFailure.network(String message)
       : this(type: ErrorType.network, message: message);
 
-  FetchArticlesFailure.general(String message)
+  const FetchArticlesFailure.general(String message)
       : this(type: ErrorType.general, message: message);
 
   @override

@@ -10,7 +10,6 @@ import 'package:startercode_project/ui/screens/article/article_screen.dart';
 import 'package:startercode_project/ui/screens/screens.dart';
 
 void main() async {
-
   //Handling certificate_failed
   HttpOverrides.global = ApiHttpOverrides();
 
@@ -20,9 +19,9 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  
- await initializeDateFormatting('in_ID', null)
-  .then((_) => runApp(const MyApp()));
+
+  await initializeDateFormatting('in_ID', null)
+      .then((_) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -31,7 +30,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Startercode project',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -42,7 +40,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +55,5 @@ class HomePage extends StatelessWidget {
 class Config {
   static final String? baseUrl =
       kDebugMode ? dotenv.env['BASE_URL_DEBUG'] : dotenv.env['BASE_URL'];
-  static final String? adsKey =
-      dotenv.env['ADS_KEY'];
+  static final String? adsKey = dotenv.env['ADS_KEY'];
 }

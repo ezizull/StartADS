@@ -30,12 +30,11 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     }
   }
 
-  void onArticleAdded(
-      ArticleAdded event, Emitter<ArticleState> emit) async {
+  void onArticleAdded(ArticleAdded event, Emitter<ArticleState> emit) async {
     emit(ArticleLoading());
     try {
-      final response = await _articleRepository.createArticle(title: event.title, bodyArticle: event.body);
-      emit(ArticleSuccess());
+      // final response = await _articleRepository.createArticle(title: event.title, bodyArticle: event.body);
+      emit(const ArticleSuccess());
     } catch (e) {
       if (e is NetworkException) {
         emit(ArticleFailure.network(e.toString()));
@@ -44,5 +43,4 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
       emit(ArticleFailure.general(e.toString()));
     }
   }
-
 }

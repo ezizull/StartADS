@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/data/blocs/article/use_cubit/create_article/create_article_cubit.dart';
 import 'package:startercode_project/data/blocs/article/without_cubit/article/article_bloc.dart';
 import 'package:startercode_project/utils/extensions.dart' as AppExt;
 
@@ -8,16 +7,18 @@ class EntryArticleWithoutCubitScreen extends StatefulWidget {
   const EntryArticleWithoutCubitScreen({Key? key}) : super(key: key);
 
   @override
-  State<EntryArticleWithoutCubitScreen> createState() => _EntryArticleWithoutCubitScreenState();
+  State<EntryArticleWithoutCubitScreen> createState() =>
+      _EntryArticleWithoutCubitScreenState();
 }
 
-class _EntryArticleWithoutCubitScreenState extends State<EntryArticleWithoutCubitScreen> {
+class _EntryArticleWithoutCubitScreenState
+    extends State<EntryArticleWithoutCubitScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _titleCtrl = new TextEditingController(text: '');
-  final TextEditingController _bodyCtrl = new TextEditingController(text: '');
+  final TextEditingController _titleCtrl = TextEditingController(text: '');
+  final TextEditingController _bodyCtrl = TextEditingController(text: '');
 
-  late ArticleBloc _articleBloc = ArticleBloc();
+  late final ArticleBloc _articleBloc = ArticleBloc();
 
   @override
   void initState() {
@@ -44,7 +45,7 @@ class _EntryArticleWithoutCubitScreenState extends State<EntryArticleWithoutCubi
       ],
       child: MultiBlocListener(
         listeners: [
-          BlocListener<ArticleBloc,ArticleState>(
+          BlocListener<ArticleBloc, ArticleState>(
             listener: (context, state) {
               if (state is ArticleSuccess) {
                 AppExt.popScreen(context, true);
@@ -61,14 +62,14 @@ class _EntryArticleWithoutCubitScreenState extends State<EntryArticleWithoutCubi
                   );
               }
               if (state is ArticleFailure) {
-                print("GAGAL " + state.message);
+                debugPrint("GAGAL " + state.message);
                 const SnackBar(
-                      margin: EdgeInsets.zero,
-                      duration: Duration(seconds: 2),
-                      content: Text('GAGAL'),
-                      backgroundColor: Colors.red,
-                      behavior: SnackBarBehavior.floating,
-                    );
+                  margin: EdgeInsets.zero,
+                  duration: Duration(seconds: 2),
+                  content: Text('GAGAL'),
+                  backgroundColor: Colors.red,
+                  behavior: SnackBarBehavior.floating,
+                );
               }
             },
           )
@@ -76,23 +77,23 @@ class _EntryArticleWithoutCubitScreenState extends State<EntryArticleWithoutCubi
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Form Artikel Without Cubit"),
+            title: const Text("Form Artikel Without Cubit"),
           ),
           body: SingleChildScrollView(
             child: Form(
               key: _formKey,
               child: Column(
                 children: [
-                  Text("Title"),
+                  const Text("Title"),
                   TextFormField(
                     controller: _titleCtrl,
                   ),
-                  Text("Body"),
+                  const Text("Body"),
                   TextFormField(
                     controller: _bodyCtrl,
                   ),
                   ElevatedButton(
-                      onPressed: _handleSubmit, child: Text("Submit"))
+                      onPressed: _handleSubmit, child: const Text("Submit"))
                 ],
               ),
             ),

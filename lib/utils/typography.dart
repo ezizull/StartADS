@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'colors.dart' as AppColor;
 
 const String _fontQuicksand = 'Quicksand';
+const String _fontPoppins = 'Poppins';
 
 // textSizeSmall = 12.0;
 // textSizeSMedium = 14.0;
@@ -27,7 +28,7 @@ const TextStyle QsButton = TextStyle(
   fontFamily: _fontQuicksand,
   fontSize: 18.0,
   fontWeight: FontWeight.w800,
-  color: AppColor.textPrimary,
+  color: AppColor.white,
 );
 
 const TextStyle QsTitle = TextStyle(
@@ -39,6 +40,35 @@ const TextStyle QsTitle = TextStyle(
 
 const TextStyle QsBody = TextStyle(
   fontFamily: _fontQuicksand,
+  fontSize: 14.0,
+  fontWeight: FontWeight.w400,
+  color: AppColor.textPrimary,
+);
+
+// font Poppins
+TextStyle PopsTopBar = TextStyle(
+  fontFamily: _fontPoppins,
+  fontSize: 22.0,
+  fontWeight: FontWeight.w900,
+  color: AppColor.primary,
+);
+
+const TextStyle PopsButton = TextStyle(
+  fontFamily: _fontPoppins,
+  fontSize: 18.0,
+  fontWeight: FontWeight.w800,
+  color: AppColor.white,
+);
+
+const TextStyle PopsTitle = TextStyle(
+  fontFamily: _fontPoppins,
+  fontSize: 16.0,
+  fontWeight: FontWeight.w800,
+  color: AppColor.textPrimary,
+);
+
+const TextStyle PopsBody = TextStyle(
+  fontFamily: _fontPoppins,
   fontSize: 14.0,
   fontWeight: FontWeight.w400,
   color: AppColor.textPrimary,

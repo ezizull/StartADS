@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 // main color
-Color appPrimary = HexColor('FCBF31');
-Color primary = HexColor('FCBF31');
+Color appPrimary = HexColor('0065B7');
+Color primary = HexColor('0065B7');
 
 // bacground
-Color whiteOrangeBg = HexColor('FFFEFC');
-Color childOrangeBg = HexColor('FFE6AD');
+Color whiteBlueBg = HexColor('CCFCFF');
+Color childBlueBg = HexColor('00AEFF');
 
 // edit text
 const editText = Color(0xFFF4F4F4);
@@ -16,7 +16,7 @@ const editTextIcon = Color(0xFF8F9497);
 
 // button
 // const activeButton = Color(value)
-const roundedButtonDisabled = Color(0xFFF4F4F4);
+const roundedButtonDisabled = Color.fromRGBO(244, 244, 244, 1);
 const inactiveSwitch = Color(0xFF979CA0);
 const inactiveTrackSwitch = Color(0xFFAFACA7);
 

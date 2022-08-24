@@ -80,11 +80,10 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 20),
                                       color: showTop
-                                          ? AppColor.childOrangeBg
+                                          ? AppColor.childBlueBg
                                           : AppColor.white,
                                       child: showTop
-                                          ? Image.asset(
-                                              "assets/images/img_open_shop.png")
+                                          ? Container()
                                           : Container(
                                               alignment: Alignment.centerLeft,
                                               padding: const EdgeInsets.only(

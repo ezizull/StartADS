@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 // main color
-Color appPrimary = HexColor('0065B7');
-Color primary = HexColor('0065B7');
+Color appPrimary = HexColor('00AEFF');
+Color primary = HexColor('00AEFF');
 
 // bacground
 Color whiteBlueBg = HexColor('CCFCFF');
 Color childBlueBg = HexColor('00AEFF');
+Color darkBlueBg = HexColor('0065B7');
 
 // edit text
 const editText = Color(0xFFF4F4F4);
@@ -44,6 +45,7 @@ const redFlashSale = Color(0xFFFF1D0F);
 const silverFlashSale = Color(0xFFE5E5E5);
 
 const black = Color(0xFF21232C);
+Color black2 = HexColor('575757');
 const grey = Color(0xFF777C7E);
 const lightGrey = Color(0xFFD3D3D3);
 const lightGrey2 = Color(0xFFE0E2E2);

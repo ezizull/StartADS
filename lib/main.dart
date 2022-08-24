@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:startercode_project/api/api.dart';
-import 'package:startercode_project/ui/screens/article/article_screen.dart';
 import 'package:startercode_project/ui/screens/screens.dart';
 
 void main() async {
@@ -19,6 +18,11 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  await SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.immersive,
+    overlays: [],
+  );
 
   await initializeDateFormatting('in_ID', null)
       .then((_) => runApp(const MyApp()));

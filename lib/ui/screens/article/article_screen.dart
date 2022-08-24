@@ -90,7 +90,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                   top: 18, left: 18),
                                               child: Text(
                                                 "List Data",
-                                                style: AppText.QsTopBar,
+                                                style: AppText.PopsTopBar,
                                               )),
                                     ),
                                     Stack(
@@ -153,8 +153,8 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                         children: [
                                                           Text(
                                                             article.title,
-                                                            style:
-                                                                AppText.QsTitle,
+                                                            style: AppText
+                                                                .PopsTitle,
                                                           ),
                                                           const SizedBox(
                                                             height: 8,
@@ -163,8 +163,8 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                             article.body,
                                                             textAlign: TextAlign
                                                                 .justify,
-                                                            style:
-                                                                AppText.QsBody,
+                                                            style: AppText
+                                                                .PopsBody,
                                                           )
                                                         ],
                                                       ),
@@ -198,7 +198,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                               alignment: Alignment.center,
                                               child: const Text(
                                                 "New Article",
-                                                style: AppText.QsButton,
+                                                style: AppText.PopsButton,
                                               ),
                                               decoration: BoxDecoration(
                                                 color: AppColor.primary,

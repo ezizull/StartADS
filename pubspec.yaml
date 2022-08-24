@@ -37,6 +37,7 @@ dependencies:
   equatable: ^2.0.3
   dio: ^4.0.3
   flutter_dotenv: ^5.0.2
+  # Coloring 
   hexcolor: ^2.0.7
 
 
@@ -70,8 +71,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/dashboard/
+    - assets/images/profile/
     - .env
-  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -85,18 +87,6 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Quicksand
-      fonts:
-        - asset: assets/fonts/quicksand/Quicksand-Light.ttf
-          weight: 200
-        - asset: assets/fonts/quicksand/Quicksand-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/quicksand/Quicksand-Medium.ttf
-          weight: 600
-        - asset: assets/fonts/quicksand/Quicksand-SemiBold.ttf
-          weight: 800
-        - asset: assets/fonts/quicksand/Quicksand-Bold.ttf
-          weight: 900
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins/Poppins-Thin.ttf

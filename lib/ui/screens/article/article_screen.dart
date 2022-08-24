@@ -17,10 +17,11 @@ class ArticleScreen extends StatefulWidget {
 }
 
 class _ArticleScreenState extends State<ArticleScreen> {
-  late bool showTop = true;
-  late ScrollController scrollController = ScrollController();
   final FetchArticlesCubit _fetchArticlesCubit = FetchArticlesCubit()
     ..fetchArticles();
+
+  late ScrollController scrollController = ScrollController();
+  late bool showTop = true;
 
   @override
   void initState() {

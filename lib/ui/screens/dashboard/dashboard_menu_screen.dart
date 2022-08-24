@@ -240,6 +240,106 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                                     child: ListView(
                                       children: [
                                         Center(child: Text(state.data)),
+                                        Padding(
+                                          padding: const EdgeInsets.all(28),
+                                          child: Wrap(
+                                            direction: Axis.horizontal,
+                                            alignment:
+                                                WrapAlignment.spaceBetween,
+                                            children: [
+                                              GestureDetector(
+                                                onTap: null,
+                                                child: SizedBox(
+                                                  width: 82,
+                                                  height: 112,
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 65,
+                                                        child: Image.asset(
+                                                          "assets/images/icons/script_icon.png",
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 12,
+                                                      ),
+                                                      Flexible(
+                                                        child: Text(
+                                                          'Script',
+                                                          style:
+                                                              AppText.PopsIcon,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              GestureDetector(
+                                                onTap: null,
+                                                child: SizedBox(
+                                                  width: 82,
+                                                  height: 112,
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 65,
+                                                        child: Image.asset(
+                                                          "assets/images/icons/kamus_icon.png",
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 12,
+                                                      ),
+                                                      Flexible(
+                                                        child: Text(
+                                                          'Kamus CS',
+                                                          style:
+                                                              AppText.PopsIcon,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              GestureDetector(
+                                                onTap: null,
+                                                child: SizedBox(
+                                                  width: 82,
+                                                  height: 112,
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 65,
+                                                        child: Image.asset(
+                                                          "assets/images/icons/contact_management_icon.png",
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 12,
+                                                      ),
+                                                      Flexible(
+                                                        child: Text(
+                                                          'Contact Management',
+                                                          style:
+                                                              AppText.PopsIcon,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),

@@ -45,6 +45,13 @@ TextStyle PopsTopBar = TextStyle(
   color: AppColor.primary,
 );
 
+TextStyle PopsIcon = TextStyle(
+  fontFamily: _fontPoppins,
+  fontSize: textSizeLargeMedium,
+  fontWeight: FontWeight.w400,
+  color: AppColor.black2,
+);
+
 const TextStyle PopsButton = TextStyle(
   fontFamily: _fontPoppins,
   fontSize: 18.0,

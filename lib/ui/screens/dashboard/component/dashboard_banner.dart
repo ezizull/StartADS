@@ -67,10 +67,10 @@ class DashboardBanner extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TextField(
-                              style: AppText.InterTextField,
+                              style: AppText.Inter14w4_black,
                               decoration: InputDecoration(
                                 hintText: 'Search',
-                                hintStyle: AppText.InterTextFieldHint,
+                                hintStyle: AppText.Inter14w4_lightGrey,
                                 icon: AppIcon.dashboard_search_icon,
                                 border: const OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -84,13 +84,13 @@ class DashboardBanner extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Text("Paket Lifetime", style: AppText.PopsTitle),
+                  Text("Paket Lifetime", style: AppText.Pops28w6_white),
                   Wrap(
                     spacing: 13,
                     direction: Axis.horizontal,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      Text("Expired Date:", style: AppText.PopsHeading2),
+                      Text("Expired Date:", style: AppText.Pops15w6_white),
                       Container(
                           height: 18,
                           decoration: const BoxDecoration(boxShadow: [

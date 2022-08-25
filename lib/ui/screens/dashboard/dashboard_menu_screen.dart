@@ -9,6 +9,7 @@ import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fe
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_banner.dart';
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_icons_menu.dart';
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_script_populer.dart';
+import 'package:startercode_project/ui/screens/dashboard/component/dashboard_script_terbaru.dart';
 import 'package:startercode_project/ui/widgets/widgets.dart';
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/typography.dart' as AppText;
@@ -84,43 +85,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                                             const DashboardIconsMenu(),
                                             const AppDivider(),
                                             DashboardScriptPopular(),
-                                            Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Container(
-                                                  margin: const EdgeInsets
-                                                      .symmetric(
-                                                    horizontal: 20,
-                                                    vertical: 20,
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Text(
-                                                        'Script Populer',
-                                                        style:
-                                                            AppText.LatoTitle,
-                                                      ),
-                                                      GestureDetector(
-                                                        onTap: null,
-                                                        child: Text(
-                                                          'See more',
-                                                          style: AppText
-                                                              .InterSeeMore,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 170,
-                                                )
-                                              ],
-                                            ),
+                                            DashboardScriptTerbaru(),
                                             /* check the cubit data */
                                             Container(
                                               margin:

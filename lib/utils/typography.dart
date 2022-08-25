@@ -5,112 +5,120 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'colors.dart' as AppColor;
 
-const double textSizeSmall = 7.0;
-const double textSizeMedium = 10.0;
-const double textSizeLargeMedium = 12.0;
-const double textSizeNormal = 13.0;
-const double textSizeLarge = 15.0;
-const double textSizeXLarge = 28.0;
-const double textSizeTitle = 14.0;
-
-// textSizeSmall = 12.0;
-// textSizeSMedium = 14.0;
-// textSizeMedium = 16.0;
-// textSizeLargeMedium = 18.0;
-// textSizeNormal = 20.0;
-// textSizeLarge = 24.0;
-// textSizeXLarge = 30.0;
-// textSizeTitle = 28.0;
+const double text7 = 7.0;
+const double text10 = 10.0;
+const double text12 = 12.0;
+const double text13 = 13.0;
+const double text15 = 15.0;
+const double text28 = 28.0;
+const double text14 = 14.0;
 
 // font Poppins
-TextStyle PopsTitle = GoogleFonts.poppins(
+TextStyle Pops28w6_white = GoogleFonts.poppins(
     textStyle: const TextStyle(
-  fontSize: textSizeXLarge,
+  fontSize: text28,
   fontWeight: FontWeight.w600,
   color: AppColor.white,
 ));
 
-TextStyle PopsHeading2 = GoogleFonts.poppins(
+TextStyle Pops15w6_white = GoogleFonts.poppins(
     textStyle: const TextStyle(
-  fontSize: textSizeLarge,
+  fontSize: text15,
   fontWeight: FontWeight.w600,
   color: AppColor.white,
 ));
 
-TextStyle PopsTopBar = GoogleFonts.poppins(
+TextStyle Pops22w9_primary = GoogleFonts.poppins(
     textStyle: const TextStyle(
   fontSize: 22,
   fontWeight: FontWeight.w900,
   color: AppColor.primary,
 ));
 
-TextStyle PopsIcon = GoogleFonts.poppins(
+TextStyle Pops12w4_black = GoogleFonts.poppins(
     textStyle: const TextStyle(
-  fontSize: textSizeLargeMedium,
+  fontSize: text12,
   fontWeight: FontWeight.w400,
-  color: AppColor.textPrimary,
+  color: AppColor.black,
 ));
 
-TextStyle PopsButton = GoogleFonts.poppins(
+TextStyle Pops18w8_black = GoogleFonts.poppins(
     textStyle: const TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w800,
-  color: AppColor.textPrimary,
+  color: AppColor.black,
 ));
 
-TextStyle PopsBody = GoogleFonts.poppins(
+TextStyle Pops10w4_black = GoogleFonts.poppins(
     textStyle: const TextStyle(
-  fontSize: textSizeTitle,
+  fontSize: text14,
   fontWeight: FontWeight.w400,
-  color: AppColor.textPrimary,
+  color: AppColor.black,
 ));
 
-TextStyle PopsDashboardScriptBody = GoogleFonts.poppins(
+TextStyle Pops10w4_white = GoogleFonts.poppins(
     textStyle: const TextStyle(
-  fontSize: textSizeMedium,
+  fontSize: text10,
   fontWeight: FontWeight.w400,
   color: AppColor.white,
 ));
 
 // font Inter
-TextStyle InterTextField = GoogleFonts.inter(
+TextStyle Inter14w4_black = GoogleFonts.inter(
     textStyle: const TextStyle(
-  fontSize: textSizeTitle,
+  fontSize: text14,
   fontWeight: FontWeight.w400,
   color: AppColor.black,
 ));
 
-TextStyle InterTextFieldHint = GoogleFonts.inter(
+TextStyle Inter14w4_lightGrey = GoogleFonts.inter(
     textStyle: const TextStyle(
-  fontSize: textSizeTitle,
+  fontSize: text14,
   fontWeight: FontWeight.w400,
   color: AppColor.lightGrey,
 ));
 
-TextStyle InterDashboardScriptTitle = GoogleFonts.inter(
+TextStyle Inter12w6_primary = GoogleFonts.inter(
     textStyle: const TextStyle(
-  fontSize: textSizeNormal,
-  fontWeight: FontWeight.w700,
-  color: AppColor.white,
-));
-
-TextStyle InterSeeMore = GoogleFonts.inter(
-    textStyle: const TextStyle(
-  fontSize: textSizeLargeMedium,
+  fontSize: text12,
   fontWeight: FontWeight.w600,
   color: AppColor.primary,
 ));
 
-// font Lato
-TextStyle LatoTitle = GoogleFonts.lato(
+TextStyle Inter13w7_black2 = GoogleFonts.inter(
     textStyle: const TextStyle(
+  fontSize: text13,
   fontWeight: FontWeight.w700,
+  color: AppColor.white,
+));
+
+TextStyle Inter10w6_black2 = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: text10,
+  fontWeight: FontWeight.w600,
+  color: AppColor.black2,
+));
+
+// font Lato
+TextStyle Lato14w7_black = GoogleFonts.lato(
+    textStyle: const TextStyle(
+  fontSize: text14,
+  fontWeight: FontWeight.w700,
+  color: AppColor.black,
 ));
 
 // font Nunito
-TextStyle NunitoDashboardScriptGreeting = GoogleFonts.nunito(
+TextStyle Nunito13w6_black = GoogleFonts.nunito(
     textStyle: const TextStyle(
-  fontSize: textSizeNormal,
+  fontSize: text13,
   fontWeight: FontWeight.w600,
   color: AppColor.white,
+));
+
+// font Nunito Sans
+TextStyle NunitoSans7w7_orange = GoogleFonts.nunitoSans(
+    textStyle: const TextStyle(
+  fontSize: text7,
+  fontWeight: FontWeight.w700,
+  color: AppColor.orangeText,
 ));

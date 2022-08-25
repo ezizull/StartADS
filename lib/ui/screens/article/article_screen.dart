@@ -91,7 +91,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                   top: 18, left: 18),
                                               child: Text(
                                                 "List Data",
-                                                style: AppText.PopsTopBar,
+                                                style: AppText.Pops22w9_primary,
                                               )),
                                     ),
                                     Stack(
@@ -155,7 +155,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                           Text(
                                                             article.title,
                                                             style: AppText
-                                                                .PopsTitle,
+                                                                .Pops28w6_white,
                                                           ),
                                                           const SizedBox(
                                                             height: 8,
@@ -165,7 +165,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                             textAlign: TextAlign
                                                                 .justify,
                                                             style: AppText
-                                                                .PopsBody,
+                                                                .Pops10w4_black,
                                                           )
                                                         ],
                                                       ),
@@ -199,7 +199,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                               alignment: Alignment.center,
                                               child: Text(
                                                 "New Article",
-                                                style: AppText.PopsButton,
+                                                style: AppText.Pops18w8_black,
                                               ),
                                               decoration: BoxDecoration(
                                                 color: AppColor.primary,

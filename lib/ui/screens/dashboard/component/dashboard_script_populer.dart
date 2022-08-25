@@ -45,13 +45,13 @@ class DashboardScriptPopular extends StatelessWidget {
             children: [
               Text(
                 'Script Populer',
-                style: AppText.LatoTitle,
+                style: AppText.Lato14w7_black,
               ),
               GestureDetector(
                 onTap: null,
                 child: Text(
                   'See more',
-                  style: AppText.InterSeeMore,
+                  style: AppText.Inter12w6_primary,
                 ),
               ),
             ],
@@ -61,7 +61,7 @@ class DashboardScriptPopular extends StatelessWidget {
           height: 125,
           margin: const EdgeInsets.only(bottom: 20),
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: dummyScripts.length,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => Container(
@@ -94,7 +94,7 @@ class DashboardScriptPopular extends StatelessWidget {
                         children: [
                           Text(
                             dummyScripts[index]['title'],
-                            style: AppText.InterDashboardScriptTitle,
+                            style: AppText.Inter13w7_black2,
                           ),
                           GestureDetector(
                             child: Container(
@@ -120,7 +120,7 @@ class DashboardScriptPopular extends StatelessWidget {
                           Flexible(
                               child: Text(
                             dummyScripts[index]['greet'],
-                            style: AppText.NunitoDashboardScriptGreeting,
+                            style: AppText.Nunito13w6_black,
                           )),
                         ],
                       ),
@@ -135,7 +135,7 @@ class DashboardScriptPopular extends StatelessWidget {
                           Flexible(
                               child: Text(
                             dummyScripts[index]['body'],
-                            style: AppText.PopsDashboardScriptBody,
+                            style: AppText.Pops10w4_white,
                           )),
                         ],
                       ),

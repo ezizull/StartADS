@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const appPrimary = Color(0xFF00AEFF);
 const primary = Color(0xFF00AEFF);
 
-// bacground
+// background
 const whiteBlueBg = Color(0xFFCCFCFF);
 const blueBg = Color(0xFF00AEFF);
 const darkBlueBg = Color(0xFF0065B7);
@@ -16,6 +16,10 @@ const darkPurpleBg = Color(0xFF951FFE);
 const whiteOrangeBg = Color(0xFFF5C450);
 const orangeBg = Color(0xFFF9A254);
 const darkOrangeBg = Color(0xFFF67F55);
+
+// tags
+const orangeText = Color(0xFFFFA800);
+const ligthOrangeBg = Color(0xFFFFF4DE);
 
 // linear gradient
 LinearGradient dashboardBanner = LinearGradient(
@@ -63,19 +67,14 @@ List<LinearGradient> scriptPopular = [
   ),
 ];
 
-// text
-const textPrimary = Color(0xFF21232C);
-const textPrimaryInverted = Color(0xFFFFFFFF);
-const textSecondary = Color(0xFFBEBEBE);
-const textSecondary2 = Color(0xFF777C7E);
-const textSecondaryInverted = Color(0xFFF4F4F4);
-
 // line
 const line = Color(0xFFD4D6DD);
 
-const black = Color(0xFF21232C);
-const black2 = Color(0xFF575757);
-const black3 = Color(0xFF6F6F6F);
+// common
+const black = Color(0xFF000000);
+const black2 = Color(0xFF212121);
+const black3 = Color(0xFF575757);
+const black4 = Color(0xFF6F6F6F);
 const grey = Color(0xFF777C7E);
 const lightGrey = Color(0xFF8F9098);
 const lightGrey2 = Color(0xFFE0E2E2);

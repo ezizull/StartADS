@@ -44,7 +44,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         Flexible(
                           child: Text(
                             'Script',
-                            style: AppText.PopsIcon,
+                            style: AppText.Pops12w4_black,
                             textAlign: TextAlign.center,
                           ),
                         )
@@ -72,7 +72,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         Flexible(
                           child: Text(
                             'Kamus CS',
-                            style: AppText.PopsIcon,
+                            style: AppText.Pops12w4_black,
                             textAlign: TextAlign.center,
                           ),
                         )
@@ -100,7 +100,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         Flexible(
                           child: Text(
                             'Contact Management',
-                            style: AppText.PopsIcon,
+                            style: AppText.Pops12w4_black,
                             textAlign: TextAlign.center,
                           ),
                         )
@@ -138,7 +138,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         Flexible(
                           child: Text(
                             'Campaign',
-                            style: AppText.PopsIcon,
+                            style: AppText.Pops12w4_black,
                             textAlign: TextAlign.center,
                           ),
                         )
@@ -166,7 +166,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         Flexible(
                           child: Text(
                             'Billing',
-                            style: AppText.PopsIcon,
+                            style: AppText.Pops12w4_black,
                             textAlign: TextAlign.center,
                           ),
                         )
@@ -194,7 +194,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         Flexible(
                           child: Text(
                             'Settings',
-                            style: AppText.PopsIcon,
+                            style: AppText.Pops12w4_black,
                             textAlign: TextAlign.center,
                           ),
                         )

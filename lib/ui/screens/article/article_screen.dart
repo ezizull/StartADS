@@ -81,7 +81,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 20),
                                       color: showTop
-                                          ? AppColor.childBlueBg
+                                          ? AppColor.blueBg
                                           : AppColor.white,
                                       child: showTop
                                           ? Container()
@@ -98,7 +98,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                       children: [
                                         Container(
                                           height: showTop ? 560 : 760,
-                                          color: AppColor.homeNavCardContainer,
+                                          color: AppColor.grey,
                                           padding: const EdgeInsets.only(
                                             bottom: 80,
                                           ),

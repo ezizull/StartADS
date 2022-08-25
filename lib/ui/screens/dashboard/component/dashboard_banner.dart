@@ -18,20 +18,8 @@ class DashboardBanner extends StatelessWidget {
       child: Container(
         height: 261,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.centerRight,
-          stops: const [
-            0.1,
-            0.4,
-            0.9,
-          ],
-          colors: [
-            AppColor.whiteBlueBg.withOpacity(0.5),
-            AppColor.childBlueBg,
-            AppColor.darkBlueBg,
-          ],
-        )),
+          gradient: AppColor.dashboardBanner,
+        ),
         child: Stack(
           children: [
             Positioned(
@@ -64,8 +52,8 @@ class DashboardBanner extends StatelessWidget {
                     child: Row(
                       children: [
                         Container(
-                          width: 36,
-                          height: 36,
+                          width: 24,
+                          height: 24,
                           margin: const EdgeInsets.only(right: 16),
                           child: AppIcon.dashboard_avatar_icon,
                         ),
@@ -107,7 +95,7 @@ class DashboardBanner extends StatelessWidget {
                           height: 18,
                           decoration: const BoxDecoration(boxShadow: [
                             BoxShadow(
-                              blurRadius: 20,
+                              blurRadius: 18,
                               color: AppColor.white,
                             )
                           ]),

@@ -8,7 +8,7 @@ class FetchScriptsCubit extends Cubit<FetchScriptsState> {
   Future<void> fetchScripts() async {
     emit(FetchScriptsLoading());
     try {
-      emit(const FetchScriptsSuccess("Succes to Fetch Scripts"));
+      emit(const FetchScriptsSuccess("Cubit: Succes to Fetch Scripts"));
     } catch (error) {
       if (error is NetworkException) {
         emit(FetchScriptsFailure.network(error.toString()));

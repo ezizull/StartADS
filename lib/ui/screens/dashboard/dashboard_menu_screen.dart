@@ -8,9 +8,10 @@ import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fe
 import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_state.dart';
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_banner.dart';
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_icons_menu.dart';
+import 'package:startercode_project/ui/screens/dashboard/component/dashboard_script_populer.dart';
+import 'package:startercode_project/ui/widgets/widgets.dart';
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/typography.dart' as AppText;
-import 'package:startercode_project/utils/extensions.dart' as AppExt;
 
 class DashboardMenuScreen extends StatefulWidget {
   const DashboardMenuScreen({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
               })
         ],
         child: Scaffold(
-          backgroundColor: AppColor.childBlueBg,
+          backgroundColor: AppColor.blueBg,
           body: BlocBuilder(
               bloc: _fetchScriptsCubit,
               builder: (context, state) => state is FetchScriptsLoading
@@ -61,13 +62,13 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                               children: [
                                 /* component of dashboard */
                                 const DashboardBanner(),
-                                /* all parts in white background component */
+                                /* parts in white background component */
                                 Positioned(
                                   top: 250,
                                   left: 0,
                                   right: 0,
                                   child: Container(
-                                    height: 795,
+                                    height: 642,
                                     decoration: const BoxDecoration(
                                         color: AppColor.white,
                                         borderRadius: BorderRadius.only(
@@ -75,38 +76,61 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                                           topRight: Radius.circular(20),
                                         )),
                                     child: ListView(
+                                      scrollDirection: Axis.vertical,
                                       children: [
-                                        /* component of dashboard */
-                                        const DashboardIconsMenu(),
-                                        Container(
-                                          height: 1,
-                                          color: AppColor.line,
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 30),
-                                        ),
-                                        Container(
-                                          height: 158,
-                                          margin: const EdgeInsets.all(20),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    'Script Populer',
-                                                    style: AppText.LatoTitle,
+                                        Column(
+                                          children: [
+                                            /* component of dashboard */
+                                            const DashboardIconsMenu(),
+                                            const AppDivider(),
+                                            DashboardScriptPopular(),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Container(
+                                                  margin: const EdgeInsets
+                                                      .symmetric(
+                                                    horizontal: 20,
+                                                    vertical: 20,
                                                   ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        /* check the cubit data */
-                                        Container(
-                                          margin: const EdgeInsets.symmetric(
-                                              vertical: 30),
-                                          child: Center(
-                                            child: Text(state.data),
-                                          ),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Script Populer',
+                                                        style:
+                                                            AppText.LatoTitle,
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: null,
+                                                        child: Text(
+                                                          'See more',
+                                                          style: AppText
+                                                              .InterSeeMore,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 170,
+                                                )
+                                              ],
+                                            ),
+                                            /* check the cubit data */
+                                            Container(
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 30),
+                                              child: Center(
+                                                child: Text(state.data),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),

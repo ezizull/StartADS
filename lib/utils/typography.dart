@@ -65,6 +65,13 @@ TextStyle PopsBody = GoogleFonts.poppins(
   color: AppColor.textPrimary,
 ));
 
+TextStyle PopsDashboardScriptBody = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: textSizeMedium,
+  fontWeight: FontWeight.w400,
+  color: AppColor.white,
+));
+
 // font Inter
 TextStyle InterTextField = GoogleFonts.inter(
     textStyle: const TextStyle(
@@ -80,8 +87,30 @@ TextStyle InterTextFieldHint = GoogleFonts.inter(
   color: AppColor.lightGrey,
 ));
 
+TextStyle InterDashboardScriptTitle = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: textSizeNormal,
+  fontWeight: FontWeight.w700,
+  color: AppColor.white,
+));
+
+TextStyle InterSeeMore = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: textSizeLargeMedium,
+  fontWeight: FontWeight.w600,
+  color: AppColor.primary,
+));
+
 // font Lato
 TextStyle LatoTitle = GoogleFonts.lato(
     textStyle: const TextStyle(
   fontWeight: FontWeight.w700,
+));
+
+// font Nunito
+TextStyle NunitoDashboardScriptGreeting = GoogleFonts.nunito(
+    textStyle: const TextStyle(
+  fontSize: textSizeNormal,
+  fontWeight: FontWeight.w600,
+  color: AppColor.white,
 ));

@@ -16,11 +16,23 @@ final Widget dashboard_infinite_icon = SvgPicture.asset(
 final Widget dashboard_search_icon = SvgPicture.asset(
   baseAssetURL + 'dashboard_search_icon.svg',
   color: AppColor.black,
-  semanticsLabel: 'dashboar search icon',
+  semanticsLabel: 'dashboard search icon',
 );
 
 final Widget dashboard_avatar_icon = SvgPicture.asset(
   baseAssetURL + 'dashboard_avatar_icon.svg',
   color: AppColor.white,
-  semanticsLabel: 'dashboar avatar icon',
+  semanticsLabel: 'dashboard avatar icon',
+);
+
+final Widget dashboard_script_horizontal_dots_icon = SvgPicture.asset(
+  baseAssetURL + 'dashboard_script_horizontal_dots_icon.svg',
+  color: AppColor.white,
+  semanticsLabel: 'dashboard script horizontal dots icon',
+);
+
+final Widget dashboard_script_vertical_dots_icon = SvgPicture.asset(
+  baseAssetURL + 'dashboard_script_vertical_dots_icon.svg',
+  color: AppColor.white,
+  semanticsLabel: 'dashboard script vertical dots icon',
 );

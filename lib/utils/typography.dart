@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'colors.dart' as AppColor;
 
 const String _fontPoppins = 'Poppins';
+const String _fontInter = 'Inter';
 
 const double textSizeSmall = 7.0;
 const double textSizeMedium = 10.0;
@@ -50,6 +51,13 @@ TextStyle PopsIcon = TextStyle(
   fontSize: textSizeLargeMedium,
   fontWeight: FontWeight.w400,
   color: AppColor.black2,
+);
+
+TextStyle PopsTextField = TextStyle(
+  fontFamily: _fontInter,
+  fontSize: textSizeTitle,
+  fontWeight: FontWeight.w400,
+  color: AppColor.lightGrey,
 );
 
 const TextStyle PopsButton = TextStyle(

@@ -86,6 +86,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                                             const AppDivider(),
                                             DashboardScriptPopular(),
                                             DashboardScriptTerbaru(),
+                                            /* ADD button */
                                             /* check the cubit data */
                                             Container(
                                               margin:

@@ -73,8 +73,9 @@ const line = Color(0xFFD4D6DD);
 // common
 const black = Color(0xFF000000);
 const black2 = Color(0xFF212121);
-const black3 = Color(0xFF575757);
-const black4 = Color(0xFF6F6F6F);
+const black3 = Color(0xFF38476D17);
+const black4 = Color(0xFF575757);
+const black5 = Color(0xFF6F6F6F);
 const grey = Color(0xFF777C7E);
 const lightGrey = Color(0xFF8F9098);
 const lightGrey2 = Color(0xFFE0E2E2);

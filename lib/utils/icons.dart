@@ -9,7 +9,7 @@ const String baseAssetURL = 'assets/images/dashboard/';
 /* Dashboard Icon */
 final Widget dashboard_infinite_icon = SvgPicture.asset(
   baseAssetURL + 'dashboard_infinite_icon.svg',
-  color: AppColor.black3,
+  color: AppColor.black4,
   semanticsLabel: 'dashboard infinite icon',
 );
 
@@ -33,6 +33,6 @@ final Widget dashboard_script_horizontal_dots_icon = SvgPicture.asset(
 
 final Widget dashboard_script_vertical_dots_icon = SvgPicture.asset(
   baseAssetURL + 'dashboard_script_vertical_dots_icon.svg',
-  color: AppColor.black4,
+  color: AppColor.black5,
   semanticsLabel: 'dashboard script vertical dots icon',
 );

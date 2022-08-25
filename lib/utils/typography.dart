@@ -1,11 +1,9 @@
 // ignore_for_file: library_prefixes, constant_identifier_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'colors.dart' as AppColor;
-
-const String _fontPoppins = 'Poppins';
-const String _fontInter = 'Inter';
 
 const double textSizeSmall = 7.0;
 const double textSizeMedium = 10.0;
@@ -25,51 +23,65 @@ const double textSizeTitle = 14.0;
 // textSizeTitle = 28.0;
 
 // font Poppins
-const TextStyle PopsTitle = TextStyle(
-  fontFamily: _fontPoppins,
+TextStyle PopsTitle = GoogleFonts.poppins(
+    textStyle: const TextStyle(
   fontSize: textSizeXLarge,
   fontWeight: FontWeight.w600,
   color: AppColor.white,
-);
+));
 
-const TextStyle PopsHeading2 = TextStyle(
-  fontFamily: _fontPoppins,
+TextStyle PopsHeading2 = GoogleFonts.poppins(
+    textStyle: const TextStyle(
   fontSize: textSizeLarge,
   fontWeight: FontWeight.w600,
   color: AppColor.white,
-);
+));
 
-TextStyle PopsTopBar = TextStyle(
-  fontFamily: _fontPoppins,
-  fontSize: 22.0,
+TextStyle PopsTopBar = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: 22,
   fontWeight: FontWeight.w900,
   color: AppColor.primary,
-);
+));
 
-TextStyle PopsIcon = TextStyle(
-  fontFamily: _fontPoppins,
+TextStyle PopsIcon = GoogleFonts.poppins(
+    textStyle: const TextStyle(
   fontSize: textSizeLargeMedium,
   fontWeight: FontWeight.w400,
-  color: AppColor.black2,
-);
+  color: AppColor.textPrimary,
+));
 
-TextStyle PopsTextField = TextStyle(
-  fontFamily: _fontInter,
+TextStyle PopsButton = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w800,
+  color: AppColor.textPrimary,
+));
+
+TextStyle PopsBody = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: textSizeTitle,
+  fontWeight: FontWeight.w400,
+  color: AppColor.textPrimary,
+));
+
+// font Inter
+TextStyle InterTextField = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: textSizeTitle,
+  fontWeight: FontWeight.w400,
+  color: AppColor.black,
+));
+
+TextStyle InterTextFieldHint = GoogleFonts.inter(
+    textStyle: const TextStyle(
   fontSize: textSizeTitle,
   fontWeight: FontWeight.w400,
   color: AppColor.lightGrey,
-);
+));
 
-const TextStyle PopsButton = TextStyle(
-  fontFamily: _fontPoppins,
-  fontSize: 18.0,
-  fontWeight: FontWeight.w800,
-  color: AppColor.white,
-);
-
-const TextStyle PopsBody = TextStyle(
-  fontFamily: _fontPoppins,
-  fontSize: 14.0,
-  fontWeight: FontWeight.w400,
-  color: AppColor.textPrimary,
-);
+// font Lato
+TextStyle LatoTitle = GoogleFonts.lato(
+    textStyle: const TextStyle(
+  fontWeight: FontWeight.w700,
+));

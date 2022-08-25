@@ -71,8 +71,8 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                                     decoration: const BoxDecoration(
                                         color: AppColor.white,
                                         borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(15),
-                                          topRight: Radius.circular(15),
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(20),
                                         )),
                                     child: ListView(
                                       children: [
@@ -80,9 +80,25 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                                         const DashboardIconsMenu(),
                                         Container(
                                           height: 1,
-                                          color: AppColor.lightGrey2,
+                                          color: AppColor.line,
                                           margin: const EdgeInsets.symmetric(
                                               horizontal: 30),
+                                        ),
+                                        Container(
+                                          height: 158,
+                                          margin: const EdgeInsets.all(20),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    'Script Populer',
+                                                    style: AppText.LatoTitle,
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         ),
                                         /* check the cubit data */
                                         Container(

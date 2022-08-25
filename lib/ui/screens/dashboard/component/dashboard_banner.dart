@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/typography.dart' as AppText;
+import 'package:startercode_project/utils/icons.dart' as AppIcon;
 
 class DashboardBanner extends StatelessWidget {
   const DashboardBanner({
@@ -37,40 +38,20 @@ class DashboardBanner extends StatelessWidget {
               right: 0,
               bottom: 0,
               child: SizedBox(
-                width: 450,
-                height: 300,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: Container(
-                        width: 252,
-                        height: 237,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                          image: AssetImage(
-                            "assets/images/dashboard/dashboard_bg_girl.png",
-                          ),
-                          fit: BoxFit.fitWidth,
-                        )),
-                      ),
-                    ),
-                    BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 29, sigmaY: 29),
-                      child: Container(
-                        width: double.infinity,
-                        color: AppColor.white.withOpacity(0.15),
-                      ),
-                    ),
-                  ],
+                width: 367,
+                child: Image.asset(
+                  "assets/images/dashboard/dashboard_bg_girl.png",
                 ),
               ),
             ),
             Positioned(
-              right: 0,
+              right: -4,
               bottom: 2,
-              child: Image.asset("assets/images/dashboard/dashboard_girl.png"),
+              child: SizedBox(
+                  width: 218,
+                  height: 201,
+                  child: Image.asset(
+                      "assets/images/dashboard/dashboard_girl.png")),
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -81,50 +62,47 @@ class DashboardBanner extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(bottom: 25),
                     child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           width: 36,
                           height: 36,
-                          margin: const EdgeInsets.only(right: 11),
-                          child: const CircleAvatar(
-                            radius: 36,
-                            backgroundColor: AppColor.white,
-                            backgroundImage: AssetImage(
-                                'assets/images/profile/profile_avatar.png'),
-                          ),
+                          margin: const EdgeInsets.only(right: 16),
+                          child: AppIcon.dashboard_avatar_icon,
                         ),
-                        Container(
-                          height: 38,
-                          width: 332,
-                          alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.symmetric(horizontal: 14),
-                          decoration: BoxDecoration(
-                            color: AppColor.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            style: AppText.PopsTextField,
-                            decoration: const InputDecoration(
-                              hintText: 'Search',
-                              icon: Icon(Icons.search, size: 16),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 0, style: BorderStyle.none)),
-                              contentPadding: EdgeInsets.symmetric(vertical: 7),
+                        Expanded(
+                          child: Container(
+                            height: 38,
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: TextField(
+                              style: AppText.InterTextField,
+                              decoration: InputDecoration(
+                                hintText: 'Search',
+                                hintStyle: AppText.InterTextFieldHint,
+                                icon: AppIcon.dashboard_search_icon,
+                                border: const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 0, style: BorderStyle.none)),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(vertical: 7),
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const Text("Paket Lifetime", style: AppText.PopsTitle),
+                  Text("Paket Lifetime", style: AppText.PopsTitle),
                   Wrap(
                     spacing: 13,
                     direction: Axis.horizontal,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      const Text("Expired Date:", style: AppText.PopsHeading2),
+                      Text("Expired Date:", style: AppText.PopsHeading2),
                       Container(
                           height: 18,
                           decoration: const BoxDecoration(boxShadow: [
@@ -133,8 +111,7 @@ class DashboardBanner extends StatelessWidget {
                               color: AppColor.white,
                             )
                           ]),
-                          child: Image.asset(
-                              'assets/images/dashboard/dashboard_infinite_icon.png'))
+                          child: AppIcon.dashboard_infinite_icon)
                     ],
                   ),
                 ],

@@ -197,7 +197,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                             child: Container(
                                               height: 60,
                                               alignment: Alignment.center,
-                                              child: const Text(
+                                              child: Text(
                                                 "New Article",
                                                 style: AppText.PopsButton,
                                               ),

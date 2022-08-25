@@ -37,8 +37,10 @@ dependencies:
   equatable: ^2.0.3
   dio: ^4.0.3
   flutter_dotenv: ^5.0.2
-  # Coloring 
-  hexcolor: ^2.0.7
+  # Google for Font
+  google_fonts: ^3.0.1
+  # Load SVG
+  flutter_svg: ^1.0.3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -87,30 +89,8 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter/Inter-Regular.ttf
-          weight: 400
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins/Poppins-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/Poppins/Poppins-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/Poppins/Poppins-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Poppins/Poppins-Black.ttf
-          weight: 900
+  
+  # fonts:
+   
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

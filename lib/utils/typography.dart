@@ -32,7 +32,7 @@ TextStyle Pops22w9_primary = GoogleFonts.poppins(
     textStyle: const TextStyle(
   fontSize: 22,
   fontWeight: FontWeight.w900,
-  color: AppColor.primary,
+  color: AppColor.blue_00AEFF,
 ));
 
 TextStyle Pops12w4_black = GoogleFonts.poppins(
@@ -75,14 +75,14 @@ TextStyle Inter14w4_lightGrey = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: text14,
   fontWeight: FontWeight.w400,
-  color: AppColor.lightGrey,
+  color: AppColor.grey_8F9098,
 ));
 
 TextStyle Inter12w6_primary = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: text12,
   fontWeight: FontWeight.w600,
-  color: AppColor.primary,
+  color: AppColor.blue_00AEFF,
 ));
 
 TextStyle Inter13w7_black2 = GoogleFonts.inter(
@@ -96,7 +96,7 @@ TextStyle Inter10w6_black2 = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: text10,
   fontWeight: FontWeight.w600,
-  color: AppColor.black2,
+  color: AppColor.black_212121,
 ));
 
 // font Lato
@@ -120,5 +120,5 @@ TextStyle NunitoSans7w7_orange = GoogleFonts.nunitoSans(
     textStyle: const TextStyle(
   fontSize: text7,
   fontWeight: FontWeight.w700,
-  color: AppColor.orangeText,
+  color: AppColor.orange_FFA800,
 ));

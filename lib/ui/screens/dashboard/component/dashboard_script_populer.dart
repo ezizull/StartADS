@@ -72,7 +72,7 @@ class DashboardScriptPopular extends StatelessWidget {
                 right: index == dummyScripts.length - 1 ? 20 : 0,
               ),
               decoration: BoxDecoration(
-                color: AppColor.primary,
+                color: AppColor.blue_00AEFF,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: GestureDetector(

@@ -79,7 +79,7 @@ class DashboardScriptTerbaru extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       blurRadius: 10,
-                      color: AppColor.black3.withOpacity(0.09),
+                      color: AppColor.black_38476D.withOpacity(0.09),
                       offset: const Offset(0, 5),
                     ),
                   ]),
@@ -141,7 +141,7 @@ class DashboardScriptTerbaru extends StatelessWidget {
                                   vertical: 2,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: AppColor.ligthOrangeBg,
+                                  color: AppColor.orange_FFF4DE,
                                   borderRadius: BorderRadius.circular(36),
                                 ),
                                 child: Text(dummyScripts[index]['tags'],

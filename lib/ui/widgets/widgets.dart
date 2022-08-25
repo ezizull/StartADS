@@ -10,7 +10,7 @@ class AppDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 1,
-      color: AppColor.line,
+      color: AppColor.white_D4D6DD,
       margin: const EdgeInsets.symmetric(horizontal: 30),
     );
   }

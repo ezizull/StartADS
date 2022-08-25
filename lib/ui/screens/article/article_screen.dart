@@ -81,7 +81,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 20),
                                       color: showTop
-                                          ? AppColor.blueBg
+                                          ? AppColor.blue_00AEFF
                                           : AppColor.white,
                                       child: showTop
                                           ? Container()
@@ -98,7 +98,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                       children: [
                                         Container(
                                           height: showTop ? 560 : 760,
-                                          color: AppColor.grey,
+                                          color: AppColor.grey_777C7E,
                                           padding: const EdgeInsets.only(
                                             bottom: 80,
                                           ),
@@ -138,8 +138,8 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                                 .circular(10),
                                                         boxShadow: const [
                                                           BoxShadow(
-                                                            color:
-                                                                AppColor.grey,
+                                                            color: AppColor
+                                                                .grey_777C7E,
                                                             offset:
                                                                 Offset(0, 3),
                                                             blurRadius: 6,
@@ -202,7 +202,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                 style: AppText.Pops18w8_black,
                                               ),
                                               decoration: BoxDecoration(
-                                                color: AppColor.primary,
+                                                color: AppColor.blue_00AEFF,
                                                 borderRadius:
                                                     BorderRadius.circular(50),
                                               ),

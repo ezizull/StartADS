@@ -12,6 +12,7 @@ import 'package:startercode_project/ui/screens/dashboard/component/dashboard_scr
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_script_terbaru.dart';
 import 'package:startercode_project/ui/widgets/widgets.dart';
 import 'package:startercode_project/utils/colors.dart' as AppColor;
+import 'package:startercode_project/utils/icons.dart' as AppIcon;
 import 'package:startercode_project/utils/typography.dart' as AppText;
 
 class DashboardMenuScreen extends StatefulWidget {
@@ -51,7 +52,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
               })
         ],
         child: Scaffold(
-          backgroundColor: AppColor.blueBg,
+          backgroundColor: AppColor.blue_00AEFF,
           body: BlocBuilder(
               bloc: _fetchScriptsCubit,
               builder: (context, state) => state is FetchScriptsLoading
@@ -61,50 +62,75 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                       : state is FetchScriptsSuccess
                           ? Stack(
                               children: [
-                                /* component of dashboard */
+                                /* dashboard banner */
                                 const DashboardBanner(),
-                                /* parts in white background component */
+
+                                /* dashboard component */
+                                DashboardComponent(state),
+
+                                /* ADD script button */
                                 Positioned(
-                                  top: 250,
-                                  left: 0,
-                                  right: 0,
-                                  child: Container(
-                                    height: 642,
-                                    decoration: const BoxDecoration(
-                                        color: AppColor.white,
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20),
-                                          topRight: Radius.circular(20),
-                                        )),
-                                    child: ListView(
-                                      scrollDirection: Axis.vertical,
-                                      children: [
-                                        Column(
-                                          children: [
-                                            /* component of dashboard */
-                                            const DashboardIconsMenu(),
-                                            const AppDivider(),
-                                            DashboardScriptPopular(),
-                                            DashboardScriptTerbaru(),
-                                            /* ADD button */
-                                            /* check the cubit data */
-                                            Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 30),
-                                              child: Center(
-                                                child: Text(state.data),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                  right: 18,
+                                  bottom: 18,
+                                  child: ElevatedButton(
+                                    onPressed: (() =>
+                                        debugPrint('clicked ctreate script')),
+                                    child: SizedBox(
+                                      height: 16,
+                                      child: AppIcon.dashboard_plus_icon,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      shape: const CircleBorder(),
+                                      padding: const EdgeInsets.all(18),
+                                      shadowColor: AppColor.black_272727
+                                          .withOpacity(0.5),
+                                      elevation: 4,
                                     ),
                                   ),
                                 )
                               ],
                             )
                           : const SizedBox.shrink()),
+        ),
+      ),
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  Widget DashboardComponent(FetchScriptsSuccess state) {
+    return Positioned(
+      top: 250,
+      left: 0,
+      right: 0,
+      child: Container(
+        height: 642,
+        decoration: const BoxDecoration(
+            color: AppColor.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            )),
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            Column(
+              children: [
+                /* component of dashboard */
+                const DashboardIconsMenu(),
+                const AppDivider(),
+                DashboardScriptPopular(),
+                DashboardScriptTerbaru(),
+
+                /* check the cubit data */
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 30),
+                  child: Center(
+                    child: Text(state.data),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

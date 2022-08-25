@@ -84,7 +84,7 @@ class _ArticleScreenWithoutCubitScreenState
                                           child: Container(
                                             width: double.infinity,
                                             height: 70,
-                                            color: AppColor.primary,
+                                            color: AppColor.blue_00AEFF,
                                             child: const Center(
                                                 child: Text(
                                                     "Klik Tambah Article")),

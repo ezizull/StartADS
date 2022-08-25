@@ -70,7 +70,7 @@ class _EntryArticleScreenState extends State<EntryArticleScreen> {
         ],
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: AppColor.appPrimary,
+            backgroundColor: AppColor.blue_00AEFF,
             centerTitle: true,
             title: const Text("Form Artikel"),
           ),
@@ -92,8 +92,8 @@ class _EntryArticleScreenState extends State<EntryArticleScreen> {
                     child: const Text("Submit"),
                     style: TextButton.styleFrom(
                       primary: AppColor.black,
-                      backgroundColor: AppColor.primary,
-                      onSurface: AppColor.grey, // Disable color
+                      backgroundColor: AppColor.blue_00AEFF,
+                      onSurface: AppColor.grey_777C7E, // Disable color
                     ),
                   )
                 ],

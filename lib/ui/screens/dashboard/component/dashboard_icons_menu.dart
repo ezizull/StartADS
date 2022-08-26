@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:startercode_project/utils/typography.dart' as AppText;
 import 'package:startercode_project/utils/images.dart' as AppImage;
@@ -18,195 +20,99 @@ class DashboardIconsMenu extends StatelessWidget {
         spacing: 19,
         direction: Axis.vertical,
         children: [
-          Container(
+          RowButtons(
             width: swidth,
             padding: EdgeInsets.symmetric(horizontal: spacing),
-            child: Wrap(
-              direction: Axis.horizontal,
-              alignment: WrapAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: null,
-                  child: SizedBox(
-                    width: 82,
-                    height: 112,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 65,
-                          child: Image.asset(
-                            AppImage.script_icon,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Flexible(
-                          child: Text(
-                            'Script',
-                            style: AppText.Pops12w4_black,
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: null,
-                  child: SizedBox(
-                    width: 82,
-                    height: 112,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 65,
-                          child: Image.asset(
-                            AppImage.kamus_icon,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Flexible(
-                          child: Text(
-                            'Kamus CS',
-                            style: AppText.Pops12w4_black,
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: null,
-                  child: SizedBox(
-                    width: 82,
-                    height: 112,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 65,
-                          child: Image.asset(
-                            AppImage.contact_management_icon,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Flexible(
-                          child: Text(
-                            'Contact Management',
-                            style: AppText.Pops12w4_black,
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            children: [
+              MenuButton(
+                textButton: 'Script',
+                AppImage: AppImage.script_icon,
+              ),
+              MenuButton(
+                textButton: 'Kamus CS',
+                AppImage: AppImage.kamus_icon,
+              ),
+              MenuButton(
+                textButton: 'Contact Management',
+                AppImage: AppImage.contact_management_icon,
+              ),
+            ],
           ),
-          Container(
+          RowButtons(
             width: swidth,
             padding: EdgeInsets.symmetric(horizontal: spacing),
-            child: Wrap(
-              direction: Axis.horizontal,
-              alignment: WrapAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: null,
-                  child: SizedBox(
-                    width: 82,
-                    height: 112,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 65,
-                          child: Image.asset(
-                            AppImage.campaign_icon,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Flexible(
-                          child: Text(
-                            'Campaign',
-                            style: AppText.Pops12w4_black,
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: null,
-                  child: SizedBox(
-                    width: 82,
-                    height: 112,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 65,
-                          child: Image.asset(
-                            AppImage.billing_icon,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Flexible(
-                          child: Text(
-                            'Billing',
-                            style: AppText.Pops12w4_black,
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: null,
-                  child: SizedBox(
-                    width: 82,
-                    height: 112,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 65,
-                          child: Image.asset(
-                            AppImage.settings_icon,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Flexible(
-                          child: Text(
-                            'Settings',
-                            style: AppText.Pops12w4_black,
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            children: [
+              MenuButton(
+                textButton: 'Campaign',
+                AppImage: AppImage.campaign_icon,
+              ),
+              MenuButton(
+                textButton: 'Billing',
+                AppImage: AppImage.billing_icon,
+              ),
+              MenuButton(
+                textButton: 'Settings',
+                AppImage: AppImage.settings_icon,
+              ),
+            ],
           ),
         ],
+      ),
+    );
+  }
+
+  /* Row of MenuButtons */
+  Widget RowButtons({
+    required double width,
+    EdgeInsetsGeometry? padding,
+    List<Widget>? children,
+  }) {
+    return Container(
+      width: width,
+      padding: padding,
+      child: Wrap(
+        direction: Axis.horizontal,
+        alignment: WrapAlignment.spaceBetween,
+        children: children ?? [],
+      ),
+    );
+  }
+
+  /* Single MenuButton */
+  Widget MenuButton({
+    Function? onTap,
+    required String textButton,
+    required String AppImage,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        /* Handle onTap() */
+        onTap != null ? onTap() : null;
+      },
+      child: SizedBox(
+        width: 82,
+        height: 112,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 65,
+              child: Image.asset(
+                AppImage,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Flexible(
+              child: Text(
+                textButton,
+                style: AppText.Pops12w4_black,
+                textAlign: TextAlign.center,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

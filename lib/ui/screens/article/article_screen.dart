@@ -98,7 +98,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                       children: [
                                         Container(
                                           height: showTop ? 560 : 760,
-                                          color: AppColor.grey_777C7E,
+                                          color: AppColor.white_D4D6DD,
                                           padding: const EdgeInsets.only(
                                             bottom: 80,
                                           ),

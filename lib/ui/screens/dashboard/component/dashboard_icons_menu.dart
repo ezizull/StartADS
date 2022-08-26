@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:startercode_project/utils/typography.dart' as AppText;
+import 'package:startercode_project/utils/images.dart' as AppImage;
 
 class DashboardIconsMenu extends StatelessWidget {
   const DashboardIconsMenu({
@@ -34,7 +35,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         SizedBox(
                           height: 65,
                           child: Image.asset(
-                            "assets/icons/dashboard/script_icon.png",
+                            AppImage.script_icon,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -62,7 +63,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         SizedBox(
                           height: 65,
                           child: Image.asset(
-                            "assets/icons/dashboard/kamus_icon.png",
+                            AppImage.kamus_icon,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -90,7 +91,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         SizedBox(
                           height: 65,
                           child: Image.asset(
-                            "assets/icons/dashboard/contact_management_icon.png",
+                            AppImage.contact_management_icon,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -128,7 +129,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         SizedBox(
                           height: 65,
                           child: Image.asset(
-                            "assets/icons/dashboard/campaign_icon.png",
+                            AppImage.campaign_icon,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -156,7 +157,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         SizedBox(
                           height: 65,
                           child: Image.asset(
-                            "assets/icons/dashboard/billing_icon.png",
+                            AppImage.billing_icon,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -184,7 +185,7 @@ class DashboardIconsMenu extends StatelessWidget {
                         SizedBox(
                           height: 65,
                           child: Image.asset(
-                            "assets/icons/dashboard/settings_icon.png",
+                            AppImage.settings_icon,
                             fit: BoxFit.cover,
                           ),
                         ),

@@ -100,11 +100,25 @@ TextStyle Inter10w6_black2 = GoogleFonts.inter(
 ));
 
 // font Lato
+TextStyle Lato14w5_black = GoogleFonts.lato(
+    textStyle: const TextStyle(
+  fontSize: text14,
+  fontWeight: FontWeight.w500,
+  color: AppColor.black,
+));
+
 TextStyle Lato14w7_black = GoogleFonts.lato(
     textStyle: const TextStyle(
   fontSize: text14,
   fontWeight: FontWeight.w700,
   color: AppColor.black,
+));
+
+TextStyle Lato16w7_black = GoogleFonts.lato(
+    textStyle: const TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  color: AppColor.black_222831,
 ));
 
 // font Nunito

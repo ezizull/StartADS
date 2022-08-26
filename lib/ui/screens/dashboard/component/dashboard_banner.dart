@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/typography.dart' as AppText;
 import 'package:startercode_project/utils/icons.dart' as AppIcon;
+import 'package:startercode_project/utils/images.dart' as AppImage;
 
 class DashboardBanner extends StatelessWidget {
   const DashboardBanner({
@@ -28,7 +29,7 @@ class DashboardBanner extends StatelessWidget {
               child: SizedBox(
                 width: 367,
                 child: Image.asset(
-                  "assets/images/dashboard/dashboard_bg_girl.png",
+                  AppImage.dashboard_bg_girl,
                 ),
               ),
             ),
@@ -38,8 +39,7 @@ class DashboardBanner extends StatelessWidget {
               child: SizedBox(
                   width: 218,
                   height: 201,
-                  child: Image.asset(
-                      "assets/images/dashboard/dashboard_girl.png")),
+                  child: Image.asset(AppImage.dashboard_girl)),
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),

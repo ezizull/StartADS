@@ -51,7 +51,7 @@ TextStyle Pops18w8_black = GoogleFonts.poppins(
 
 TextStyle Pops10w4_black = GoogleFonts.poppins(
     textStyle: const TextStyle(
-  fontSize: text14,
+  fontSize: text10,
   fontWeight: FontWeight.w400,
   color: AppColor.black,
 ));

@@ -80,6 +80,7 @@ const black_98A6AE = Color(0xFF98A6AE);
 
 const grey_777C7E = Color(0xFF777C7E);
 const grey_8F9098 = Color(0xFF8F9098);
+const grey_F5F4F6 = Color(0xFFF5F4F6);
 const grey_E0E2E2 = Color(0xFFE0E2E2);
 const grey_E5E5E5 = Color(0xFFE5E5E5);
 

@@ -43,19 +43,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("data"),
-      ),
-    );
-  }
-}
-
 class Config {
   static final String? baseUrl =
       kDebugMode ? dotenv.env['BASE_URL_DEBUG'] : dotenv.env['BASE_URL'];

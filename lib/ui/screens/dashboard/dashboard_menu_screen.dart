@@ -29,6 +29,11 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
     ..fetchScripts();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _fetchScriptsCubit.close();
     super.dispose();
@@ -53,32 +58,75 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                 }
               })
         ],
-        child: Scaffold(
-          backgroundColor: AppColor.blue_00AEFF,
-          floatingActionButton: AddScriptButton(),
-          body: BlocBuilder(
-            bloc: _fetchScriptsCubit,
-            builder: (context, state) {
-              if (state is FetchScriptsSuccess) {
-                return Stack(
-                  children: [
-                    /* dashboard banner */
-                    const DashboardBanner(),
+        child: GestureDetector(
+          onTap: (() => setState(() => {})),
+          child: Scaffold(
+            backgroundColor: AppColor.blue_00AEFF,
+            floatingActionButton: AddScriptButton(),
+            body: BlocBuilder(
+              bloc: _fetchScriptsCubit,
+              builder: (context, state) {
+                if (state is FetchScriptsSuccess) {
+                  return Stack(
+                    children: [
+                      /* dashboard banner */
+                      const DashboardBanner(),
 
-                    /* dashboard component */
-                    DashboardComponent(state),
-                  ],
-                );
-              }
-              return const SizedBox.shrink();
-            },
+                      /* dashboard component */
+                      DashboardComponent(state),
+                    ],
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
           ),
         ),
       ),
     );
   }
 
-  /* Add Script Button */
+  /* Dashboard Component */
+  Widget DashboardComponent(FetchScriptsSuccess state) {
+    return Positioned(
+      top: 250,
+      left: 0,
+      right: 0,
+      child: Container(
+        height: 642,
+        decoration: const BoxDecoration(
+            color: AppColor.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            )),
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            Column(
+              children: [
+                /* component of dashboard */
+                const DashboardIconsMenu(),
+                const AppDivider(),
+                DashboardScriptPopular(),
+                DashboardScriptTerbaru(),
+
+                /* check the cubit data */
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 30),
+                  child: Center(
+                    child: Text(state.data),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /* 1: Add Script Button */
   Widget AddScriptButton() {
     return FloatingActionButton(
       onPressed: (() => showModalBottomSheet(
@@ -97,7 +145,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
     );
   }
 
-  /* Add Script Dialog */
+  /* 2: Add Script Dialog */
   Container AddScriptDialog() {
     return Container(
       height: 283,
@@ -154,7 +202,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
     );
   }
 
-  /* Script To Be Created */
+  /* 3: Script To Be Created */
   Widget ScriptToCreated({
     required String text,
     required String image,
@@ -198,46 +246,6 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
             ),
           )
         ]),
-      ),
-    );
-  }
-
-  /* Dashboard Component */
-  Widget DashboardComponent(FetchScriptsSuccess state) {
-    return Positioned(
-      top: 250,
-      left: 0,
-      right: 0,
-      child: Container(
-        height: 642,
-        decoration: const BoxDecoration(
-            color: AppColor.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            )),
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          children: [
-            Column(
-              children: [
-                /* component of dashboard */
-                const DashboardIconsMenu(),
-                const AppDivider(),
-                DashboardScriptPopular(),
-                DashboardScriptTerbaru(),
-
-                /* check the cubit data */
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 30),
-                  child: Center(
-                    child: Text(state.data),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }

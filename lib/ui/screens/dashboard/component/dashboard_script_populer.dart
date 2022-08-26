@@ -202,7 +202,6 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
         visible: widget.showDialog && scriptIndex == index,
         child: Container(
           width: 124,
-          height: 106,
           color: AppColor.white,
           padding: const EdgeInsets.all(10),
           child: Wrap(

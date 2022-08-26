@@ -224,7 +224,6 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
         visible: widget.showDialog && scriptIndex == index,
         child: Container(
           width: 124,
-          height: 77,
           decoration: const BoxDecoration(
             color: AppColor.white,
             boxShadow: [

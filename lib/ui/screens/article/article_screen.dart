@@ -91,7 +91,8 @@ class _ArticleScreenState extends State<ArticleScreen> {
                                                   top: 18, left: 18),
                                               child: Text(
                                                 "List Data",
-                                                style: AppText.Pops22w9_primary,
+                                                style: AppText
+                                                    .Pops22w9_blue_00AEFF,
                                               )),
                                     ),
                                     Stack(

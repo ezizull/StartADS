@@ -74,11 +74,24 @@ flutter:
   assets:
     # Images
     - assets/images/
-    - assets/images/dashboard/
+
+    # Dashboard Images
+    - assets/images/dashboard/dashboard_banner/
+    - assets/images/dashboard/dashboard_scripts/
+    
+    # Profile Images
     - assets/images/profile/
     
     # Icons
+    - assets/icons/
+
+    # Dashboard Icons
     - assets/icons/dashboard/
+    - assets/icons/dashboard/dashboard_drawer/
+    - assets/icons/dashboard/dashboard_add_script/
+    - assets/icons/dashboard/dashboard_banner/
+    - assets/icons/dashboard/dashboard_menu/
+    - assets/icons/dashboard/dashboard_scripts/
     
     - .env
 

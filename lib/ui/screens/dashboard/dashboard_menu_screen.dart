@@ -1,12 +1,11 @@
-// ignore_for_file: unused_field, non_constant_identifier_names
-
-import 'dart:ui';
+// ignore_for_file: unused_field, non_constant_identifier_names, library_prefixes
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_cubit.dart';
 import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_state.dart';
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_banner.dart';
+import 'package:startercode_project/ui/screens/dashboard/component/dashboard_drawer.dart';
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_icons_menu.dart';
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_script_populer.dart';
 import 'package:startercode_project/ui/screens/dashboard/component/dashboard_script_terbaru.dart';
@@ -28,10 +27,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
   final FetchScriptsCubit _fetchScriptsCubit = FetchScriptsCubit()
     ..fetchScripts();
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   void dispose() {
@@ -63,6 +59,8 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
           child: Scaffold(
             backgroundColor: AppColor.blue_00AEFF,
             floatingActionButton: AddScriptButton(),
+            key: _key,
+            drawer: DashboardDrawer(),
             body: BlocBuilder(
               bloc: _fetchScriptsCubit,
               builder: (context, state) {
@@ -70,7 +68,14 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                   return Stack(
                     children: [
                       /* dashboard banner */
-                      const DashboardBanner(),
+                      DashboardBanner(
+                        onTapDrawer: (() {
+                          debugPrint('Avatar dashboard on click');
+
+                          /* Open Drawer */
+                          _key.currentState!.openDrawer();
+                        }),
+                      ),
 
                       /* dashboard component */
                       DashboardComponent(state),
@@ -140,7 +145,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
       elevation: 4,
       child: SizedBox(
         height: 16,
-        child: AppIcon.dashboard_plus_icon,
+        child: AppIcon.dashboard_plus,
       ),
     );
   }
@@ -155,7 +160,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
           height: 6,
           width: 38,
           margin: const EdgeInsets.only(top: 15),
-          child: AppIcon.dashboard_bottom_dialog_put_icon,
+          child: AppIcon.dashboard_bottom_dialog_put,
         ),
         Container(
           width: 340,
@@ -165,7 +170,8 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Pilih Script untuk dibuat', style: AppText.Lato16w7_black),
+              Text('Pilih Script untuk dibuat',
+                  style: AppText.Inter10w6_black_222831),
               SizedBox(
                 height: 153,
                 child: Column(children: [
@@ -173,7 +179,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                   ScriptToCreated(
                     text: 'Buat Script',
                     action: () => (debugPrint('clicked: Buat Script')),
-                    image: AppImage.buat_script_icon,
+                    image: AppImage.buat_script,
                     top: true,
                     bot: true,
                   ),
@@ -182,7 +188,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                   ScriptToCreated(
                     text: 'Buat Script Campaign',
                     action: () => (debugPrint('clicked: Buat Script Campaign')),
-                    image: AppImage.buat_script_campaign_icon,
+                    image: AppImage.buat_script_campaign,
                     bot: true,
                   ),
 
@@ -190,7 +196,7 @@ class _DashboardMenuScreenState extends State<DashboardMenuScreen> {
                   ScriptToCreated(
                     text: 'Buat Campaign',
                     action: () => (debugPrint('clicked: Buat Campaign')),
-                    image: AppImage.buat_campaign_icon,
+                    image: AppImage.buat_campaign,
                     bot: true,
                   ),
                 ]),

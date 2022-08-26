@@ -28,7 +28,7 @@ TextStyle Pops15w6_white = GoogleFonts.poppins(
   color: AppColor.white,
 ));
 
-TextStyle Pops22w9_primary = GoogleFonts.poppins(
+TextStyle Pops22w9_blue_00AEFF = GoogleFonts.poppins(
     textStyle: const TextStyle(
   fontSize: 22,
   fontWeight: FontWeight.w900,
@@ -40,6 +40,14 @@ TextStyle Pops12w4_black = GoogleFonts.poppins(
   fontSize: text12,
   fontWeight: FontWeight.w400,
   color: AppColor.black,
+));
+
+TextStyle Pops12w6h18_black_464E5F = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: text12,
+  height: 18 / text12,
+  fontWeight: FontWeight.w600,
+  color: AppColor.black_464E5F,
 ));
 
 TextStyle Pops18w8_black = GoogleFonts.poppins(
@@ -71,28 +79,28 @@ TextStyle Inter14w4_black = GoogleFonts.inter(
   color: AppColor.black,
 ));
 
-TextStyle Inter14w4_lightGrey = GoogleFonts.inter(
+TextStyle Inter14w4_grey_8F9098 = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: text14,
   fontWeight: FontWeight.w400,
   color: AppColor.grey_8F9098,
 ));
 
-TextStyle Inter12w6_primary = GoogleFonts.inter(
+TextStyle Inter12w6_blue_00AEFF = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: text12,
   fontWeight: FontWeight.w600,
   color: AppColor.blue_00AEFF,
 ));
 
-TextStyle Inter13w7_black2 = GoogleFonts.inter(
+TextStyle Inter13w7_white = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: text13,
   fontWeight: FontWeight.w700,
   color: AppColor.white,
 ));
 
-TextStyle Inter10w6_black2 = GoogleFonts.inter(
+TextStyle Inter10w6_black_212121 = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: text10,
   fontWeight: FontWeight.w600,
@@ -114,7 +122,7 @@ TextStyle Lato14w7_black = GoogleFonts.lato(
   color: AppColor.black,
 ));
 
-TextStyle Lato16w7_black = GoogleFonts.lato(
+TextStyle Inter10w6_black_222831 = GoogleFonts.lato(
     textStyle: const TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w700,
@@ -130,7 +138,7 @@ TextStyle Nunito13w6_black = GoogleFonts.nunito(
 ));
 
 // font Nunito Sans
-TextStyle NunitoSans7w7_orange = GoogleFonts.nunitoSans(
+TextStyle NunitoSans7w7_orange_FFA800 = GoogleFonts.nunitoSans(
     textStyle: const TextStyle(
   fontSize: text7,
   fontWeight: FontWeight.w700,

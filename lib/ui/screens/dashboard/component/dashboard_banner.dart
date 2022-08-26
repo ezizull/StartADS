@@ -9,7 +9,10 @@ import 'package:startercode_project/utils/images.dart' as AppImage;
 class DashboardBanner extends StatelessWidget {
   const DashboardBanner({
     Key? key,
+    this.onTapDrawer,
   }) : super(key: key);
+
+  final Function? onTapDrawer;
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +31,17 @@ class DashboardBanner extends StatelessWidget {
               bottom: 0,
               child: SizedBox(
                 width: 367,
-                child: Image.asset(
-                  AppImage.dashboard_bg_girl,
-                ),
+                child: Image.asset(AppImage.dashboard_bg_girl),
               ),
             ),
             Positioned(
               right: -4,
               bottom: 2,
               child: SizedBox(
-                  width: 218,
-                  height: 201,
-                  child: Image.asset(AppImage.dashboard_girl)),
+                width: 218,
+                height: 201,
+                child: Image.asset(AppImage.dashboard_girl),
+              ),
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -51,11 +53,16 @@ class DashboardBanner extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 25),
                     child: Row(
                       children: [
-                        Container(
-                          width: 24,
-                          height: 24,
-                          margin: const EdgeInsets.only(right: 16),
-                          child: AppIcon.dashboard_avatar_icon,
+                        GestureDetector(
+                          onTap: () {
+                            onTapDrawer != null ? onTapDrawer!() : null;
+                          },
+                          child: Container(
+                            width: 24,
+                            height: 24,
+                            margin: const EdgeInsets.only(right: 16),
+                            child: AppIcon.dashboard_drawer_btn,
+                          ),
                         ),
                         Expanded(
                           child: Container(
@@ -70,8 +77,8 @@ class DashboardBanner extends StatelessWidget {
                               style: AppText.Inter14w4_black,
                               decoration: InputDecoration(
                                 hintText: 'Search',
-                                hintStyle: AppText.Inter14w4_lightGrey,
-                                icon: AppIcon.dashboard_search_icon,
+                                hintStyle: AppText.Inter14w4_grey_8F9098,
+                                icon: AppIcon.dashboard_search,
                                 border: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         width: 0, style: BorderStyle.none)),
@@ -99,7 +106,7 @@ class DashboardBanner extends StatelessWidget {
                               color: AppColor.white,
                             )
                           ]),
-                          child: AppIcon.dashboard_infinite_icon)
+                          child: AppIcon.dashboard_infinite)
                     ],
                   ),
                 ],

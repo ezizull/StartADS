@@ -10,10 +10,10 @@ class DashboardScriptTerbaru extends StatefulWidget {
   DashboardScriptTerbaru({
     Key? key,
     this.showDialog = false,
-    this.selectScriptItem = 0,
+    this.scriptItem = 0,
   }) : super(key: key);
 
-  int selectScriptItem;
+  int scriptItem;
   bool showDialog;
 
   @override
@@ -23,22 +23,26 @@ class DashboardScriptTerbaru extends StatefulWidget {
 class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
   final List<Map> dummyScripts = [
     {
-      'image': 'assets/images/dashboard/dashboard_script_terbaru_girl.png',
+      'image':
+          'assets/images/dashboard/dashboard_scripts/dashboard_script_terbaru_girl.png',
       'tags': 'Greeting',
       'title': 'Gamis Fashion',
     },
     {
-      'image': 'assets/images/dashboard/dashboard_script_terbaru_girl.png',
+      'image':
+          'assets/images/dashboard/dashboard_scripts/dashboard_script_terbaru_girl.png',
       'tags': 'Greeting',
       'title': 'Gamis Fashion',
     },
     {
-      'image': 'assets/images/dashboard/dashboard_script_terbaru_girl.png',
+      'image':
+          'assets/images/dashboard/dashboard_scripts/dashboard_script_terbaru_girl.png',
       'tags': 'Greeting',
       'title': 'Gamis Fashion',
     },
     {
-      'image': 'assets/images/dashboard/dashboard_script_terbaru_girl.png',
+      'image':
+          'assets/images/dashboard/dashboard_scripts/dashboard_script_terbaru_girl.png',
       'tags': 'Greeting',
       'title': 'Gamis Fashion',
     },
@@ -67,7 +71,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                 onTap: null,
                 child: Text(
                   'See more',
-                  style: AppText.Inter12w6_primary,
+                  style: AppText.Inter12w6_blue_00AEFF,
                 ),
               ),
             ],
@@ -120,7 +124,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
 
         setState(() {
           widget.showDialog = false;
-          widget.selectScriptItem = 0;
+          widget.scriptItem = 0;
         });
       }),
       child: Container(
@@ -160,7 +164,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                         vertical: 6,
                         horizontal: 3,
                       ),
-                      child: AppIcon.dashboard_script_vertical_dots_icon,
+                      child: AppIcon.dashboard_script_vertical_dots,
                     ),
                   )
                 ],
@@ -186,7 +190,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                         borderRadius: BorderRadius.circular(36),
                       ),
                       child: Text(dummyScripts[index]['tags'],
-                          style: AppText.NunitoSans7w7_orange),
+                          style: AppText.NunitoSans7w7_orange_FFA800),
                     ),
                   ),
                 ],
@@ -204,7 +208,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                   Flexible(
                       child: Text(
                     dummyScripts[index]['title'],
-                    style: AppText.Inter10w6_black2,
+                    style: AppText.Inter10w6_black_212121,
                   )),
                 ],
               ),
@@ -252,7 +256,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
   }) {
     return GestureDetector(
       onTap: (() {
-        setState(() => widget.selectScriptItem = numberItem);
+        setState(() => widget.scriptItem = numberItem);
 
         /* Handle onTap() */
         onTap != null ? onTap() : null;
@@ -260,7 +264,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
       child: Container(
         height: 22,
         width: 106,
-        color: widget.selectScriptItem == numberItem
+        color: widget.scriptItem == numberItem
             ? AppColor.grey_F5F4F6
             : AppColor.transparent,
         padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),

@@ -71,6 +71,7 @@ const white_D4D6DD = Color(0xFFD4D6DD);
 // common
 const black = Color(0xFF000000);
 const black_212121 = Color(0xFF212121);
+const black_464E5F = Color(0xFF464E5F);
 const black_222831 = Color(0xFF222831);
 const black_272727 = Color(0xFF272727);
 const black_38476D = Color(0xFF38476D);

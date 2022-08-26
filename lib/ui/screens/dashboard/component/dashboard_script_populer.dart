@@ -10,10 +10,10 @@ class DashboardScriptPopular extends StatefulWidget {
   DashboardScriptPopular({
     Key? key,
     this.showDialog = false,
-    this.selectScriptItem = 0,
+    this.scriptItem = 0,
   }) : super(key: key);
 
-  int selectScriptItem;
+  int scriptItem;
   bool showDialog;
 
   @override
@@ -65,7 +65,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
                 onTap: null,
                 child: Text(
                   'See more',
-                  style: AppText.Inter12w6_primary,
+                  style: AppText.Inter12w6_blue_00AEFF,
                 ),
               ),
             ],
@@ -113,7 +113,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
 
         setState(() {
           widget.showDialog = false;
-          widget.selectScriptItem = 0;
+          widget.scriptItem = 0;
         });
       }),
       child: Container(
@@ -135,7 +135,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
                 children: [
                   Text(
                     dummyScripts[index]['title'],
-                    style: AppText.Inter13w7_black2,
+                    style: AppText.Inter13w7_white,
                   ),
                   GestureDetector(
                     onTapDown: ((detail) {
@@ -151,7 +151,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
                         horizontal: 1.5,
                         vertical: 6.5,
                       ),
-                      child: AppIcon.dashboard_script_horizontal_dots_icon,
+                      child: AppIcon.dashboard_script_horizontal_dots,
                     ),
                   )
                 ],
@@ -209,7 +209,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
             spacing: 10,
             children: [
               ScriptDialogItem(itemText: 'Save Script', numberItem: 1),
-              ScriptDialogItem(itemText: 'Delete Script', numberItem: 2),
+              ScriptDialogItem(itemText: 'Edit Script', numberItem: 2),
               ScriptDialogItem(itemText: 'Delete Script', numberItem: 3),
             ],
           ),
@@ -226,7 +226,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
   }) {
     return GestureDetector(
       onTap: (() {
-        setState(() => widget.selectScriptItem = numberItem);
+        setState(() => widget.scriptItem = numberItem);
 
         /* Handle onTap() */
         onTap != null ? onTap() : null;
@@ -234,7 +234,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
       child: Container(
         height: 22,
         width: 106,
-        color: widget.selectScriptItem == numberItem
+        color: widget.scriptItem == numberItem
             ? AppColor.grey_F5F4F6
             : AppColor.transparent,
         padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),

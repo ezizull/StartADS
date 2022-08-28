@@ -42,6 +42,13 @@ TextStyle Pops12w4_black = GoogleFonts.poppins(
   color: AppColor.black,
 ));
 
+TextStyle Pops13w4_grey_9F9FB9 = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: text13,
+  fontWeight: FontWeight.w400,
+  color: AppColor.grey_9F9FB9,
+));
+
 TextStyle Pops12w6h18_black_464E5F = GoogleFonts.poppins(
     textStyle: const TextStyle(
   fontSize: text12,

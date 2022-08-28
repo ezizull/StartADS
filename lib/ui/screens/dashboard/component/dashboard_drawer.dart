@@ -160,10 +160,14 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
             )),
           ),
           Flexible(
-              child: Container(
-            margin: const EdgeInsets.only(right: 10),
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Text('Lorem Ipsum', style: AppText.Pops12w6h18_black_464E5F),
+              child: GestureDetector(
+            onTap: (() => setState(() => widget.userDrop = !widget.userDrop)),
+            child: Container(
+              margin: const EdgeInsets.only(right: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child:
+                  Text('Lorem Ipsum', style: AppText.Pops12w6h18_black_464E5F),
+            ),
           )),
           UpDownBtn(
             padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 8),

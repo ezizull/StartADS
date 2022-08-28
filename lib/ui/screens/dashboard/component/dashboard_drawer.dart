@@ -33,9 +33,13 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
           padding: const EdgeInsets.symmetric(vertical: 20),
           children: [
             HeaderDrawer(),
-            ListDroppedItems(dropped: widget.userDrop, children: [
-              DroppedItems(text: 'Ammed'),
-            ]),
+            ListDroppedItems(
+                dropped: widget.userDrop,
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                margin: const EdgeInsets.only(left: 54),
+                children: [
+                  DroppedItems(text: 'Ammed'),
+                ]),
             const AppDivider(
               height: 1.5,
               margin: EdgeInsets.symmetric(vertical: 20),
@@ -43,17 +47,92 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
             ),
             ListDrawerChild(
               children: [
+                /* Dashboard */
                 DrawerChild(
                   text: 'Dashboard',
                   Icon: AppIcon.dashboard_drawer,
+                ),
+
+                /* Script */
+                DrawerChild(
+                  text: 'Script',
+                  Icon: AppIcon.dashboard_drawer_script,
+                  onTap: (() => setState(() => scriptDrop = !scriptDrop)),
                   tail: UpDownBtn(
-                    child: widget.userDrop
+                    child: scriptDrop
                         ? AppIcon.dashboard_drawer_up
                         : AppIcon.dashboard_drawer_down,
-                    onTap: (() {
-                      setState(() => widget.userDrop = !widget.userDrop);
-                    }),
+                    onTap: (() => setState(() => scriptDrop = !scriptDrop)),
+                    padding: const EdgeInsets.all(9),
                   ),
+                ),
+                /* Script List */
+                ListDroppedItems(
+                  dropped: scriptDrop,
+                  margin: const EdgeInsets.only(left: 40, bottom: 30),
+                  children: [
+                    DroppedItems(
+                      text: 'Script Chat',
+                      textstyle: AppText.Pops13w4_grey_9F9FB9,
+                    ),
+                    DroppedItems(
+                      text: 'Script Campaign',
+                      textstyle: AppText.Pops13w4_grey_9F9FB9,
+                    ),
+                  ],
+                ),
+
+                /* Kamus CS */
+                DrawerChild(
+                  text: 'Kamus CS',
+                  Icon: AppIcon.dashboard_drawer_kamus,
+                ),
+
+                /* Contact Management */
+                DrawerChild(
+                  text: 'Contact Management',
+                  Icon: AppIcon.dashboard_drawer_contact,
+                  onTap: (() => setState(() => contactDrop = !contactDrop)),
+                  tail: UpDownBtn(
+                    child: contactDrop
+                        ? AppIcon.dashboard_drawer_up
+                        : AppIcon.dashboard_drawer_down,
+                    onTap: (() => setState(() => contactDrop = !contactDrop)),
+                    padding: const EdgeInsets.all(9),
+                  ),
+                ),
+                /* List Contact Management */
+                ListDroppedItems(
+                  dropped: contactDrop,
+                  margin: const EdgeInsets.only(left: 40, bottom: 30),
+                  children: [
+                    DroppedItems(
+                      text: 'Kontak Pelanggan',
+                      textstyle: AppText.Pops13w4_grey_9F9FB9,
+                    ),
+                    DroppedItems(
+                      text: 'Grup Pelanggan',
+                      textstyle: AppText.Pops13w4_grey_9F9FB9,
+                    ),
+                  ],
+                ),
+
+                /* Campaign */
+                DrawerChild(
+                  text: 'Campaign',
+                  Icon: AppIcon.dashboard_drawer_campaign,
+                ),
+
+                /* Billing */
+                DrawerChild(
+                  text: 'Billing',
+                  Icon: AppIcon.dashboard_drawer_billing,
+                ),
+
+                /* Settings */
+                DrawerChild(
+                  text: 'Settings',
+                  Icon: AppIcon.dashboard_drawer_settings,
                 ),
               ],
             )
@@ -91,9 +170,7 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
             child: widget.userDrop
                 ? AppIcon.dashboard_drawer_up
                 : AppIcon.dashboard_drawer_down,
-            onTap: (() {
-              setState(() => widget.userDrop = !widget.userDrop);
-            }),
+            onTap: (() => setState(() => widget.userDrop = !widget.userDrop)),
           )
         ],
       ),
@@ -111,8 +188,9 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
     return Visibility(
       visible: dropped,
       child: Container(
-        padding: padding ?? const EdgeInsets.symmetric(horizontal: 18),
-        margin: margin ?? const EdgeInsets.only(left: 54),
+        padding: padding,
+        margin: margin,
+        width: double.infinity,
         child: Wrap(
           direction: Axis.vertical,
           spacing: spacing,
@@ -162,9 +240,12 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
   }
 
   /* List of Drawer Child */
-  Widget ListDrawerChild({EdgeInsets? margin, List<Widget>? children}) {
+  Widget ListDrawerChild({
+    EdgeInsets? margin,
+    List<Widget>? children,
+  }) {
     return Container(
-      margin: margin ?? const EdgeInsets.only(left: 16, right: 32),
+      margin: margin ?? const EdgeInsets.only(left: 20, right: 32),
       child: Column(children: children ?? []),
     );
   }
@@ -188,6 +269,7 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
       }),
       child: Container(
         height: height,
+        color: AppColor.transparent,
         margin: EdgeInsets.only(bottom: marginBottom),
         child: Row(
           children: [
@@ -202,15 +284,7 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
                     style: textstyle ?? AppText.Pops13w4_grey_9F9FB9),
               ),
             ),
-            UpDownBtn(
-              padding: const EdgeInsets.all(9),
-              child: widget.userDrop
-                  ? AppIcon.dashboard_drawer_up
-                  : AppIcon.dashboard_drawer_down,
-              onTap: (() {
-                setState(() => widget.userDrop = !widget.userDrop);
-              }),
-            )
+            tail ?? Container()
           ],
         ),
       ),

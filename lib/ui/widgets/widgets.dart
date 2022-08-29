@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 
+/* Devider Widget */
 class AppDivider extends StatelessWidget {
   const AppDivider({Key? key, this.height = 1, this.margin, this.color})
       : super(key: key);
@@ -21,6 +22,7 @@ class AppDivider extends StatelessWidget {
   }
 }
 
+/* DropDown Expended Motion */
 class ExpandMotion extends StatefulWidget {
   final Widget? child;
   final bool expand;
@@ -49,7 +51,7 @@ class _ExpandMotionState extends State<ExpandMotion>
     expandController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: duration),
-      reverseDuration: Duration(microseconds: duration),
+      reverseDuration: const Duration(seconds: 1), // must in second
     );
 
     animation = CurvedAnimation(
@@ -74,6 +76,7 @@ class _ExpandMotionState extends State<ExpandMotion>
 
   @override
   void dispose() {
+    expandController.reverse();
     expandController.dispose();
     super.dispose();
   }

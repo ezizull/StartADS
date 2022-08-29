@@ -15,9 +15,11 @@ import 'package:startercode_project/utils/extensions.dart' as AppExt;
 class DashboardDrawer extends StatefulWidget {
   DashboardDrawer({
     Key? key,
-    this.userDrop = false,
+    this.scriptDrop = false,
+    this.contactDrop = false,
   }) : super(key: key);
-  bool userDrop;
+  bool scriptDrop;
+  bool contactDrop;
 
   @override
   State<DashboardDrawer> createState() => _DashboardDrawerState();
@@ -25,8 +27,7 @@ class DashboardDrawer extends StatefulWidget {
 
 class _DashboardDrawerState extends State<DashboardDrawer>
     with TickerProviderStateMixin {
-  bool scriptDrop = false;
-  bool contactDrop = false;
+  bool userDrop = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
           children: [
             HeaderDrawer(),
             ListDroppedItems(
-                dropped: widget.userDrop,
+                dropped: userDrop,
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 margin: const EdgeInsets.only(left: 54),
                 children: [
@@ -63,10 +64,10 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                   text: 'Script',
                   Icon: AppIcon.dashboard_drawer_script,
                   onTap: (() => setState(() {
-                        scriptDrop = !scriptDrop;
+                        widget.scriptDrop = !widget.scriptDrop;
                       })),
                   tail: UpDownBtn(
-                    child: scriptDrop
+                    child: widget.scriptDrop
                         ? AppIcon.dashboard_drawer_up
                         : AppIcon.dashboard_drawer_down,
                     padding: const EdgeInsets.all(9),
@@ -74,7 +75,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 ),
                 /* Script List */
                 ListDroppedItems(
-                  dropped: scriptDrop,
+                  dropped: widget.scriptDrop,
                   margin: const EdgeInsets.only(left: 40, bottom: 30),
                   children: [
                     DroppedItems(
@@ -98,9 +99,10 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 DrawerChild(
                   text: 'Contact Management',
                   Icon: AppIcon.dashboard_drawer_contact,
-                  onTap: (() => setState(() => contactDrop = !contactDrop)),
+                  onTap: (() =>
+                      setState(() => widget.contactDrop = !widget.contactDrop)),
                   tail: UpDownBtn(
-                    child: contactDrop
+                    child: widget.contactDrop
                         ? AppIcon.dashboard_drawer_up
                         : AppIcon.dashboard_drawer_down,
                     padding: const EdgeInsets.all(9),
@@ -108,7 +110,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 ),
                 /* List Contact Management */
                 ListDroppedItems(
-                  dropped: contactDrop,
+                  dropped: widget.contactDrop,
                   margin: const EdgeInsets.only(left: 40, bottom: 30),
                   children: [
                     DroppedItems(
@@ -170,7 +172,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
             ),
             Flexible(
                 child: GestureDetector(
-              onTap: (() => setState(() => widget.userDrop = !widget.userDrop)),
+              onTap: (() => setState(() => userDrop = !userDrop)),
               child: Container(
                 color: AppColor.transparent,
                 padding: const EdgeInsets.symmetric(vertical: 10),
@@ -180,7 +182,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
             )),
             UpDownBtn(
               padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 12),
-              child: widget.userDrop
+              child: userDrop
                   ? AppIcon.dashboard_drawer_up
                   : AppIcon.dashboard_drawer_down,
             )
@@ -201,17 +203,14 @@ class _DashboardDrawerState extends State<DashboardDrawer>
     return ExpandMotion(
       expand: dropped,
       child: Builder(builder: (context) {
-        return Visibility(
-          visible: true, // change for use blinked mode
-          child: Container(
-            padding: padding,
-            margin: margin,
-            width: double.infinity,
-            child: Wrap(
-              direction: Axis.vertical,
-              spacing: spacing,
-              children: children ?? [],
-            ),
+        return Container(
+          padding: padding,
+          margin: margin,
+          width: double.infinity,
+          child: Wrap(
+            direction: Axis.vertical,
+            spacing: spacing,
+            children: children ?? [],
           ),
         );
       }),

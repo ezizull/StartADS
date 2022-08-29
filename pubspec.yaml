@@ -36,6 +36,7 @@ dependencies:
   intl: ^0.17.0
   equatable: ^2.0.3
   dio: ^4.0.3
+  # access .env
   flutter_dotenv: ^5.0.2
   # Google for Font
   google_fonts: ^3.0.1

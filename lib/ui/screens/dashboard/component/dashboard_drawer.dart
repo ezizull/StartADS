@@ -1,6 +1,10 @@
-// ignore_for_file: library_prefixes, non_constant_identifier_names, must_be_immutable
+// ignore_for_file: library_prefixes, non_constant_identifier_names, must_be_immutable, unused_element
+
+import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:animations/animations.dart';
+import 'package:startercode_project/ui/screens/article/article_screen.dart';
 import 'package:startercode_project/ui/widgets/widgets.dart';
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/icons.dart' as AppIcon;
@@ -19,7 +23,8 @@ class DashboardDrawer extends StatefulWidget {
   State<DashboardDrawer> createState() => _DashboardDrawerState();
 }
 
-class _DashboardDrawerState extends State<DashboardDrawer> {
+class _DashboardDrawerState extends State<DashboardDrawer>
+    with TickerProviderStateMixin {
   bool scriptDrop = false;
   bool contactDrop = false;
 
@@ -57,12 +62,13 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
                 DrawerChild(
                   text: 'Script',
                   Icon: AppIcon.dashboard_drawer_script,
-                  onTap: (() => setState(() => scriptDrop = !scriptDrop)),
+                  onTap: (() => setState(() {
+                        scriptDrop = !scriptDrop;
+                      })),
                   tail: UpDownBtn(
                     child: scriptDrop
                         ? AppIcon.dashboard_drawer_up
                         : AppIcon.dashboard_drawer_down,
-                    onTap: (() => setState(() => scriptDrop = !scriptDrop)),
                     padding: const EdgeInsets.all(9),
                   ),
                 ),
@@ -97,7 +103,6 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
                     child: contactDrop
                         ? AppIcon.dashboard_drawer_up
                         : AppIcon.dashboard_drawer_down,
-                    onTap: (() => setState(() => contactDrop = !contactDrop)),
                     padding: const EdgeInsets.all(9),
                   ),
                 ),
@@ -145,38 +150,42 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
   /* Top of Drawer */
   Widget HeaderDrawer() {
     return Container(
+      color: AppColor.transparent,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 2),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 40,
-            margin: const EdgeInsets.only(right: 18),
-            alignment: Alignment.center,
-            child: const CircleAvatar(
-                backgroundImage: AssetImage(
-              AppImage.pofile_avatar,
-            )),
-          ),
-          Flexible(
-              child: GestureDetector(
-            onTap: (() => setState(() => widget.userDrop = !widget.userDrop)),
-            child: Container(
-              margin: const EdgeInsets.only(right: 10),
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child:
-                  Text('Lorem Ipsum', style: AppText.Pops12w6h18_black_464E5F),
+      child: GestureDetector(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: 40,
+                margin: const EdgeInsets.only(right: 18),
+                alignment: Alignment.center,
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage(AppImage.pofile_avatar),
+                ),
+              ),
             ),
-          )),
-          UpDownBtn(
-            padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 8),
-            child: widget.userDrop
-                ? AppIcon.dashboard_drawer_up
-                : AppIcon.dashboard_drawer_down,
-            onTap: (() => setState(() => widget.userDrop = !widget.userDrop)),
-          )
-        ],
+            Flexible(
+                child: GestureDetector(
+              onTap: (() => setState(() => widget.userDrop = !widget.userDrop)),
+              child: Container(
+                color: AppColor.transparent,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Text('Lorem Ipsum',
+                    style: AppText.Pops12w6h18_black_464E5F),
+              ),
+            )),
+            UpDownBtn(
+              padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 12),
+              child: widget.userDrop
+                  ? AppIcon.dashboard_drawer_up
+                  : AppIcon.dashboard_drawer_down,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -189,18 +198,23 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
     EdgeInsets? padding,
     List<Widget>? children,
   }) {
-    return Visibility(
-      visible: dropped,
-      child: Container(
-        padding: padding,
-        margin: margin,
-        width: double.infinity,
-        child: Wrap(
-          direction: Axis.vertical,
-          spacing: spacing,
-          children: children ?? [],
-        ),
-      ),
+    return ExpandMotion(
+      expand: dropped,
+      child: Builder(builder: (context) {
+        return Visibility(
+          visible: true, // change for use blinked mode
+          child: Container(
+            padding: padding,
+            margin: margin,
+            width: double.infinity,
+            child: Wrap(
+              direction: Axis.vertical,
+              spacing: spacing,
+              children: children ?? [],
+            ),
+          ),
+        );
+      }),
     );
   }
 
@@ -226,20 +240,13 @@ class _DashboardDrawerState extends State<DashboardDrawer> {
 
   /* Up Down Icon */
   Widget UpDownBtn({
-    Function? onTap,
     EdgeInsets? padding,
     Widget? child,
   }) {
-    return GestureDetector(
-      onTap: (() {
-        /* Handle onTap() */
-        onTap != null ? onTap() : null;
-      }),
-      child: Container(
-        color: AppColor.transparent,
-        padding: padding,
-        child: child,
-      ),
+    return Container(
+      color: AppColor.transparent,
+      padding: padding,
+      child: child,
     );
   }
 

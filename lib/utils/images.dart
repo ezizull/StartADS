@@ -27,3 +27,9 @@ const buat_campaign = DashboardAddScriptURL + "buat_campaign.png";
 const DashboardDrawerURL = "assets/images/profile/";
 
 const pofile_avatar = DashboardDrawerURL + "profile_avatar.png";
+
+/* Packet Langganan */
+
+const PaketURL = "assets/images/paket/";
+
+const paket_habis = PaketURL + "paket_habis.png";

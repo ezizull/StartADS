@@ -82,6 +82,9 @@ flutter:
     
     # Profile Images
     - assets/images/profile/
+
+    # Paket Images
+    - assets/images/paket/
     
     # Icons
     - assets/icons/

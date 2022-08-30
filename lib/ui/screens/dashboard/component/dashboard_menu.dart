@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:startercode_project/utils/typography.dart' as AppText;
 import 'package:startercode_project/utils/images.dart' as AppImage;
 
-class DashboardIconsMenu extends StatelessWidget {
-  const DashboardIconsMenu({
+class DashboardMenu extends StatelessWidget {
+  const DashboardMenu({
     Key? key,
   }) : super(key: key);
 

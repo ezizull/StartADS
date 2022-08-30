@@ -92,9 +92,9 @@ class ApiProvider {
       String endpointStr = response.request!.url.toString();
       String endpointMethod = response.request!.method;
 
-      debugPrint('\x1B[31m\n->\x1B[0m');
-      debugPrint('\x1B[37m[$endpointMethod] $endpointStr\x1B[0m');
-      debugPrint('\x1B[33m$responseJsonStr\x1B[0m');
+      // debugPrint('\x1B[31m\n->\x1B[0m');
+      // debugPrint('\x1B[37m[$endpointMethod] $endpointStr\x1B[0m');
+      // debugPrint('\x1B[33m$responseJsonStr\x1B[0m');
     }
 
     // return responseJson;

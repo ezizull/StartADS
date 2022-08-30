@@ -87,3 +87,21 @@ class _ExpandMotionState extends State<ExpandMotion>
         axisAlignment: 1.0, sizeFactor: animation, child: widget.child);
   }
 }
+
+/* PopUp Fade Motion */
+class FadeMotion extends StatefulWidget {
+  final Widget? child;
+  final bool popup;
+  const FadeMotion({Key? key, this.popup = false, this.child})
+      : super(key: key);
+
+  @override
+  State<FadeMotion> createState() => _FadeMotionState();
+}
+
+class _FadeMotionState extends State<FadeMotion> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

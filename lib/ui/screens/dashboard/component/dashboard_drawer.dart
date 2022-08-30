@@ -156,6 +156,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: GestureDetector(
+        onTap: (() => setState(() => userDrop = !userDrop)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

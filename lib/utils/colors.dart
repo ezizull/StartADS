@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 // background
+const blue_CCF2F4 = Color(0xFFCCF2F4);
 const blue_CCFCFF = Color(0xFFCCFCFF);
 const blue_00AEFF = Color(0xFF00AEFF);
 const blue_0065B7 = Color(0xFF0065B7);
@@ -71,6 +72,7 @@ const white_D4D6DD = Color(0xFFD4D6DD);
 // common
 const black = Color(0xFF000000);
 const black_212121 = Color(0xFF212121);
+const black_1F2024 = Color(0xFF1F2024);
 const black_464E5F = Color(0xFF464E5F);
 const black_222831 = Color(0xFF222831);
 const black_272727 = Color(0xFF272727);

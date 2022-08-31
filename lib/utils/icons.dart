@@ -91,3 +91,30 @@ final Widget dashboard_drawer = SvgPicture.asset(
   DashboardDrawerURL + 'dashboard_drawer.svg',
   semanticsLabel: 'dashboard drawer billing',
 );
+
+/* Package */
+const String PackageURL = 'assets/icons/paket/';
+
+final Widget package_left_button = SvgPicture.asset(
+  PackageURL + 'package_left_button.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+
+final Widget haveit_now_white = SvgPicture.asset(
+  PackageURL + 'haveit_now.svg',
+  color: AppColor.white,
+  semanticsLabel: 'dashboard drawer billing',
+);
+
+final Widget haveit_now_blue_00AEFF = SvgPicture.asset(
+  PackageURL + 'haveit_now.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+
+final Widget tick_banner = SvgPicture.asset(
+  PackageURL + 'tick_banner.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);

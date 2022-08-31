@@ -14,7 +14,7 @@ class PaketCubit extends Cubit<PaketState> {
       final response = await _article.fetchListArticle();
 
       emit(ExpiredPaket());
-      // emit(const PaketSuccess("Cubit: Succes to Fetch Paket"));
+      // emit(const HavePaket("Cubit: Succes to Fetch Paket"));
     } catch (error) {
       if (error is NetworkException) {
         emit(PaketFailure.network(error.toString()));

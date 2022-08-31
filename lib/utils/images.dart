@@ -29,7 +29,9 @@ const DashboardDrawerURL = "assets/images/profile/";
 const pofile_avatar = DashboardDrawerURL + "profile_avatar.png";
 
 /* Packet Langganan */
-
 const PaketURL = "assets/images/paket/";
 
 const paket_habis = PaketURL + "paket_habis.png";
+const wave_banner = PaketURL + "wave_banner.png";
+const line_wave_banner = PaketURL + "line_wave_banner.png";
+const man_banner = PaketURL + "man_banner.png";

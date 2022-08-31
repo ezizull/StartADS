@@ -14,8 +14,8 @@ class PaketLoading extends PaketState {}
 
 class ExpiredPaket extends PaketState {}
 
-class PaketSuccess extends PaketState {
-  const PaketSuccess(this.data);
+class HavePaket extends PaketState {
+  const HavePaket(this.data);
 
   // dummy data
   final String data;
@@ -24,7 +24,11 @@ class PaketSuccess extends PaketState {
   List<Object> get props => [data];
 }
 
-class HasChargePaket extends PaketState {}
+class HasPurchasedPaket extends PaketState {}
+
+class PurchasePaket extends PaketState {}
+
+class AvailablePaket extends PaketState {}
 
 class PaketFailure extends PaketState {
   final ErrorType type;

@@ -89,6 +89,9 @@ flutter:
     # Icons
     - assets/icons/
 
+    # Package Icons
+    - assets/icons/paket/
+
     # Dashboard Icons
     - assets/icons/dashboard/
     - assets/icons/dashboard/dashboard_drawer/

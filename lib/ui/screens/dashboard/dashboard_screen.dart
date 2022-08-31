@@ -6,17 +6,20 @@ import 'package:startercode_project/data/blocs/paket/use_cubit/paket_cubit.dart'
 import 'package:startercode_project/data/blocs/paket/use_cubit/paket_state.dart';
 import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_cubit.dart';
 import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_state.dart';
-import 'package:startercode_project/ui/screens/dashboard/component/dashboard_banner.dart';
-import 'package:startercode_project/ui/screens/dashboard/component/dashboard_drawer.dart';
-import 'package:startercode_project/ui/screens/dashboard/component/dashboard_menu.dart';
-import 'package:startercode_project/ui/screens/dashboard/component/dashboard_script_populer.dart';
-import 'package:startercode_project/ui/screens/dashboard/component/dashboard_script_terbaru.dart';
+import 'package:startercode_project/ui/screens/package/package_screen.dart';
 import 'package:startercode_project/ui/widgets/widgets.dart';
+
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/icons.dart' as AppIcon;
 import 'package:startercode_project/utils/typography.dart' as AppText;
 import 'package:startercode_project/utils/images.dart' as AppImage;
 import 'package:startercode_project/utils/extensions.dart' as AppExt;
+
+import './component/dashboard_banner.dart';
+import './component/dashboard_drawer.dart';
+import './component/dashboard_menu.dart';
+import './component/dashboard_script_populer.dart';
+import './component/dashboard_script_terbaru.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -67,85 +70,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
               listenWhen: (previous, current) => previous != current,
               listener: (context, state) async {
                 if (state is ExpiredPaket) {
-                  // handle
-                  showDialog(
-                    context: context,
-                    builder: (_) => BlocProvider.value(
-                      value: scriptsCubit,
-                      child: Scaffold(
-                        backgroundColor: AppColor.transparent,
-                        body: Center(
-                          child: Container(
-                            width: 380,
-                            height: 328,
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: AppColor.white,
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 242,
-                                  height: 136,
-                                  child: Image.asset(AppImage.paket_habis),
-                                  margin: const EdgeInsets.only(bottom: 20),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(8),
-                                  margin: const EdgeInsets.only(bottom: 12),
-                                  child: Wrap(
-                                    direction: Axis.vertical,
-                                    spacing: 5,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Paket Langganan Kamu Habis !',
-                                        style: AppText.Inter16w7_black,
-                                      ),
-                                      Text(
-                                        'Pilih dan Beli Langganan paket baru dan\ngunakan fitur tanpa batas !',
-                                        textAlign: TextAlign.center,
-                                        style: AppText.Inter12w4_grey_777C7E,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 361,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                        minimumSize: const Size.fromHeight(40),
-                                        primary: AppColor.blue_00AEFF,
-                                        shape: const StadiumBorder()),
-                                    child: const Text('Beli Sekarang'),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
+                  /*  handle */
+                  ExpiredPaketDialog(context); // comment to skip
                 }
               }),
         ],
-        child: GestureDetector(
-          onTap: _onTap,
-          child: Scaffold(
-            backgroundColor: AppColor.blue_00AEFF,
-            floatingActionButton: AddScriptButton(),
-            key: _key,
-            drawer: DashboardDrawer(),
-            body: BlocBuilder(
-              bloc: scriptsCubit,
-              builder: (context, state) {
-                if (state is FetchScriptsSuccess) {
-                  return Stack(
+        child: BlocBuilder(
+          bloc: scriptsCubit,
+          builder: (context, state) {
+            if (state is FetchScriptsSuccess) {
+              return GestureDetector(
+                onTap: _onTap,
+                child: Scaffold(
+                  backgroundColor: AppColor.blue_00AEFF,
+                  floatingActionButton: AddScriptButton(),
+                  key: _key,
+                  drawer: DashboardDrawer(),
+                  body: Stack(
                     children: [
                       /* dashboard banner */
                       DashboardBanner(
@@ -158,16 +99,84 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       /* dashboard component */
                       DashboardComponent(state),
                     ],
-                  );
-                }
-                if (state is ExpiredPaket) {
-                  debugPrint("INSIDE: Expired Paket");
-                }
-                return const Scaffold(
-                  backgroundColor: AppColor.white,
-                  body: Center(child: CircularProgressIndicator()),
-                );
-              },
+                  ),
+                ),
+              );
+            }
+            if (state is ExpiredPaket) {
+              debugPrint("INSIDE: Expired Paket");
+            }
+            return const Scaffold(
+              backgroundColor: AppColor.white,
+              body: Center(child: CircularProgressIndicator()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  /* Dialog when Expired Paket */
+  Future<dynamic> ExpiredPaketDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (_) => BlocProvider.value(
+        value: scriptsCubit,
+        child: Scaffold(
+          backgroundColor: AppColor.transparent,
+          body: Center(
+            child: Container(
+              width: 380,
+              height: 328,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: AppColor.white,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    width: 242,
+                    height: 136,
+                    child: Image.asset(AppImage.paket_habis),
+                    margin: const EdgeInsets.only(bottom: 20),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.only(bottom: 12),
+                    child: Wrap(
+                      direction: Axis.vertical,
+                      spacing: 5,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Text(
+                          'Paket Langganan Kamu Habis !',
+                          style: AppText.Inter16w7_black,
+                        ),
+                        Text(
+                          'Pilih dan Beli Langganan paket baru dan\ngunakan fitur tanpa batas !',
+                          textAlign: TextAlign.center,
+                          style: AppText.Inter12w4_grey_777C7E,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 361,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        AppExt.pushScreen(context, PackageScreen());
+                      },
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(40),
+                          primary: AppColor.blue_00AEFF,
+                          shape: const StadiumBorder()),
+                      child: const Text('Beli Sekarang'),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -215,7 +224,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /* 1: Add Script Button */
+  /* 1 : Add Script Button */
   Widget AddScriptButton() {
     return FloatingActionButton(
       onPressed: (() => showModalBottomSheet(
@@ -234,7 +243,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /* 2: Add Script Dialog */
+  /* 2 : Add Script Dialog */
   Container AddScriptDialog() {
     return Container(
       height: 283,
@@ -292,7 +301,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /* 3: Script To Be Created */
+  /* 3 : Script To Be Created */
   Widget ScriptToCreated({
     required String text,
     required String image,

@@ -122,60 +122,64 @@ class _DashboardScreenState extends State<DashboardScreen> {
       context: context,
       builder: (_) => BlocProvider.value(
         value: scriptsCubit,
-        child: Scaffold(
-          backgroundColor: AppColor.transparent,
-          body: Center(
-            child: Container(
-              width: 380,
-              height: 328,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: AppColor.white,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    width: 242,
-                    height: 136,
-                    child: Image.asset(AppImage.paket_habis),
-                    margin: const EdgeInsets.only(bottom: 20),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    margin: const EdgeInsets.only(bottom: 12),
-                    child: Wrap(
-                      direction: Axis.vertical,
-                      spacing: 5,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(
-                          'Paket Langganan Kamu Habis !',
-                          style: AppText.Inter16w7_black,
-                        ),
-                        Text(
-                          'Pilih dan Beli Langganan paket baru dan\ngunakan fitur tanpa batas !',
-                          textAlign: TextAlign.center,
-                          style: AppText.Inter12w4_grey_777C7E,
-                        ),
-                      ],
+        /*  remove GestureDetector to SHOULD SUBSCRIBE first */
+        child: GestureDetector(
+          onTap: (() => Navigator.pop(context, true)), // remove GestureDetector
+          child: Scaffold(
+            backgroundColor: AppColor.transparent,
+            body: Center(
+              child: Container(
+                width: 380,
+                height: 328,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: AppColor.white,
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 242,
+                      height: 136,
+                      child: Image.asset(AppImage.paket_habis),
+                      margin: const EdgeInsets.only(bottom: 20),
                     ),
-                  ),
-                  SizedBox(
-                    width: 361,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        AppExt.pushScreen(context, PackageScreen());
-                      },
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(40),
-                          primary: AppColor.blue_00AEFF,
-                          shape: const StadiumBorder()),
-                      child: const Text('Beli Sekarang'),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.only(bottom: 12),
+                      child: Wrap(
+                        direction: Axis.vertical,
+                        spacing: 5,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Text(
+                            'Paket Langganan Kamu Habis !',
+                            style: AppText.Inter16w7_black,
+                          ),
+                          Text(
+                            'Pilih dan Beli Langganan paket baru dan\ngunakan fitur tanpa batas !',
+                            textAlign: TextAlign.center,
+                            style: AppText.Inter12w4_grey_777C7E,
+                          ),
+                        ],
+                      ),
                     ),
-                  )
-                ],
+                    SizedBox(
+                      width: 361,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          AppExt.pushScreen(context, PackageScreen());
+                        },
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size.fromHeight(40),
+                            primary: AppColor.blue_00AEFF,
+                            shape: const StadiumBorder()),
+                        child: const Text('Beli Sekarang'),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

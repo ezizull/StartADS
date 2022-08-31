@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, library_prefixes, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:startercode_project/data/blocs/paket/use_cubit/paket_state.dart';
 
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/icons.dart' as AppIcon;
@@ -9,12 +10,50 @@ import 'package:startercode_project/utils/images.dart' as AppImage;
 import 'package:startercode_project/utils/extensions.dart' as AppExt;
 
 class PackageList extends StatelessWidget {
-  const PackageList({
-    Key? key,
-    required this.dummyPackages,
-  }) : super(key: key);
+  PackageList(
+      {Key? key, required BuildContext context, required PaketState state})
+      : super(key: key);
 
-  final List<Map> dummyPackages;
+  final List<Map> dummyPackages = [
+    {
+      'title': '6 Bulan',
+      'discount': '594.000',
+      'price': '297.000',
+      'body': [
+        [
+          'Akses Scriptmatic 6 Bulan',
+          '5 Customer Service',
+          'Ratusan Template Script Follow Up Customer',
+          ''
+        ],
+        [
+          'Kamus CS (Kamus Penolakan)',
+          'Free Update',
+          'Chat Support',
+          'Panduan Lengkap'
+        ],
+      ]
+    },
+    {
+      'title': '1 Tahun',
+      'discount': '794.000',
+      'price': '297.000',
+      'body': [
+        [
+          'Akses Scriptmatic 6 Bulan',
+          '5 Customer Service',
+          'Ratusan Template Script Follow Up Customer',
+          ''
+        ],
+        [
+          'Kamus CS (Kamus Penolakan)',
+          'Free Update',
+          'Chat Support',
+          'Panduan Lengkap'
+        ],
+      ]
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +74,7 @@ class PackageList extends StatelessWidget {
             )
           ],
           height: 257,
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.only(right: 20, top: 20, left: 20),
           child: PackageContent(children: [
             /* Title Package */
             HeaderPackage(
@@ -65,7 +104,23 @@ class PackageList extends StatelessWidget {
             ),
 
             /* Body Package */
-            BodyPackage(index)
+            BodyPackage(index),
+
+            /* Submit Button */
+            Center(
+                child: ButtonContent(
+              icon: index.isEven
+                  ? AppIcon.haveit_now_white
+                  : AppIcon.haveit_now_blue_00AEFF,
+              text: 'Miliki Sekarang',
+              height: 26,
+              width: 169,
+              textStyle: index.isEven
+                  ? AppText.NunitoSans9w7h12_white
+                  : AppText.NunitoSans9w7h12_blue_00AEFF,
+              backgroundColor:
+                  index.isEven ? AppColor.blue_00AEFF : AppColor.white,
+            ))
           ]),
         );
       }),
@@ -73,7 +128,7 @@ class PackageList extends StatelessWidget {
   }
 
 /* Header Package */
-  Text HeaderPackage(
+  Widget HeaderPackage(
     int index, {
     required TextStyle textStyle,
     required String sub,
@@ -87,30 +142,36 @@ class PackageList extends StatelessWidget {
   /* Body Package */
   Widget BodyPackage(int index) {
     return Container(
-        height: 98,
         margin: const EdgeInsets.only(top: 5, bottom: 12.5),
-        child: Column(
+        child: Row(
           children: dummyPackages[index]['body']?.map<Widget>((element) {
                 return element != null
-                    ? Container(
-                        margin: const EdgeInsets.only(bottom: 8),
-                        child: Wrap(
-                          direction: Axis.horizontal,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 5,
-                          children: [
-                            ItemBodyPackage(
-                              element,
-                              bodyIndex: 0,
-                              baseIndex: index,
-                            ),
-                            ItemBodyPackage(
-                              element,
-                              bodyIndex: 1,
-                              baseIndex: index,
-                            ),
-                          ],
-                        ),
+                    ? Wrap(
+                        direction: Axis.vertical,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: 9,
+                        children: [
+                          ItemBodyPackage(
+                            element,
+                            bodyIndex: 0,
+                            baseIndex: index,
+                          ),
+                          ItemBodyPackage(
+                            element,
+                            bodyIndex: 1,
+                            baseIndex: index,
+                          ),
+                          ItemBodyPackage(
+                            element,
+                            bodyIndex: 2,
+                            baseIndex: index,
+                          ),
+                          ItemBodyPackage(
+                            element,
+                            bodyIndex: 3,
+                            baseIndex: index,
+                          ),
+                        ],
                       )
                     : Container();
               }).toList() ??
@@ -123,16 +184,32 @@ class PackageList extends StatelessWidget {
       {required int bodyIndex, required int baseIndex}) {
     return SizedBox(
         width: 160,
-        child: Wrap(
-          direction: Axis.horizontal,
-          spacing: 9,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              element[bodyIndex] ?? '',
-              style: baseIndex.isEven
-                  ? AppText.NunitoSans10w6h13_black
-                  : AppText.NunitoSans10w6h13_white,
-            ),
+            /* Icon of Item */
+            (element.length - 1) >= bodyIndex && element[bodyIndex] != ''
+                ? Container(
+                    height: 10,
+                    width: 10,
+                    margin: const EdgeInsets.only(right: 9),
+                    child: baseIndex.isEven
+                        ? AppIcon.haveit_now_blue_00AEFF
+                        : AppIcon.haveit_now_white,
+                  )
+                : Container(),
+
+            /* Text of Item */
+            (element.length - 1) >= bodyIndex && element[bodyIndex] != ''
+                ? Flexible(
+                    child: Text(
+                      element[bodyIndex],
+                      style: baseIndex.isEven
+                          ? AppText.NunitoSans10w6h13_black
+                          : AppText.NunitoSans10w6h13_white,
+                    ),
+                  )
+                : Flexible(child: Container()),
           ],
         ));
   }
@@ -201,6 +278,7 @@ class PackageList extends StatelessWidget {
     Function? onPressed,
     String text = '',
     double height = 32,
+    TextStyle? textStyle,
     Color? backgroundColor,
   }) {
     return SizedBox(
@@ -215,7 +293,7 @@ class PackageList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(margin: const EdgeInsets.only(right: 7), child: icon),
-              Text(text),
+              Text(text, style: textStyle),
             ],
           ),
         ));

@@ -263,6 +263,22 @@ TextStyle NunitoSans10w6h13_white = GoogleFonts.nunitoSans(
   color: AppColor.white,
 ));
 
+TextStyle NunitoSans9w7h12_blue_00AEFF = GoogleFonts.nunitoSans(
+    textStyle: const TextStyle(
+  fontSize: 9,
+  height: 12.4 / 9,
+  fontWeight: FontWeight.w700,
+  color: AppColor.blue_00AEFF,
+));
+
+TextStyle NunitoSans9w7h12_white = GoogleFonts.nunitoSans(
+    textStyle: const TextStyle(
+  fontSize: 9,
+  height: 12.4 / 9,
+  fontWeight: FontWeight.w700,
+  color: AppColor.white,
+));
+
 TextStyle NunitoSans7w7_orange_FFA800 = GoogleFonts.nunitoSans(
     textStyle: const TextStyle(
   fontSize: 7,

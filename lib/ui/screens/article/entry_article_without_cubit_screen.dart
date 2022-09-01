@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/data/blocs/article/without_cubit/article/article_bloc.dart';
-import 'package:startercode_project/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/data/blocs/article/without_cubit/article/article_bloc.dart';
+import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class EntryArticleWithoutCubitScreen extends StatefulWidget {
   const EntryArticleWithoutCubitScreen({Key? key}) : super(key: key);

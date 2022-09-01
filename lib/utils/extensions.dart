@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:startercode_project/utils/routes.dart' as AppRoute;
-
+import 'package:Scriptmatic/utils/routes.dart' as AppRoute;
 
 void backToRoot(context) {
   Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);

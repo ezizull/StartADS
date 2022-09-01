@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/data/blocs/article/use_cubit/fetch_articles/fetch_articles_cubit.dart';
-import 'package:startercode_project/data/models/article.dart';
-import 'package:startercode_project/ui/screens/screens.dart';
-import 'package:startercode_project/utils/colors.dart' as AppColor;
-import 'package:startercode_project/utils/typography.dart' as AppText;
-import 'package:startercode_project/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/data/blocs/article/use_cubit/fetch_articles/fetch_articles_cubit.dart';
+import 'package:Scriptmatic/data/models/article.dart';
+import 'package:Scriptmatic/ui/screens/screens.dart';
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
+import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class ArticleScreen extends StatefulWidget {
   const ArticleScreen({Key? key}) : super(key: key);

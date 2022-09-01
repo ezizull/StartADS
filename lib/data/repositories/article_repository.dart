@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:startercode_project/api/api.dart';
-import 'package:startercode_project/data/models/article.dart';
-import 'package:startercode_project/utils/constants.dart' as AppConst;
+import 'package:Scriptmatic/api/api.dart';
+import 'package:Scriptmatic/data/models/article.dart';
+import 'package:Scriptmatic/utils/constants.dart' as AppConst;
 
 class ArticleRepository {
   final ApiProvider _provider = ApiProvider();

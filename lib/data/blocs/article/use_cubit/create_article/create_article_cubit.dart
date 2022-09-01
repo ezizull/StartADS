@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:startercode_project/api/api.dart';
-import 'package:startercode_project/data/repositories/article_repository.dart';
+import 'package:Scriptmatic/api/api.dart';
+import 'package:Scriptmatic/data/repositories/article_repository.dart';
 
 part 'create_article_state.dart';
 

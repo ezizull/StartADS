@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:startercode_project/main.dart';
+import 'package:Scriptmatic/main.dart';
 
 final String BASE_URL = Config.baseUrl!;
 final String ADS_KEY = Config.adsKey!;

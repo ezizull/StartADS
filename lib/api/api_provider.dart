@@ -7,8 +7,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:startercode_project/api/api.dart';
-import 'package:startercode_project/utils/constants.dart' as AppConst;
+import 'package:Scriptmatic/api/api.dart';
+import 'package:Scriptmatic/utils/constants.dart' as AppConst;
 
 class ApiProvider {
   final String _baseUrl = AppConst.API_URL;

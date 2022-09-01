@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/api/api.dart';
-import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_state.dart';
-import 'package:startercode_project/data/repositories/article_repository.dart';
+import 'package:Scriptmatic/api/api.dart';
+import 'package:Scriptmatic/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_state.dart';
+import 'package:Scriptmatic/data/repositories/article_repository.dart';
 
 class FetchScriptsCubit extends Cubit<FetchScriptsState> {
   FetchScriptsCubit() : super(FetchScriptsInitial());

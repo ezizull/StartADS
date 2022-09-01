@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/api/api.dart';
-import 'package:startercode_project/data/repositories/article_repository.dart';
+import 'package:Scriptmatic/api/api.dart';
+import 'package:Scriptmatic/data/repositories/article_repository.dart';
 import 'paket_state.dart';
 
 class PaketCubit extends Cubit<PaketState> {

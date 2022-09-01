@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:startercode_project/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 
 /* Dashboard Banner */
 const String DashboardBannerURL = 'assets/icons/dashboard/dashboard_banner/';

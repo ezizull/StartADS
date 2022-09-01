@@ -1,6 +1,6 @@
 {
-    "name": "startercode_project",
-    "short_name": "startercode_project",
+    "name": "Scriptmatic",
+    "short_name": "Scriptmatic",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

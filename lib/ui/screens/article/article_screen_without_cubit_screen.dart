@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/data/blocs/article/without_cubit/article/article_bloc.dart';
-import 'package:startercode_project/data/models/article.dart';
-import 'package:startercode_project/ui/screens/article/entry_article_without_cubit_screen.dart';
-import 'package:startercode_project/utils/colors.dart' as AppColor;
-import 'package:startercode_project/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/data/blocs/article/without_cubit/article/article_bloc.dart';
+import 'package:Scriptmatic/data/models/article.dart';
+import 'package:Scriptmatic/ui/screens/article/entry_article_without_cubit_screen.dart';
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class ArticleScreenWithoutCubitScreen extends StatefulWidget {
   const ArticleScreenWithoutCubitScreen({Key? key}) : super(key: key);

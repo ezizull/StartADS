@@ -1,8 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:startercode_project/utils/typography.dart' as AppText;
-import 'package:startercode_project/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
+import 'package:Scriptmatic/utils/images.dart' as AppImage;
 
 class DashboardMenu extends StatelessWidget {
   const DashboardMenu({

@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:startercode_project/utils/colors.dart' as AppColor;
-import 'package:startercode_project/utils/typography.dart' as AppText;
-import 'package:startercode_project/utils/icons.dart' as AppIcon;
-import 'package:startercode_project/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
+import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
+import 'package:Scriptmatic/utils/images.dart' as AppImage;
 
 class DashboardBanner extends StatelessWidget {
   const DashboardBanner({

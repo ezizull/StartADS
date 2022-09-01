@@ -2,7 +2,7 @@
 
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:startercode_project/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 
 /* Devider Widget */
 class AppDivider extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:startercode_project/api/api.dart';
+import 'package:Scriptmatic/api/api.dart';
 
 abstract class PaketState extends Equatable {
   const PaketState();

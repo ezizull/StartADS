@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/data/blocs/paket/use_cubit/paket_cubit.dart';
-import 'package:startercode_project/data/blocs/paket/use_cubit/paket_state.dart';
-import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_cubit.dart';
-import 'package:startercode_project/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_state.dart';
-import 'package:startercode_project/ui/screens/package/package_screen.dart';
-import 'package:startercode_project/ui/widgets/widgets.dart';
+import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
+import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
+import 'package:Scriptmatic/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_cubit.dart';
+import 'package:Scriptmatic/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_state.dart';
+import 'package:Scriptmatic/ui/screens/package/package_screen.dart';
+import 'package:Scriptmatic/ui/widgets/widgets.dart';
 
-import 'package:startercode_project/utils/colors.dart' as AppColor;
-import 'package:startercode_project/utils/icons.dart' as AppIcon;
-import 'package:startercode_project/utils/typography.dart' as AppText;
-import 'package:startercode_project/utils/images.dart' as AppImage;
-import 'package:startercode_project/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
+import 'package:Scriptmatic/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 import './component/dashboard_banner.dart';
 import './component/dashboard_drawer.dart';

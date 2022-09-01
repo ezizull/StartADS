@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/data/blocs/article/use_cubit/create_article/create_article_cubit.dart';
-import 'package:startercode_project/utils/colors.dart' as AppColor;
-import 'package:startercode_project/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/data/blocs/article/use_cubit/create_article/create_article_cubit.dart';
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class EntryArticleScreen extends StatefulWidget {
   const EntryArticleScreen({Key? key}) : super(key: key);

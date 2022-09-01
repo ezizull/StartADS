@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:startercode_project/data/blocs/paket/use_cubit/paket_cubit.dart';
-import 'package:startercode_project/data/blocs/paket/use_cubit/paket_state.dart';
-import 'package:startercode_project/ui/screens/package/component/package_list.dart';
+import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
+import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
+import 'package:Scriptmatic/ui/screens/package/component/package_list.dart';
 
-import 'package:startercode_project/utils/colors.dart' as AppColor;
-import 'package:startercode_project/utils/icons.dart' as AppIcon;
-import 'package:startercode_project/utils/typography.dart' as AppText;
-import 'package:startercode_project/utils/images.dart' as AppImage;
-import 'package:startercode_project/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
+import 'package:Scriptmatic/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class PackageScreen extends StatelessWidget {
   PackageScreen({Key? key}) : super(key: key);

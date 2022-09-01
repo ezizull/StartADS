@@ -4,13 +4,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
-import 'package:startercode_project/ui/screens/article/article_screen.dart';
-import 'package:startercode_project/ui/widgets/widgets.dart';
-import 'package:startercode_project/utils/colors.dart' as AppColor;
-import 'package:startercode_project/utils/icons.dart' as AppIcon;
-import 'package:startercode_project/utils/typography.dart' as AppText;
-import 'package:startercode_project/utils/images.dart' as AppImage;
-import 'package:startercode_project/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/ui/screens/article/article_screen.dart';
+import 'package:Scriptmatic/ui/widgets/widgets.dart';
+import 'package:Scriptmatic/utils/colors.dart' as AppColor;
+import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
+import 'package:Scriptmatic/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class DashboardDrawer extends StatefulWidget {
   DashboardDrawer({

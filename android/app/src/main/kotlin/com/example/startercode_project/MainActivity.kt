@@ -1,4 +1,4 @@
-package com.example.startercode_project
+package com.example.Scriptmatic
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -241,7 +241,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(10))),
             builder: (BuildContext context) {
-              return AddScriptDialog();
+              double sheight = MediaQuery.of(context).size.height;
+
+              /* Add Script Dialog */
+              return AddScriptDialog(height: sheight * 0.335);
             },
           )),
       elevation: 4,
@@ -253,9 +256,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   /* 2 : Add Script Dialog */
-  Container AddScriptDialog() {
+  Container AddScriptDialog({double? height}) {
     return Container(
-      height: 283,
+      height: height,
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(children: [
         Container(

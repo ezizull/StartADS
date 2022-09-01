@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:startercode_project/ui/widgets/widgets.dart';
 import 'package:startercode_project/utils/icons.dart' as AppIcon;
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 import 'package:startercode_project/utils/typography.dart' as AppText;
@@ -224,8 +225,8 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
     return Positioned(
       top: 5,
       right: 5,
-      child: Visibility(
-        visible: widget.showDialog && scriptIndex == index,
+      child: FadeScaleMotion(
+        popup: widget.showDialog && scriptIndex == index,
         child: Container(
           width: 124,
           decoration: const BoxDecoration(

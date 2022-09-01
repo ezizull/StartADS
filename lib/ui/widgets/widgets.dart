@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:startercode_project/utils/colors.dart' as AppColor;
 
@@ -89,19 +90,55 @@ class _ExpandMotionState extends State<ExpandMotion>
 }
 
 /* PopUp Fade Motion */
-class FadeMotion extends StatefulWidget {
+class FadeScaleMotion extends StatefulWidget {
   final Widget? child;
   final bool popup;
-  const FadeMotion({Key? key, this.popup = false, this.child})
+  const FadeScaleMotion({Key? key, this.popup = false, this.child})
       : super(key: key);
 
   @override
-  State<FadeMotion> createState() => _FadeMotionState();
+  State<FadeScaleMotion> createState() => _FadeScaleMotionState();
 }
 
-class _FadeMotionState extends State<FadeMotion> {
+class _FadeScaleMotionState extends State<FadeScaleMotion>
+    with SingleTickerProviderStateMixin {
+  late AnimationController fadeController;
+  late Animation<double> animation;
+
+  int duration = 500;
+  double opacity = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    fadeController = AnimationController(
+        duration: const Duration(milliseconds: 200), vsync: this, value: 1.0);
+  }
+
+  @override
+  void dispose() {
+    fadeController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    debugPrint(widget.popup.toString());
+
+    if (widget.popup) {
+      fadeController.forward();
+    } else {
+      fadeController.reverse();
+    }
+
+    return ScaleTransition(
+      scale: Tween(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(parent: fadeController, curve: Curves.easeOut)),
+      alignment: Alignment.topRight,
+      child: FadeTransition(
+          opacity:
+              CurvedAnimation(parent: fadeController, curve: Curves.easeOut),
+          child: widget.child),
+    );
   }
 }

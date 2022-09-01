@@ -282,20 +282,21 @@ class PackageList extends StatelessWidget {
     Color? backgroundColor,
   }) {
     return SizedBox(
-        width: width,
-        child: ElevatedButton(
-          onPressed: (() => onPressed != null ? onPressed() : null),
-          style: ElevatedButton.styleFrom(
-              minimumSize: Size.fromHeight(height),
-              primary: backgroundColor,
-              shape: const StadiumBorder()),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(margin: const EdgeInsets.only(right: 7), child: icon),
-              Text(text, style: textStyle),
-            ],
-          ),
-        ));
+      width: width,
+      child: ElevatedButton(
+        onPressed: (() => onPressed != null ? onPressed() : null),
+        style: ElevatedButton.styleFrom(
+            minimumSize: Size.fromHeight(height),
+            primary: backgroundColor,
+            shape: const StadiumBorder()),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(margin: const EdgeInsets.only(right: 7), child: icon),
+            Text(text, style: textStyle),
+          ],
+        ),
+      ),
+    );
   }
 }

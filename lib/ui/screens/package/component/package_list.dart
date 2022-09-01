@@ -57,6 +57,8 @@ class PackageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double swidth = MediaQuery.of(context).size.width;
+
     return ListView.builder(
       itemCount: dummyPackages.length,
       shrinkWrap: true,
@@ -104,7 +106,7 @@ class PackageList extends StatelessWidget {
             ),
 
             /* Body Package */
-            BodyPackage(index),
+            BodyPackage(index, width: swidth * 0.4),
 
             /* Submit Button */
             Center(
@@ -120,6 +122,8 @@ class PackageList extends StatelessWidget {
                   : AppText.NunitoSans9w7h12_blue_00AEFF,
               backgroundColor:
                   index.isEven ? AppColor.blue_00AEFF : AppColor.white,
+              foregroundColor:
+                  index.isEven ? AppColor.white : AppColor.blue_00AEFF,
             ))
           ]),
         );
@@ -140,10 +144,12 @@ class PackageList extends StatelessWidget {
   }
 
   /* Body Package */
-  Widget BodyPackage(int index) {
+  Widget BodyPackage(int index, {double? width}) {
     return Container(
         margin: const EdgeInsets.only(top: 5, bottom: 12.5),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: dummyPackages[index]['body']?.map<Widget>((element) {
                 return element != null
                     ? Wrap(
@@ -153,21 +159,25 @@ class PackageList extends StatelessWidget {
                         children: [
                           ItemBodyPackage(
                             element,
+                            width: width,
                             bodyIndex: 0,
                             baseIndex: index,
                           ),
                           ItemBodyPackage(
                             element,
+                            width: width,
                             bodyIndex: 1,
                             baseIndex: index,
                           ),
                           ItemBodyPackage(
                             element,
+                            width: width,
                             bodyIndex: 2,
                             baseIndex: index,
                           ),
                           ItemBodyPackage(
                             element,
+                            width: width,
                             bodyIndex: 3,
                             baseIndex: index,
                           ),
@@ -180,10 +190,14 @@ class PackageList extends StatelessWidget {
   }
 
   /* Item of BodyPackage */
-  SizedBox ItemBodyPackage(element,
-      {required int bodyIndex, required int baseIndex}) {
+  SizedBox ItemBodyPackage(
+    element, {
+    required int bodyIndex,
+    required int baseIndex,
+    double? width,
+  }) {
     return SizedBox(
-        width: 160,
+        width: width,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -280,6 +294,7 @@ class PackageList extends StatelessWidget {
     double height = 32,
     TextStyle? textStyle,
     Color? backgroundColor,
+    Color? foregroundColor,
   }) {
     return SizedBox(
       width: width,
@@ -288,6 +303,7 @@ class PackageList extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             minimumSize: Size.fromHeight(height),
             primary: backgroundColor,
+            onPrimary: foregroundColor,
             shape: const StadiumBorder()),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

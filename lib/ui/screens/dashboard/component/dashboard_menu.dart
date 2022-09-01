@@ -12,10 +12,10 @@ class DashboardMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double swidth = MediaQuery.of(context).size.width;
-    double spacing = 38; // figma = '32'
+    double spacing = 24; // figma = '32'
 
     return Container(
-      margin: EdgeInsets.only(top: spacing, bottom: spacing / 2),
+      margin: EdgeInsets.only(top: spacing / 2, bottom: spacing / 2),
       child: Wrap(
         spacing: 19,
         direction: Axis.vertical,

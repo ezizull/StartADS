@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
@@ -13,6 +14,7 @@ class DashboardBanner extends StatelessWidget {
   }) : super(key: key);
 
   final Function? onTapDrawer;
+  final double mirror = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +22,35 @@ class DashboardBanner extends StatelessWidget {
       left: 0,
       right: 0,
       child: Container(
-        height: 261,
-        decoration: BoxDecoration(
-          gradient: AppColor.dashboardBanner,
-        ),
+        height: 281,
+        decoration: BoxDecoration(gradient: AppColor.dashboardBanner),
         child: Stack(
           children: [
             Positioned(
               right: 0,
-              bottom: 0,
-              child: SizedBox(
+              top: -267.5 + mirror,
+              child: Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.rotationX(math.pi),
+                child: SizedBox(
+                  width: 367,
+                  height: 301,
+                  child: Image.asset(AppImage.dashboard_bg_girl),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              bottom: -20 - mirror,
+              child: Container(
                 width: 367,
+                height: 301,
                 child: Image.asset(AppImage.dashboard_bg_girl),
               ),
             ),
             Positioned(
               right: -4,
-              bottom: 2,
+              bottom: 7,
               child: SizedBox(
                 width: 218,
                 height: 201,
@@ -44,7 +58,7 @@ class DashboardBanner extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 35),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

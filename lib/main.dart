@@ -19,12 +19,6 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  /* Develop */
-  await SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.manual,
-    overlays: [],
-  );
-
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

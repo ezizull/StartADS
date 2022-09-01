@@ -49,6 +49,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double sheight = MediaQuery.of(context).size.height;
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => scriptsCubit),
@@ -97,7 +99,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
 
                       /* dashboard component */
-                      DashboardComponent(state),
+                      DashboardComponent(state, height: sheight * 0.677),
                     ],
                   ),
                 ),
@@ -118,6 +120,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   /* Dialog when Expired Paket */
   Future<dynamic> ExpiredPaketDialog(BuildContext context) {
+    double swidth = MediaQuery.of(context).size.width;
+    double sheight = MediaQuery.of(context).size.height;
+
     return showDialog(
       context: context,
       builder: (_) => BlocProvider.value(
@@ -129,8 +134,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             backgroundColor: AppColor.transparent,
             body: Center(
               child: Container(
-                width: 380,
-                height: 328,
+                width: swidth * 0.92,
+                height: sheight * 0.366,
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -189,13 +194,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   /* Dashboard Component */
-  Widget DashboardComponent(FetchScriptsSuccess state) {
+  Widget DashboardComponent(FetchScriptsSuccess state, {double? height}) {
     return Positioned(
-      top: 250,
+      top: 265,
       left: 0,
       right: 0,
       child: Container(
-        height: 642,
+        height: height,
         decoration: const BoxDecoration(
             color: AppColor.white,
             borderRadius: BorderRadius.only(

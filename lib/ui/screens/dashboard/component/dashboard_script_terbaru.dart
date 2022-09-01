@@ -57,23 +57,14 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          margin: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 20,
-          ),
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Script Terbaru',
-                style: AppText.Lato14w7_black,
-              ),
+              Text('Script Terbaru', style: AppText.Lato14w7_black),
               GestureDetector(
                 onTap: null,
-                child: Text(
-                  'See more',
-                  style: AppText.Inter12w6_blue_00AEFF,
-                ),
+                child: Text('See more', style: AppText.Inter12w6_blue_00AEFF),
               ),
             ],
           ),

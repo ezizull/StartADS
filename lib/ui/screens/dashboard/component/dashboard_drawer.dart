@@ -38,7 +38,9 @@ class _DashboardDrawerState extends State<DashboardDrawer>
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 20),
           children: [
-            HeaderDrawer(),
+            HeaderDrawer(
+              margin: const EdgeInsets.only(right: 16, left: 16, top: 20),
+            ),
             ListDroppedItems(
                 dropped: userDrop,
                 padding: const EdgeInsets.symmetric(horizontal: 18),
@@ -150,10 +152,10 @@ class _DashboardDrawerState extends State<DashboardDrawer>
   }
 
   /* Top of Drawer */
-  Widget HeaderDrawer() {
+  Widget HeaderDrawer({EdgeInsets? margin}) {
     return Container(
       color: AppColor.transparent,
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      margin: margin,
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: GestureDetector(
         onTap: (() => setState(() => userDrop = !userDrop)),

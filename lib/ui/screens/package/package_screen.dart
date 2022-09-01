@@ -1,6 +1,7 @@
 // ignore_for_file: library_prefixes, unused_import, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
@@ -118,6 +119,8 @@ class PackageScreen extends StatelessWidget {
           child: AppIcon.package_left_button,
         ),
       ),
+      systemOverlayStyle:
+          const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
       title: Text('Package', style: AppText.Inter16w7_black_1F2024),
       centerTitle: true,
       backgroundColor: AppColor.transparent,

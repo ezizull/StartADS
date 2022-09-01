@@ -135,7 +135,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             body: Center(
               child: Container(
                 width: swidth * 0.92,
-                height: sheight * 0.366,
+                height: 328,
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -145,7 +145,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Column(
                   children: [
                     Container(
-                      width: 242,
                       height: 136,
                       child: Image.asset(AppImage.paket_habis),
                       margin: const EdgeInsets.only(bottom: 20),
@@ -244,7 +243,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               double sheight = MediaQuery.of(context).size.height;
 
               /* Add Script Dialog */
-              return AddScriptDialog(height: sheight * 0.335);
+              return AddScriptDialog(height: sheight * 0.35);
             },
           )),
       elevation: 4,

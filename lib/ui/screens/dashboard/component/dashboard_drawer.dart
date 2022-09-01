@@ -39,7 +39,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
           padding: const EdgeInsets.symmetric(vertical: 20),
           children: [
             HeaderDrawer(
-              margin: const EdgeInsets.only(right: 16, left: 16, top: 20),
+              margin: const EdgeInsets.only(right: 16, left: 16, top: 25),
             ),
             ListDroppedItems(
                 dropped: userDrop,

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
-import 'package:Scriptmatic/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_cubit.dart';
-import 'package:Scriptmatic/data/blocs/script/use_cubit/fetch_scripts/fetch_scripts_state.dart';
+import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
+import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
 import 'package:Scriptmatic/ui/screens/package/package_screen.dart';
 import 'package:Scriptmatic/ui/widgets/widgets.dart';
 
@@ -29,14 +29,14 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  final FetchScriptsCubit scriptsCubit = FetchScriptsCubit()..fetchScripts();
+  final ScriptCubit scriptCubit = ScriptCubit()..fetchScript();
   final PaketCubit paketCubit = PaketCubit()..fetchPaket();
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   void dispose() {
-    scriptsCubit.close();
+    scriptCubit.close();
     paketCubit.close();
     super.dispose();
   }
@@ -53,18 +53,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => scriptsCubit),
+        BlocProvider(create: (context) => scriptCubit),
         BlocProvider(create: (context) => paketCubit),
       ],
       child: MultiBlocListener(
         listeners: [
-          BlocListener<FetchScriptsCubit, FetchScriptsState>(
-              bloc: scriptsCubit,
+          BlocListener<ScriptCubit, ScriptState>(
+              bloc: scriptCubit,
               listener: (context, state) {
-                if (state is FetchScriptsSuccess) {
+                if (state is ScriptLoaded) {
                   debugPrint("SUKSES FETCH");
                 }
-                if (state is FetchScriptsFailure) {
+                if (state is ScriptFailure) {
                   debugPrint("GAGAL FETCH :" + state.message);
                 }
               }),
@@ -77,10 +77,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 }
               }),
         ],
-        child: BlocBuilder(
-          bloc: scriptsCubit,
+        child: BlocBuilder<ScriptCubit, ScriptState>(
+          bloc: scriptCubit,
           builder: (context, state) {
-            if (state is FetchScriptsSuccess) {
+            if (state is ScriptLoaded) {
               return GestureDetector(
                 onTap: _onTap,
                 child: Scaffold(
@@ -99,7 +99,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
 
                       /* dashboard component */
-                      DashboardComponent(state, height: sheight * 0.677),
+                      DashboardComponent(
+                        cubit: scriptCubit,
+                        state: state,
+                        height: sheight * 0.695,
+                      ),
                     ],
                   ),
                 ),
@@ -126,7 +130,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return showDialog(
       context: context,
       builder: (_) => BlocProvider.value(
-        value: scriptsCubit,
+        value: scriptCubit,
         /*  remove GestureDetector to SHOULD SUBSCRIBE first */
         child: GestureDetector(
           onTap: (() => Navigator.pop(context, true)), // remove GestureDetector
@@ -162,7 +166,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             style: AppText.Inter16w7_black,
                           ),
                           Text(
-                            'Pilih dan Beli Langganan paket baru dan\ngunakan fitur tanpa batas !',
+                            'Pilih dan Beli Langganan paket baru dan \ngunakan fitur tanpa batas !',
                             textAlign: TextAlign.center,
                             style: AppText.Inter12w4_grey_777C7E,
                           ),
@@ -193,7 +197,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   /* Dashboard Component */
-  Widget DashboardComponent(FetchScriptsSuccess state, {double? height}) {
+  Widget DashboardComponent({
+    required ScriptLoaded state,
+    required ScriptCubit cubit,
+    double? height,
+  }) {
     return Positioned(
       top: 265,
       left: 0,
@@ -214,16 +222,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 /* component of dashboard */
                 const DashboardMenu(),
                 const AppDivider(),
-                DashboardScriptPopular(),
-                DashboardScriptTerbaru(),
-
-                /* check the cubit data */
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 30),
-                  child: Center(
-                    child: Text(state.data),
-                  ),
-                ),
+                DashboardScriptPopular(state: state, cubit: cubit),
+                DashboardScriptTerbaru(state: state, cubit: cubit),
               ],
             ),
           ],

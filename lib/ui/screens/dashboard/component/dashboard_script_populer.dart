@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, must_be_immutable, prefer_typing_uninitialized_variables
 
+import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
+import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
 import 'package:flutter/material.dart';
 import 'package:Scriptmatic/ui/widgets/widgets.dart';
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
@@ -9,12 +11,16 @@ import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class DashboardScriptPopular extends StatefulWidget {
   DashboardScriptPopular({
-    Key? key,
     this.showDialog = false,
+    Key? key,
+    this.state,
+    this.cubit,
     this.scriptItem = 0,
   }) : super(key: key);
 
   int scriptItem;
+  ScriptLoaded? state;
+  ScriptCubit? cubit;
   bool showDialog;
 
   @override
@@ -22,31 +28,11 @@ class DashboardScriptPopular extends StatefulWidget {
 }
 
 class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
-  final List<Map> dummyScripts = [
-    {
-      'title': 'Fashion Wanita',
-      'greet': 'Greeting',
-      'body':
-          'Hallo Sis, stock {nama produk} masih ready? Info cara pemesanan donk'
-    },
-    {
-      'title': 'Mainan Anak',
-      'greet': 'Greeting',
-      'body':
-          'Hallo, Saya tertarik dengan { nama produk}, apakah masih tersedia?'
-    },
-    {
-      'title': 'Sports',
-      'greet': 'Greeting',
-      'body':
-          'Hallo, Saya tertarik dengan {nama produk}, apakah stocknya masih tersedia?'
-    },
-  ];
-
   var scriptIndex;
 
   @override
   Widget build(BuildContext context) {
+    ;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -76,7 +62,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
           height: 125,
           margin: const EdgeInsets.only(bottom: 20),
           child: ListView.builder(
-            itemCount: dummyScripts.length,
+            itemCount: widget.state!.scriptPopular.length,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => Container(
@@ -84,7 +70,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
               height: 125,
               margin: EdgeInsets.only(
                 left: index == 0 ? 20 : 15,
-                right: index == dummyScripts.length - 1 ? 20 : 0,
+                right: index == widget.state!.scriptPopular.length - 1 ? 20 : 0,
               ),
               decoration: BoxDecoration(
                 color: AppColor.blue_00AEFF,
@@ -93,7 +79,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
               child: Stack(
                 alignment: Alignment.topRight,
                 children: [
-                  ScriptContent(index, context),
+                  ScriptContent(index, widget.cubit),
                   ScriptDialog(index),
                 ],
               ),
@@ -105,11 +91,11 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
   }
 
   /* Content of Script Popular */
-  Widget ScriptContent(int index, BuildContext context) {
+  Widget ScriptContent(int index, ScriptCubit? cubit) {
     return GestureDetector(
       onTap: (() {
         if (!widget.showDialog) {
-          debugPrint('clicked script populer');
+          cubit!.onTapButton('clicked script populer');
         }
 
         setState(() {
@@ -135,7 +121,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    dummyScripts[index]['title'],
+                    widget.state!.scriptPopular[index]['title'],
                     style: AppText.Inter13w7_white,
                   ),
                   GestureDetector(
@@ -167,7 +153,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
                 children: [
                   Flexible(
                       child: Text(
-                    dummyScripts[index]['greet'],
+                    widget.state!.scriptPopular[index]['greet'],
                     style: AppText.Nunito13w6_black,
                   )),
                 ],
@@ -182,7 +168,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
                 children: [
                   Flexible(
                       child: Text(
-                    dummyScripts[index]['body'],
+                    widget.state!.scriptPopular[index]['body'],
                     style: AppText.Pops10w4_white,
                   )),
                 ],

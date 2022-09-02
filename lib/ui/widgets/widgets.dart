@@ -123,7 +123,7 @@ class _FadeScaleMotionState extends State<FadeScaleMotion>
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(widget.popup.toString());
+    // debugPrint(widget.popup.toString());
 
     if (widget.popup) {
       fadeController.forward();

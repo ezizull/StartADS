@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, must_be_immutable
 
+import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
+import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
 import 'package:flutter/material.dart';
 import 'package:Scriptmatic/ui/widgets/widgets.dart';
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
@@ -11,10 +13,14 @@ class DashboardScriptTerbaru extends StatefulWidget {
   DashboardScriptTerbaru({
     Key? key,
     this.showDialog = false,
+    this.state,
+    this.cubit,
     this.scriptItem = 0,
   }) : super(key: key);
 
   int scriptItem;
+  ScriptLoaded? state;
+  ScriptCubit? cubit;
   bool showDialog;
 
   @override
@@ -22,33 +28,6 @@ class DashboardScriptTerbaru extends StatefulWidget {
 }
 
 class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
-  final List<Map> dummyScripts = [
-    {
-      'image':
-          'assets/images/dashboard/dashboard_scripts/dashboard_script_terbaru_girl.png',
-      'tags': 'Greeting',
-      'title': 'Gamis Fashion',
-    },
-    {
-      'image':
-          'assets/images/dashboard/dashboard_scripts/dashboard_script_terbaru_girl.png',
-      'tags': 'Greeting',
-      'title': 'Gamis Fashion',
-    },
-    {
-      'image':
-          'assets/images/dashboard/dashboard_scripts/dashboard_script_terbaru_girl.png',
-      'tags': 'Greeting',
-      'title': 'Gamis Fashion',
-    },
-    {
-      'image':
-          'assets/images/dashboard/dashboard_scripts/dashboard_script_terbaru_girl.png',
-      'tags': 'Greeting',
-      'title': 'Gamis Fashion',
-    },
-  ];
-
   var scriptIndex;
 
   @override
@@ -73,7 +52,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
           height: 170,
           margin: const EdgeInsets.only(bottom: 20),
           child: ListView.builder(
-            itemCount: dummyScripts.length,
+            itemCount: widget.state?.scriptTerbaru.length,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => Container(
@@ -81,7 +60,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
               height: 148,
               margin: EdgeInsets.only(
                 left: index == 0 ? 20 : 15,
-                right: index == dummyScripts.length - 1 ? 20 : 0,
+                right: index == widget.state!.scriptTerbaru.length - 1 ? 20 : 0,
                 bottom: 22,
               ),
               decoration: BoxDecoration(
@@ -95,7 +74,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                   ]),
               child: Stack(
                 children: [
-                  ScriptContent(index),
+                  ScriptContent(index, widget.cubit),
                   ScriptDialog(index),
                 ],
               ),
@@ -107,11 +86,11 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
   }
 
   /* Content of Script Popular */
-  Widget ScriptContent(int index) {
+  Widget ScriptContent(int index, ScriptCubit? cubit) {
     return GestureDetector(
       onTap: (() {
         if (!widget.showDialog) {
-          debugPrint('clicked script populer');
+          cubit!.onTapButton('clicked script terbaru');
         }
 
         setState(() {
@@ -133,7 +112,8 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
               margin: const EdgeInsets.only(bottom: 5),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(dummyScripts[index]['image']),
+                  image:
+                      AssetImage(widget.state!.scriptTerbaru[index]['image']),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(3),
@@ -181,7 +161,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                         color: AppColor.orange_FFF4DE,
                         borderRadius: BorderRadius.circular(36),
                       ),
-                      child: Text(dummyScripts[index]['tags'],
+                      child: Text(widget.state!.scriptTerbaru[index]['tags'],
                           style: AppText.NunitoSans7w7_orange_FFA800),
                     ),
                   ),
@@ -199,7 +179,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                 children: [
                   Flexible(
                       child: Text(
-                    dummyScripts[index]['title'],
+                    widget.state!.scriptTerbaru[index]['title'],
                     style: AppText.Inter10w6_black_212121,
                   )),
                 ],

@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, must_be_immutable, prefer_typing_uninitialized_variables
+// ignore_for_file: non_constant_identifier_names, must_be_immutable, prefer_typing_uninitialized_variables, library_prefixes, unused_import
 
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
@@ -10,6 +10,11 @@ import 'package:Scriptmatic/utils/typography.dart' as AppText;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class DashboardScriptPopular extends StatefulWidget {
+  int scriptItem;
+  ScriptLoaded? state;
+  ScriptCubit? cubit;
+  bool showDialog;
+
   DashboardScriptPopular({
     this.showDialog = false,
     Key? key,
@@ -17,11 +22,6 @@ class DashboardScriptPopular extends StatefulWidget {
     this.cubit,
     this.scriptItem = 0,
   }) : super(key: key);
-
-  int scriptItem;
-  ScriptLoaded? state;
-  ScriptCubit? cubit;
-  bool showDialog;
 
   @override
   State<DashboardScriptPopular> createState() => _DashboardScriptPopularState();
@@ -32,10 +32,10 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
 
   @override
   Widget build(BuildContext context) {
-    ;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        /* header section */
         Container(
           margin: const EdgeInsets.symmetric(
             horizontal: 20,
@@ -58,6 +58,8 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
             ],
           ),
         ),
+
+        /* body section */
         Container(
           height: 125,
           margin: const EdgeInsets.only(bottom: 20),

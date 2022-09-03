@@ -30,7 +30,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   final ScriptCubit scriptCubit = ScriptCubit()..fetchScript();
-  final PaketCubit paketCubit = PaketCubit()..fetchPaket();
+  final PaketCubit paketCubit = PaketCubit()..paketStatus();
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -130,7 +130,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return showDialog(
       context: context,
       builder: (_) => BlocProvider.value(
-        value: scriptCubit,
+        value: paketCubit,
         /*  remove GestureDetector to SHOULD SUBSCRIBE first */
         child: GestureDetector(
           onTap: (() => Navigator.pop(context, true)), // remove GestureDetector

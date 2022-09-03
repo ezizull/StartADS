@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:equatable/equatable.dart';
 import 'package:Scriptmatic/api/api.dart';
 
@@ -28,7 +30,15 @@ class HasPurchasedPaket extends PaketState {}
 
 class PurchasePaket extends PaketState {}
 
-class AvailablePaket extends PaketState {}
+class UsablePaket extends PaketState {
+  UsablePaket(this.usablePaket);
+
+  /* available paket */
+  List<Map> usablePaket;
+
+  @override
+  List<Object> get props => [usablePaket];
+}
 
 class PaketFailure extends PaketState {
   final ErrorType type;

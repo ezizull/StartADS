@@ -7,6 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:Scriptmatic/api/api.dart';
 import 'package:Scriptmatic/ui/screens/screens.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() async {
   //Handling certificate_failed
@@ -34,9 +35,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      builder: (context, widget) => ResponsiveWrapper.builder(
+        ClampingScrollWrapper.builder(context, widget!),
+        breakpoints: const [
+          ResponsiveBreakpoint.resize(350, name: MOBILE),
+          ResponsiveBreakpoint.autoScale(600, name: TABLET),
+          ResponsiveBreakpoint.resize(800, name: DESKTOP),
+          ResponsiveBreakpoint.autoScale(1700, name: 'XL'),
+        ],
+      ),
       debugShowCheckedModeBanner: false,
-      home: DashboardScreen(),
+      home: const DashboardScreen(),
     );
   }
 }

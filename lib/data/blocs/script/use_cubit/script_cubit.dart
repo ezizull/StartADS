@@ -81,6 +81,9 @@ class ScriptCubit extends Cubit<ScriptState> {
   void onTapButton(String text) async {
     try {
       debugPrint(text);
-    } catch (e) {}
+    } catch (error) {
+      /* general error */
+      emit(ScriptFailure.general(error.toString()));
+    }
   }
 }

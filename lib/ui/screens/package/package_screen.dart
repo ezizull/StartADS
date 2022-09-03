@@ -28,78 +28,84 @@ class PackageScreen extends StatelessWidget {
           backgroundColor: AppColor.white,
           body: BlocBuilder<PaketCubit, PaketState>(
             builder: (context, state) {
-              return ListView(
-                scrollDirection: Axis.vertical,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                physics: const BouncingScrollPhysics(),
-                children: [
-                  /* Banner Package */
-                  PackageCanvas(
-                      height: 176,
-                      color: AppColor.blue_CCF2F4,
-                      borderRadius: BorderRadius.circular(12),
-                      margin: const EdgeInsets.only(top: 15, bottom: 32),
-                      children: [
-                        PackageDecor(
-                          left: 0,
-                          bottom: -62,
-                          right: 0,
-                          child: SizedBox(
-                            height: 176,
-                            child: Image.asset(AppImage.wave_banner),
-                          ),
-                        ),
-                        PackageDecor(
-                          left: 0,
-                          bottom: -27,
-                          right: 0,
-                          child: SizedBox(
-                            height: 176,
-                            child: Image.asset(AppImage.line_wave_banner),
-                          ),
-                        ),
-                        PackageDecor(
-                          left: 0,
-                          right: -235,
-                          bottom: 0,
-                          child: SizedBox(
-                            height: 168,
-                            child: Image.asset(AppImage.man_banner),
-                          ),
-                        ),
-                        PackageContent(
-                          margin: const EdgeInsets.only(
-                              top: 33, bottom: 33, right: 153, left: 18),
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 6),
-                              child: Text("Dapatkan Paket Lifetime",
-                                  style: AppText.Pops12w6h12_black_1F2024),
+              if (state is UsablePaket) {
+                return ListView(
+                  scrollDirection: Axis.vertical,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    /* Banner Package */
+                    PackageCanvas(
+                        height: 176,
+                        color: AppColor.blue_CCF2F4,
+                        borderRadius: BorderRadius.circular(12),
+                        margin: const EdgeInsets.only(top: 15, bottom: 32),
+                        children: [
+                          PackageDecor(
+                            left: 0,
+                            bottom: -62,
+                            right: 0,
+                            child: SizedBox(
+                              height: 176,
+                              child: Image.asset(AppImage.wave_banner),
                             ),
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 25),
-                              child: Text("Rp. 397.000,-",
-                                  style: AppText.Inter12w6h14_black_1F2024),
+                          ),
+                          PackageDecor(
+                            left: 0,
+                            bottom: -27,
+                            right: 0,
+                            child: SizedBox(
+                              height: 176,
+                              child: Image.asset(AppImage.line_wave_banner),
                             ),
-                            ButtonContent(
-                              text: 'Miliki Sekarang',
-                              backgroundColor: AppColor.blue_00AEFF,
-                              icon: AppIcon.haveit_now_white,
-                            )
-                          ],
-                        )
-                      ]),
+                          ),
+                          PackageDecor(
+                            left: 0,
+                            right: -235,
+                            bottom: 0,
+                            child: SizedBox(
+                              height: 168,
+                              child: Image.asset(AppImage.man_banner),
+                            ),
+                          ),
+                          PackageContent(
+                            margin: const EdgeInsets.only(
+                                top: 33, bottom: 33, right: 153, left: 18),
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 6),
+                                child: Text("Dapatkan Paket Lifetime",
+                                    style: AppText.Pops12w6h12_black_1F2024),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 25),
+                                child: Text("Rp. 397.000,-",
+                                    style: AppText.Inter12w6h14_black_1F2024),
+                              ),
+                              ButtonContent(
+                                text: 'Miliki Sekarang',
+                                backgroundColor: AppColor.blue_00AEFF,
+                                icon: AppIcon.haveit_now_white,
+                              )
+                            ],
+                          )
+                        ]),
 
-                  /* Choose Package */
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 15),
-                    child: Text('Pilihan Paket',
-                        style: AppText.Inter14w7_black_1F2024),
-                  ),
+                    /* Choose Package */
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 15),
+                      child: Text('Pilihan Paket',
+                          style: AppText.Inter14w7_black_1F2024),
+                    ),
 
-                  /* List Choose Package */
-                  PackageList(context: context, state: state),
-                ],
+                    /* List Choose Package */
+                    PackageList(cubit: paketCubit, state: state),
+                  ],
+                );
+              }
+              return const Scaffold(
+                backgroundColor: AppColor.white,
+                body: Center(child: CircularProgressIndicator()),
               );
             },
           ),

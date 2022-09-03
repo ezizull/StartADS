@@ -10,6 +10,11 @@ import 'package:Scriptmatic/utils/typography.dart' as AppText;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class DashboardScriptTerbaru extends StatefulWidget {
+  int scriptItem;
+  ScriptLoaded? state;
+  ScriptCubit? cubit;
+  bool showDialog;
+
   DashboardScriptTerbaru({
     Key? key,
     this.showDialog = false,
@@ -17,11 +22,6 @@ class DashboardScriptTerbaru extends StatefulWidget {
     this.cubit,
     this.scriptItem = 0,
   }) : super(key: key);
-
-  int scriptItem;
-  ScriptLoaded? state;
-  ScriptCubit? cubit;
-  bool showDialog;
 
   @override
   State<DashboardScriptTerbaru> createState() => _DashboardScriptTerbaruState();
@@ -35,6 +35,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        /* header section */
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Row(
@@ -48,6 +49,8 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
             ],
           ),
         ),
+
+        /* body section */
         Container(
           height: 170,
           margin: const EdgeInsets.only(bottom: 20),

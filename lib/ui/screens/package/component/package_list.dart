@@ -1,5 +1,6 @@
-// ignore_for_file: unused_import, library_prefixes, non_constant_identifier_names
+// ignore_for_file: library_prefixes, non_constant_identifier_names
 
+import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
 
@@ -10,57 +11,21 @@ import 'package:Scriptmatic/utils/images.dart' as AppImage;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 class PackageList extends StatelessWidget {
-  PackageList(
-      {Key? key, required BuildContext context, required PaketState state})
-      : super(key: key);
+  PackageList({
+    this.cubit,
+    Key? key,
+    this.state,
+  }) : super(key: key);
 
-  final List<Map> dummyPackages = [
-    {
-      'title': '6 Bulan',
-      'discount': '594.000',
-      'price': '297.000',
-      'body': [
-        [
-          'Akses Scriptmatic 6 Bulan',
-          '5 Customer Service',
-          'Ratusan Template Script Follow Up Customer',
-          ''
-        ],
-        [
-          'Kamus CS (Kamus Penolakan)',
-          'Free Update',
-          'Chat Support',
-          'Panduan Lengkap'
-        ],
-      ]
-    },
-    {
-      'title': '1 Tahun',
-      'discount': '794.000',
-      'price': '297.000',
-      'body': [
-        [
-          'Akses Scriptmatic 6 Bulan',
-          '5 Customer Service',
-          'Ratusan Template Script Follow Up Customer',
-          ''
-        ],
-        [
-          'Kamus CS (Kamus Penolakan)',
-          'Free Update',
-          'Chat Support',
-          'Panduan Lengkap'
-        ],
-      ]
-    },
-  ];
+  PaketCubit? cubit;
+  UsablePaket? state;
 
   @override
   Widget build(BuildContext context) {
     double swidth = MediaQuery.of(context).size.width;
 
     return ListView.builder(
-      itemCount: dummyPackages.length,
+      itemCount: state!.usablePaket.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: ((context, index) {
@@ -75,8 +40,13 @@ class PackageList extends StatelessWidget {
               color: AppColor.black.withOpacity(0.1),
             )
           ],
-          height: 257,
-          padding: const EdgeInsets.only(right: 20, top: 20, left: 20),
+          minHeight: 257,
+          padding: const EdgeInsets.only(
+            left: 20,
+            top: 20,
+            bottom: 17.2,
+            right: 20,
+          ),
           child: PackageContent(children: [
             /* Title Package */
             HeaderPackage(
@@ -106,7 +76,7 @@ class PackageList extends StatelessWidget {
             ),
 
             /* Body Package */
-            BodyPackage(index, width: swidth * 0.4),
+            BodyPackage(index, width: swidth),
 
             /* Submit Button */
             Center(
@@ -138,113 +108,105 @@ class PackageList extends StatelessWidget {
     required String sub,
   }) {
     return Text(
-      dummyPackages[index][sub] ?? '',
+      state!.usablePaket[index][sub] ?? '',
       style: textStyle,
     );
   }
 
   /* Body Package */
   Widget BodyPackage(int index, {double? width}) {
+    var itemBody = state!.usablePaket[index]['body'];
+
     return Container(
-        margin: const EdgeInsets.only(top: 5, bottom: 12.5),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: dummyPackages[index]['body']?.map<Widget>((element) {
-                return element != null
-                    ? Wrap(
-                        direction: Axis.vertical,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        spacing: 9,
-                        children: [
-                          ItemBodyPackage(
-                            element,
-                            width: width,
-                            bodyIndex: 0,
-                            baseIndex: index,
-                          ),
-                          ItemBodyPackage(
-                            element,
-                            width: width,
-                            bodyIndex: 1,
-                            baseIndex: index,
-                          ),
-                          ItemBodyPackage(
-                            element,
-                            width: width,
-                            bodyIndex: 2,
-                            baseIndex: index,
-                          ),
-                          ItemBodyPackage(
-                            element,
-                            width: width,
-                            bodyIndex: 3,
-                            baseIndex: index,
-                          ),
-                        ],
-                      )
-                    : Container();
-              }).toList() ??
-              [],
-        ));
+      margin: const EdgeInsets.only(top: 10),
+      child: Column(
+        children: [
+          ItemBodyPackage(itemBody, bodyIndex: 0, baseIndex: index),
+          ItemBodyPackage(itemBody, bodyIndex: 1, baseIndex: index),
+          ItemBodyPackage(itemBody, bodyIndex: 2, baseIndex: index),
+          ItemBodyPackage(itemBody, bodyIndex: 3, baseIndex: index),
+        ],
+      ),
+    );
   }
 
   /* Item of BodyPackage */
-  SizedBox ItemBodyPackage(
-    element, {
+  Widget ItemBodyPackage(
+    itemBody, {
     required int bodyIndex,
     required int baseIndex,
-    double? width,
   }) {
-    return SizedBox(
-        width: width,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /* Icon of Item */
-            (element.length - 1) >= bodyIndex && element[bodyIndex] != ''
-                ? Container(
-                    height: 10,
-                    width: 10,
-                    margin: const EdgeInsets.only(right: 9),
-                    child: baseIndex.isEven
-                        ? AppIcon.haveit_now_blue_00AEFF
-                        : AppIcon.haveit_now_white,
-                  )
-                : Container(),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: itemBody.map<Widget>((item) {
+        int indexItem = itemBody.indexOf(item); // Index Item
 
-            /* Text of Item */
-            (element.length - 1) >= bodyIndex && element[bodyIndex] != ''
-                ? Flexible(
-                    child: Text(
-                      element[bodyIndex],
-                      style: baseIndex.isEven
-                          ? AppText.NunitoSans10w6h13_black
-                          : AppText.NunitoSans10w6h13_white,
-                    ),
-                  )
-                : Flexible(child: Container()),
-          ],
-        ));
+        return Flexible(
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 9),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /* Space First */
+                if (indexItem == 1) ...[
+                  const SizedBox(width: 5),
+                ],
+
+                /* Icon Item */
+                (item.length - 1) >= bodyIndex && item[bodyIndex] != ''
+                    ? Container(
+                        height: 10,
+                        width: 10,
+                        margin: const EdgeInsets.only(right: 9),
+                        child: baseIndex.isEven
+                            ? AppIcon.haveit_now_blue_00AEFF
+                            : AppIcon.haveit_now_white,
+                      )
+                    : Container(),
+
+                /* Text Item */
+                (item.length - 1) >= bodyIndex && item[bodyIndex] != ''
+                    ? Flexible(
+                        child: Text(
+                          item[bodyIndex],
+                          style: baseIndex.isEven
+                              ? AppText.NunitoSans10w6h13_black
+                              : AppText.NunitoSans10w6h13_white,
+                        ),
+                      )
+                    : Flexible(child: Container()),
+
+                /* Space Last */
+                if (indexItem == 0) ...[
+                  const SizedBox(width: 5),
+                ],
+              ],
+            ),
+          ),
+        );
+      }).toList(),
+    );
   }
 
   /* 1 : Package Canvas to be Decorated */
   Widget PackageCanvas({
-    required double height,
+    required double minHeight,
     EdgeInsetsGeometry? margin,
-    EdgeInsetsGeometry? padding,
     Color? color,
     Widget? child, // when only have PackageContent
     List<Widget>? children, // when using PackageDecoration
+    EdgeInsetsGeometry? padding,
     List<BoxShadow>? boxShadow,
     BorderRadiusGeometry? borderRadius,
   }) {
     return Container(
-      height: height,
       width: double.infinity, // change this, if width become error
       margin: margin,
       padding: padding,
       clipBehavior: Clip.hardEdge, // apply rounded to child
+      constraints: BoxConstraints(minHeight: minHeight),
       decoration: BoxDecoration(
         borderRadius: borderRadius,
         color: color,

@@ -34,7 +34,7 @@ class PackageScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   physics: const BouncingScrollPhysics(),
                   children: [
-                    /* Banner Package */
+                    // Banner Package
                     PackageCanvas(
                         height: 176,
                         color: AppColor.blue_CCF2F4,
@@ -91,14 +91,14 @@ class PackageScreen extends StatelessWidget {
                           )
                         ]),
 
-                    /* Choose Package */
+                    // Choose Package
                     Container(
                       margin: const EdgeInsets.only(bottom: 15),
                       child: Text('Pilihan Paket',
                           style: AppText.Inter14w7_black_1F2024),
                     ),
 
-                    /* List Choose Package */
+                    // List Choose Package
                     PackageList(cubit: paketCubit, state: state),
                   ],
                 );
@@ -114,7 +114,7 @@ class PackageScreen extends StatelessWidget {
     );
   }
 
-  /* Package Banner */
+  // Package Banner
   AppBar PackageAppBar(BuildContext context) {
     return AppBar(
       leading: GestureDetector(
@@ -134,7 +134,7 @@ class PackageScreen extends StatelessWidget {
     );
   }
 
-  /* 1 : Package Canvas to be Decorated */
+  // 1 : Package Canvas to be Decorated
   Widget PackageCanvas({
     required double height,
     EdgeInsetsGeometry? margin,
@@ -160,7 +160,7 @@ class PackageScreen extends StatelessWidget {
     );
   }
 
-  /* 2 : Single Package Decoration */
+  // 2 : Single Package Decoration
   Positioned PackageDecor({
     double? left,
     double? bottom,
@@ -177,7 +177,7 @@ class PackageScreen extends StatelessWidget {
     );
   }
 
-  /* 3 : Package Content build your own Content*/
+  // 3 : Package Content build your own Content
   Widget PackageContent({
     EdgeInsets? margin,
     List<Widget>? children,
@@ -191,7 +191,7 @@ class PackageScreen extends StatelessWidget {
     );
   }
 
-  /* 4 : Button of Content */
+  // 4 : Button of Content
   Widget ButtonContent({
     double? width,
     Widget? icon,

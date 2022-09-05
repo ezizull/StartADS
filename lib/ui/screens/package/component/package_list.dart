@@ -48,7 +48,7 @@ class PackageList extends StatelessWidget {
             right: 20,
           ),
           child: PackageContent(children: [
-            /* Title Package */
+            // Title Package
             HeaderPackage(
               index,
               sub: 'title',
@@ -57,7 +57,7 @@ class PackageList extends StatelessWidget {
                   : AppText.NunitoSans25w8h34_white,
             ),
 
-            /* Discount Package */
+            // Discount Package
             HeaderPackage(
               index,
               sub: 'discount',
@@ -66,7 +66,7 @@ class PackageList extends StatelessWidget {
                   : AppText.NunitoSans12w8h16_lineThrough_white,
             ),
 
-            /* Price Package */
+            // Price Package
             HeaderPackage(
               index,
               sub: 'price',
@@ -75,10 +75,10 @@ class PackageList extends StatelessWidget {
                   : AppText.NunitoSans21w8h28_white,
             ),
 
-            /* Body Package */
+            // Body Package
             BodyPackage(index, width: swidth),
 
-            /* Submit Button */
+            // Submit Button
             Center(
                 child: ButtonContent(
               icon: index.isEven
@@ -88,8 +88,8 @@ class PackageList extends StatelessWidget {
               height: 26,
               width: 169,
               textStyle: index.isEven
-                  ? AppText.NunitoSans9w7h12_white
-                  : AppText.NunitoSans9w7h12_blue_00AEFF,
+                  ? AppText.NunitoSans12w7h12_white
+                  : AppText.NunitoSans12w7h12_blue_00AEFF,
               backgroundColor:
                   index.isEven ? AppColor.blue_00AEFF : AppColor.white,
               foregroundColor:
@@ -101,7 +101,7 @@ class PackageList extends StatelessWidget {
     );
   }
 
-/* Header Package */
+// Header Package
   Widget HeaderPackage(
     int index, {
     required TextStyle textStyle,
@@ -113,7 +113,7 @@ class PackageList extends StatelessWidget {
     );
   }
 
-  /* Body Package */
+  // Body Package
   Widget BodyPackage(int index, {double? width}) {
     var itemBody = state!.usablePaket[index]['body'];
 
@@ -130,7 +130,7 @@ class PackageList extends StatelessWidget {
     );
   }
 
-  /* Item of BodyPackage */
+  // Item of BodyPackage
   Widget ItemBodyPackage(
     itemBody, {
     required int bodyIndex,
@@ -149,12 +149,12 @@ class PackageList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /* Space First */
+                // Space First
                 if (indexItem == 1) ...[
                   const SizedBox(width: 5),
                 ],
 
-                /* Icon Item */
+                // Icon Item
                 (item.length - 1) >= bodyIndex && item[bodyIndex] != ''
                     ? Container(
                         height: 10,
@@ -166,19 +166,19 @@ class PackageList extends StatelessWidget {
                       )
                     : Container(),
 
-                /* Text Item */
+                // Text Item
                 (item.length - 1) >= bodyIndex && item[bodyIndex] != ''
                     ? Flexible(
                         child: Text(
                           item[bodyIndex],
                           style: baseIndex.isEven
-                              ? AppText.NunitoSans10w6h13_black
-                              : AppText.NunitoSans10w6h13_white,
+                              ? AppText.NunitoSans12w6h13_black
+                              : AppText.NunitoSans12w6h13_white,
                         ),
                       )
                     : Flexible(child: Container()),
 
-                /* Space Last */
+                // Space Last
                 if (indexItem == 0) ...[
                   const SizedBox(width: 5),
                 ],
@@ -190,7 +190,7 @@ class PackageList extends StatelessWidget {
     );
   }
 
-  /* 1 : Package Canvas to be Decorated */
+  // 1 : Package Canvas to be Decorated
   Widget PackageCanvas({
     required double minHeight,
     EdgeInsetsGeometry? margin,
@@ -216,7 +216,7 @@ class PackageList extends StatelessWidget {
     );
   }
 
-  /* 2 : Single Package Decoration */
+  // 2 : Single Package Decoration
   Positioned PackageDecor({
     double? left,
     double? bottom,
@@ -233,7 +233,7 @@ class PackageList extends StatelessWidget {
     );
   }
 
-  /* 3 : Package Content build your own Content*/
+  // 3 : Package Content build your own Content
   Widget PackageContent({
     EdgeInsets? margin,
     List<Widget>? children,
@@ -247,7 +247,7 @@ class PackageList extends StatelessWidget {
     );
   }
 
-  /* 4 : Button of Content */
+  // 4 : Button of Content
   Widget ButtonContent({
     double? width,
     Widget? icon,

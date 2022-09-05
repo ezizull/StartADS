@@ -8,10 +8,10 @@ import 'paket_state.dart';
 class PaketCubit extends Cubit<PaketState> {
   PaketCubit() : super(PaketInitial());
 
-  /* example get request */
+  // example get request
   final ArticleRepository _article = ArticleRepository();
 
-  /* dummy data */
+  // dummy data
   final List<Map> usablePaket = [
     {
       'title': '6 Bulan',
@@ -58,10 +58,10 @@ class PaketCubit extends Cubit<PaketState> {
     try {
       final response = await _article.fetchListArticle();
 
-      /* paket has expired */
+      // paket has expired
       emit(ExpiredPaket());
 
-      /* have a paket */
+      // have a paket
       // emit(const HavePaket("Cubit: Succes Loaded Paket"));
     } catch (error) {
       if (error is NetworkException) {

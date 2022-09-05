@@ -17,17 +17,45 @@ class DashboardDrawer extends StatefulWidget {
     Key? key,
     this.scriptDrop = false,
     this.contactDrop = false,
+    this.userDrop = false,
+    this.activeBtn = '',
   }) : super(key: key);
+
   bool scriptDrop;
   bool contactDrop;
+  bool userDrop;
+  String activeBtn;
 
   @override
   State<DashboardDrawer> createState() => _DashboardDrawerState();
 }
 
 class _DashboardDrawerState extends State<DashboardDrawer>
-    with TickerProviderStateMixin {
-  bool userDrop = false;
+    with TickerProviderStateMixin<DashboardDrawer> {
+  // delay duaration before change color
+  Duration delay = const Duration(milliseconds: 800);
+
+  // change color delay params
+  bool actvColor = false;
+
+  // return list dropped items
+  bool dropActive(List<dynamic> listDropItems) {
+    for (var item in listDropItems) {
+      if (item == widget.activeBtn) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // list of dropped items
+  List<String> ScriptList = ['Script Chat', 'Script Campaign'];
+
+  // list of dropped items
+  List<String> ContactList = ['Kontak Pelanggan', 'Grup Pelanggan'];
+
+  // List of dropped user
+  List<String> UserList = ['Ammed'];
 
   @override
   Widget build(BuildContext context) {
@@ -38,110 +66,118 @@ class _DashboardDrawerState extends State<DashboardDrawer>
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 20),
           children: [
+            // header and expanded
             HeaderDrawer(
               margin: const EdgeInsets.only(right: 16, left: 16, top: 25),
             ),
             ListDroppedItems(
-                dropped: userDrop,
+                dropped: widget.userDrop,
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 margin: const EdgeInsets.only(left: 54),
                 children: [
-                  DroppedItems(text: 'Ammed'),
+                  DroppedItems(text: UserList[0]),
                 ]),
+
+            // divider line
             const AppDivider(
               height: 1.5,
               margin: EdgeInsets.symmetric(vertical: 20),
               color: AppColor.grey_E5E5E5,
             ),
+
+            // menus in drawer
             ListDrawerChild(
               children: [
-                /* Dashboard */
+                // Dashboard
                 DrawerChild(
                   text: 'Dashboard',
-                  Icon: AppIcon.dashboard_drawer,
+                  activeIcon: AppIcon.dashboard_drawer_blue_00AEFF,
+                  disableIcon: AppIcon.dashboard_drawer,
+                  onTap: (() {
+                    setState(() => widget.activeBtn = 'Dashboard');
+                  }),
                 ),
 
-                /* Script */
+                // Script
                 DrawerChild(
                   text: 'Script',
-                  Icon: AppIcon.dashboard_drawer_script,
-                  onTap: (() => setState(() {
-                        widget.scriptDrop = !widget.scriptDrop;
-                      })),
-                  tail: UpDownBtn(
-                    child: widget.scriptDrop
-                        ? AppIcon.dashboard_drawer_up
-                        : AppIcon.dashboard_drawer_down,
-                    padding: const EdgeInsets.all(9),
-                  ),
+                  activeParam: widget.scriptDrop,
+                  listDropped: ScriptList,
+                  activeIcon: AppIcon.dashboard_drawer_script_blue_00AEFF,
+                  disableIcon: AppIcon.dashboard_drawer_script,
+                  onTap: (() {
+                    setState(() => widget.scriptDrop = !widget.scriptDrop);
+                  }),
                 ),
-                /* Script List */
+                // Script List
                 ListDroppedItems(
                   dropped: widget.scriptDrop,
                   margin: const EdgeInsets.only(left: 40, bottom: 30),
                   children: [
-                    DroppedItems(
-                      text: 'Script Chat',
-                      textstyle: AppText.Pops13w4_grey_9F9FB9,
-                    ),
-                    DroppedItems(
-                      text: 'Script Campaign',
-                      textstyle: AppText.Pops13w4_grey_9F9FB9,
-                    ),
+                    DroppedItems(text: ScriptList[0]),
+                    DroppedItems(text: ScriptList[1]),
                   ],
                 ),
 
-                /* Kamus CS */
+                // Kamus CS
                 DrawerChild(
                   text: 'Kamus CS',
-                  Icon: AppIcon.dashboard_drawer_kamus,
+                  disableIcon: AppIcon.dashboard_drawer_kamus,
+                  activeIcon: AppIcon.dashboard_drawer_kamus_blue_00AEFF,
+                  onTap: (() {
+                    setState(() => widget.activeBtn = 'Kamus CS');
+                  }),
                 ),
 
-                /* Contact Management */
+                // Contact Management
                 DrawerChild(
                   text: 'Contact Management',
-                  Icon: AppIcon.dashboard_drawer_contact,
-                  onTap: (() =>
-                      setState(() => widget.contactDrop = !widget.contactDrop)),
-                  tail: UpDownBtn(
-                    child: widget.contactDrop
-                        ? AppIcon.dashboard_drawer_up
-                        : AppIcon.dashboard_drawer_down,
-                    padding: const EdgeInsets.all(9),
-                  ),
+                  activeParam: widget.contactDrop,
+                  listDropped: ContactList,
+                  activeIcon: AppIcon.dashboard_drawer_contact_blue_00AEFF,
+                  disableIcon: AppIcon.dashboard_drawer_contact,
+                  onTap: (() {
+                    setState(() => widget.contactDrop = !widget.contactDrop);
+                  }),
                 ),
-                /* List Contact Management */
+                // List Contact Management
                 ListDroppedItems(
                   dropped: widget.contactDrop,
                   margin: const EdgeInsets.only(left: 40, bottom: 30),
                   children: [
-                    DroppedItems(
-                      text: 'Kontak Pelanggan',
-                      textstyle: AppText.Pops13w4_grey_9F9FB9,
-                    ),
-                    DroppedItems(
-                      text: 'Grup Pelanggan',
-                      textstyle: AppText.Pops13w4_grey_9F9FB9,
-                    ),
+                    DroppedItems(text: ContactList[0]),
+                    DroppedItems(text: ContactList[1]),
                   ],
                 ),
 
-                /* Campaign */
+                // Campaign
                 DrawerChild(
                   text: 'Campaign',
-                  Icon: AppIcon.dashboard_drawer_campaign,
+                  activeIcon: AppIcon.dashboard_drawer_campaign_blue_00AEFF,
+                  disableIcon: AppIcon.dashboard_drawer_campaign,
+                  onTap: (() {
+                    setState(() => widget.activeBtn = 'Campaign');
+                  }),
                 ),
 
-                /* Billing */
+                // Billing
                 DrawerChild(
                   text: 'Billing',
-                  Icon: AppIcon.dashboard_drawer_billing,
+                  activeIcon: AppIcon.dashboard_drawer_billing_blue_00AEFF,
+                  disableIcon: AppIcon.dashboard_drawer_billing,
+                  onTap: (() {
+                    setState(() => widget.activeBtn = 'Billing');
+                  }),
                 ),
 
-                /* Settings */
+                // Settings
                 DrawerChild(
                   text: 'Settings',
-                  Icon: AppIcon.dashboard_drawer_settings,
+                  activeIcon: AppIcon.dashboard_drawer_settings_blue_00AEFF,
+                  disableIcon: AppIcon.dashboard_drawer_settings,
+                  onTap: (() {
+                    setState(() => widget.activeBtn = 'Settings');
+                  }),
                 ),
               ],
             )
@@ -151,17 +187,37 @@ class _DashboardDrawerState extends State<DashboardDrawer>
     );
   }
 
-  /* Top of Drawer */
+  // Top of Drawer
   Widget HeaderDrawer({EdgeInsets? margin}) {
+    var textStyle = (widget.activeBtn == 'Lorem Ipsum' && UserList.isEmpty) ||
+            UserList.isNotEmpty && dropActive(UserList)
+        ? AppText.Pops12w6h18_blue_00AEFF
+        : AppText.Pops12w6h18_black_464E5F;
+
     return Container(
       color: AppColor.transparent,
       margin: margin,
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: GestureDetector(
-        onTap: (() => setState(() => userDrop = !userDrop)),
+        onTap: (() {
+          setState(() => widget.userDrop = !widget.userDrop);
+
+          /* 
+            // delay when closing expand
+            if (!widget.userDrop) {
+              Future.delayed(delay, () => setState(() => actvColor = false));
+            }
+
+            // direct when open expand
+            else {
+              setState(() => actvColor = true);
+            } 
+          */
+        }),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // photo profile
             GestureDetector(
               onTap: () {},
               child: Container(
@@ -173,21 +229,20 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 ),
               ),
             ),
+
+            // text
             Flexible(
-                child: GestureDetector(
-              onTap: (() => setState(() => userDrop = !userDrop)),
-              child: Container(
-                color: AppColor.transparent,
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text('Lorem Ipsum',
-                    style: AppText.Pops12w6h18_black_464E5F),
-              ),
+                child: Container(
+              color: AppColor.transparent,
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text('Lorem Ipsum', style: textStyle),
             )),
+
+            // tile
             UpDownBtn(
               padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 12),
-              child: userDrop
-                  ? AppIcon.dashboard_drawer_up
-                  : AppIcon.dashboard_drawer_down,
+              activeParam: widget.userDrop,
+              listDropped: UserList,
             )
           ],
         ),
@@ -195,7 +250,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
     );
   }
 
-  /* List Dropped Items */
+  // List Dropped Items
   Widget ListDroppedItems({
     required bool dropped,
     double spacing = 22,
@@ -220,7 +275,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
     );
   }
 
-  /* Dropped Items */
+  // Dropped Items
   Widget DroppedItems({
     String text = '',
     double spacing = 10,
@@ -228,31 +283,57 @@ class _DashboardDrawerState extends State<DashboardDrawer>
     TextStyle? textstyle,
     Function? onTap,
   }) {
+    // dotStyle
+    var dotStyle = dotstyle ??
+        (widget.activeBtn == text
+            ? AppText.Pops13w4_blue_00AEFF
+            : AppText.Pops13w4_grey_9F9FB9);
+
+    // textStyle
+    var textStyle = textstyle ??
+        (widget.activeBtn == text
+            ? AppText.Pops13w4_blue_00AEFF
+            : AppText.Pops13w4_grey_9F9FB9);
+
     return GestureDetector(
       onTap: (() {
-        /* Handle onTap() */
+        // set active button
+        setState(() => widget.activeBtn = text);
+
+        // Handle onTap()
         onTap != null ? onTap() : null;
       }),
       child: Wrap(direction: Axis.horizontal, spacing: spacing, children: [
-        Text('•', style: dotstyle ?? AppText.Pops12w6h18_black_464E5F),
-        Text(text, style: textstyle ?? AppText.Pops12w6h18_black_464E5F),
+        Text('•', style: dotStyle),
+        Text(text, style: textStyle),
       ]),
     );
   }
 
-  /* Up Down Icon */
+  // Up Down Icon
   Widget UpDownBtn({
+    bool activeParam = false,
+    List<dynamic> listDropped = const [],
     EdgeInsets? padding,
     Widget? child,
   }) {
+    // condition
+    var cond = (activeParam && listDropped.isNotEmpty && dropActive(listDropped)
+        ? AppIcon.dashboard_drawer_up_blue_00AEFF
+        : activeParam
+            ? AppIcon.dashboard_drawer_up
+            : !activeParam && listDropped.isNotEmpty && dropActive(listDropped)
+                ? AppIcon.dashboard_drawer_down_blue_00AEFF
+                : AppIcon.dashboard_drawer_down);
+
     return Container(
       color: AppColor.transparent,
       padding: padding,
-      child: child,
+      child: child ?? cond,
     );
   }
 
-  /* List of Drawer Child */
+  // List of Drawer Child
   Widget ListDrawerChild({
     EdgeInsets? margin,
     List<Widget>? children,
@@ -263,22 +344,60 @@ class _DashboardDrawerState extends State<DashboardDrawer>
     );
   }
 
-  /* Drawer Child */
+  // Drawer Child
   Widget DrawerChild({
+    List<dynamic> listDropped = const [],
+    bool activeParam = false,
     double height = 31,
-    TextStyle? textstyle,
-    double marginBottom = 22,
-    EdgeInsets? textPadding,
-    double marginRight = 9,
-    Widget? tail,
-    Function? onTap,
-    String text = '',
     Widget? Icon,
+    Widget? activeIcon,
+    Widget? disableIcon,
+    Widget? tail,
+    TextStyle? textstyle,
+    String text = '',
+    double marginBottom = 22,
+    Function? onTap,
+    double marginRight = 9,
+    EdgeInsets? textPadding,
   }) {
+    // text style
+    var textStyle = textstyle ??
+        ((widget.activeBtn == text && listDropped.isEmpty) ||
+                listDropped.isNotEmpty && dropActive(listDropped)
+            ? AppText.Pops13w4_blue_00AEFF
+            : AppText.Pops13w4_grey_9F9FB9);
+
+    // tail widget
+    var TailWidget = tail ??
+        (listDropped.isNotEmpty
+            ? UpDownBtn(
+                padding: const EdgeInsets.all(9),
+                activeParam: activeParam,
+                listDropped: listDropped,
+              )
+            : Container());
+
+    // Icon Widget
+    var IconWidget = Icon ??
+        ((widget.activeBtn == text && listDropped.isEmpty) ||
+                listDropped.isNotEmpty && dropActive(listDropped)
+            ? (activeIcon ?? Container())
+            : (disableIcon ?? Container()));
+
     return GestureDetector(
       onTap: (() {
-        /* Handle onTap() */
+        // Handle onTap()
         onTap != null ? onTap() : null;
+
+        // delay when closing expand
+        if (!widget.userDrop) {
+          Future.delayed(delay, () => setState(() => actvColor = false));
+        }
+
+        // direct when open expand
+        else {
+          setState(() => actvColor = true);
+        }
       }),
       child: Container(
         height: height,
@@ -288,16 +407,15 @@ class _DashboardDrawerState extends State<DashboardDrawer>
           children: [
             Container(
               margin: EdgeInsets.only(right: marginRight),
-              child: Icon,
+              child: IconWidget,
             ),
             Expanded(
               child: Container(
                 padding: textPadding ?? const EdgeInsets.symmetric(vertical: 5),
-                child: Text(text,
-                    style: textstyle ?? AppText.Pops13w4_grey_9F9FB9),
+                child: Text(text, style: textStyle),
               ),
             ),
-            tail ?? Container()
+            TailWidget,
           ],
         ),
       ),

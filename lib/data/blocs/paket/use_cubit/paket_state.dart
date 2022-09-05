@@ -33,7 +33,7 @@ class PurchasePaket extends PaketState {}
 class UsablePaket extends PaketState {
   UsablePaket(this.usablePaket);
 
-  /* available paket */
+  // available paket
   List<Map> usablePaket;
 
   @override

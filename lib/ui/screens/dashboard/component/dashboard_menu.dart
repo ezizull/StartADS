@@ -61,7 +61,7 @@ class DashboardMenu extends StatelessWidget {
     );
   }
 
-  /* Row of MenuButtons */
+  // Row of MenuButtons
   Widget RowButtons({
     required double width,
     EdgeInsetsGeometry? padding,
@@ -78,7 +78,7 @@ class DashboardMenu extends StatelessWidget {
     );
   }
 
-  /* Single MenuButton */
+  // Single MenuButton
   Widget MenuButton({
     Function? onTap,
     required String textButton,
@@ -86,7 +86,7 @@ class DashboardMenu extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: () {
-        /* Handle onTap() */
+        // Handle onTap()
         onTap != null ? onTap() : null;
       },
       child: SizedBox(

@@ -35,7 +35,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        /* header section */
+        // header section
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Row(
@@ -50,10 +50,10 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
           ),
         ),
 
-        /* body section */
+        // body section
         Container(
           height: 170,
-          margin: const EdgeInsets.only(bottom: 20),
+          margin: const EdgeInsets.only(bottom: 40),
           child: ListView.builder(
             itemCount: widget.state?.scriptTerbaru.length,
             scrollDirection: Axis.horizontal,
@@ -88,7 +88,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
     );
   }
 
-  /* Content of Script Popular */
+  // Content of Script Popular
   Widget ScriptContent(int index, ScriptCubit? cubit) {
     return GestureDetector(
       onTap: (() {
@@ -109,7 +109,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
         ),
         child: Column(
           children: [
-            /* title */
+            // title
             Container(
               height: 78,
               margin: const EdgeInsets.only(bottom: 5),
@@ -145,9 +145,8 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                 ],
               ),
             ),
-            /* tagsing */
+            // tagsing
             Container(
-              height: 16,
               width: 192,
               margin: const EdgeInsets.only(bottom: 5),
               padding: const EdgeInsets.symmetric(horizontal: 6),
@@ -155,7 +154,6 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                 children: [
                   Flexible(
                     child: Container(
-                      height: 14,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 5,
                         vertical: 2,
@@ -165,13 +163,13 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                         borderRadius: BorderRadius.circular(36),
                       ),
                       child: Text(widget.state!.scriptTerbaru[index]['tags'],
-                          style: AppText.NunitoSans7w7_orange_FFA800),
+                          style: AppText.NunitoSans12w7_orange_FFA800),
                     ),
                   ),
                 ],
               ),
             ),
-            /* title */
+            // title
             // ignore: sized_box_for_whitespace
             Container(
               width: 192,
@@ -183,7 +181,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
                   Flexible(
                       child: Text(
                     widget.state!.scriptTerbaru[index]['title'],
-                    style: AppText.Inter10w6_black_212121,
+                    style: AppText.Inter12w6_black_212121,
                   )),
                 ],
               ),
@@ -194,7 +192,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
     );
   }
 
-  /* Dialog of each Content Script */
+  // Dialog of each Content Script
   Widget ScriptDialog(int index) {
     return Positioned(
       top: 5,
@@ -223,7 +221,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
     );
   }
 
-  /* Items of Script Dialog */
+  // Items of Script Dialog
   Widget ScriptDialogItem({
     required String itemText,
     required int numberItem,
@@ -233,7 +231,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
       onTap: (() {
         setState(() => widget.scriptItem = numberItem);
 
-        /* Handle onTap() */
+        // Handle onTap()
         onTap != null ? onTap() : null;
       }),
       child: Container(
@@ -245,7 +243,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
         padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
         child: Text(
           itemText,
-          style: AppText.Pops10w4_black,
+          style: AppText.Pops12w4_black,
         ),
       ),
     );

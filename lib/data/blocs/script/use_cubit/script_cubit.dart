@@ -67,13 +67,13 @@ class ScriptCubit extends Cubit<ScriptState> {
         scriptTerbaru: scriptTerbaru,
       ));
     } catch (error) {
-      /* network error */
+      // network error
       if (error is NetworkException) {
         emit(ScriptFailure.network(error.toString()));
         return;
       }
 
-      /* general error */
+      // general error
       emit(ScriptFailure.general(error.toString()));
     }
   }
@@ -82,7 +82,7 @@ class ScriptCubit extends Cubit<ScriptState> {
     try {
       debugPrint(text);
     } catch (error) {
-      /* general error */
+      // general error
       emit(ScriptFailure.general(error.toString()));
     }
   }

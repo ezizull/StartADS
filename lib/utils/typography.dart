@@ -5,8 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'colors.dart' as AppColor;
 
-// const double text7 = 7.0;
-// const double text10 = 10.0;
 // const double text12 = 12.0;
 // const double text13 = 13.0;
 // const double text15 = 15.0;
@@ -57,12 +55,27 @@ TextStyle Pops13w4_grey_9F9FB9 = GoogleFonts.poppins(
   color: AppColor.grey_9F9FB9,
 ));
 
+TextStyle Pops13w4_blue_00AEFF = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: 13,
+  fontWeight: FontWeight.w400,
+  color: AppColor.blue_00AEFF,
+));
+
 TextStyle Pops12w6h18_black_464E5F = GoogleFonts.poppins(
     textStyle: const TextStyle(
   fontSize: 12,
   height: 18 / 12,
   fontWeight: FontWeight.w600,
   color: AppColor.black_464E5F,
+));
+
+TextStyle Pops12w6h18_blue_00AEFF = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  height: 18 / 12,
+  fontWeight: FontWeight.w600,
+  color: AppColor.blue_00AEFF,
 ));
 
 TextStyle Pops18w8_black = GoogleFonts.poppins(
@@ -72,16 +85,9 @@ TextStyle Pops18w8_black = GoogleFonts.poppins(
   color: AppColor.black,
 ));
 
-TextStyle Pops10w4_black = GoogleFonts.poppins(
-    textStyle: const TextStyle(
-  fontSize: 10,
-  fontWeight: FontWeight.w400,
-  color: AppColor.black,
-));
-
 TextStyle Pops10w4_white = GoogleFonts.poppins(
     textStyle: const TextStyle(
-  fontSize: 10,
+  fontSize: 12,
   fontWeight: FontWeight.w400,
   color: AppColor.white,
 ));
@@ -151,9 +157,9 @@ TextStyle Inter13w7_white = GoogleFonts.inter(
   color: AppColor.white,
 ));
 
-TextStyle Inter10w6_black_212121 = GoogleFonts.inter(
+TextStyle Inter12w6_black_212121 = GoogleFonts.inter(
     textStyle: const TextStyle(
-  fontSize: 10,
+  fontSize: 12,
   fontWeight: FontWeight.w600,
   color: AppColor.black_212121,
 ));
@@ -180,9 +186,9 @@ TextStyle Lato14w7_black = GoogleFonts.lato(
   color: AppColor.black,
 ));
 
-TextStyle Inter10w6_black_222831 = GoogleFonts.lato(
+TextStyle Inter12w6_black_222831 = GoogleFonts.lato(
     textStyle: const TextStyle(
-  fontSize: 16,
+  fontSize: 12,
   fontWeight: FontWeight.w700,
   color: AppColor.black_222831,
 ));
@@ -247,41 +253,41 @@ TextStyle NunitoSans12w8h16_lineThrough_white = GoogleFonts.nunitoSans(
   color: AppColor.white,
 ));
 
-TextStyle NunitoSans10w6h13_black = GoogleFonts.nunitoSans(
+TextStyle NunitoSans12w6h13_black = GoogleFonts.nunitoSans(
     textStyle: const TextStyle(
-  fontSize: 10,
-  height: 13.4 / 10,
+  fontSize: 12,
+  height: 13.4 / 12,
   fontWeight: FontWeight.w600,
   color: AppColor.black,
 ));
 
-TextStyle NunitoSans10w6h13_white = GoogleFonts.nunitoSans(
+TextStyle NunitoSans12w6h13_white = GoogleFonts.nunitoSans(
     textStyle: const TextStyle(
-  fontSize: 10,
-  height: 13.4 / 10,
+  fontSize: 12,
+  height: 13.4 / 12,
   fontWeight: FontWeight.w600,
   color: AppColor.white,
 ));
 
-TextStyle NunitoSans9w7h12_blue_00AEFF = GoogleFonts.nunitoSans(
+TextStyle NunitoSans12w7h12_blue_00AEFF = GoogleFonts.nunitoSans(
     textStyle: const TextStyle(
-  fontSize: 9,
-  height: 12.4 / 9,
+  fontSize: 12,
+  height: 12.4 / 12,
   fontWeight: FontWeight.w700,
   color: AppColor.blue_00AEFF,
 ));
 
-TextStyle NunitoSans9w7h12_white = GoogleFonts.nunitoSans(
+TextStyle NunitoSans12w7h12_white = GoogleFonts.nunitoSans(
     textStyle: const TextStyle(
-  fontSize: 9,
-  height: 12.4 / 9,
+  fontSize: 12,
+  height: 12.4 / 12,
   fontWeight: FontWeight.w700,
   color: AppColor.white,
 ));
 
-TextStyle NunitoSans7w7_orange_FFA800 = GoogleFonts.nunitoSans(
+TextStyle NunitoSans12w7_orange_FFA800 = GoogleFonts.nunitoSans(
     textStyle: const TextStyle(
-  fontSize: 7,
+  fontSize: 12,
   fontWeight: FontWeight.w700,
   color: AppColor.orange_FFA800,
 ));

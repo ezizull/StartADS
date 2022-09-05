@@ -18,10 +18,10 @@ class ScriptLoaded extends ScriptState {
   const ScriptLoaded(
       {required this.scriptPopular, required this.scriptTerbaru});
 
-  /* script popular */
+  // script popular
   final List<Map> scriptPopular;
 
-  /* script terbaru */
+  // script terbaru
   final List<Map> scriptTerbaru;
 
   @override

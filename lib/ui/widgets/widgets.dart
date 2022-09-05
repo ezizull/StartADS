@@ -4,7 +4,7 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 
-/* Devider Widget */
+// Devider Widget
 class AppDivider extends StatelessWidget {
   const AppDivider({Key? key, this.height = 1, this.margin, this.color})
       : super(key: key);
@@ -23,7 +23,7 @@ class AppDivider extends StatelessWidget {
   }
 }
 
-/* DropDown Expended Motion */
+// DropDown Expended Motion
 class ExpandMotion extends StatefulWidget {
   final Widget? child;
   final bool expand;
@@ -89,7 +89,7 @@ class _ExpandMotionState extends State<ExpandMotion>
   }
 }
 
-/* PopUp Fade Motion */
+// PopUp Fade Motion
 class FadeScaleMotion extends StatefulWidget {
   final Widget? child;
   final bool popup;

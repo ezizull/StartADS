@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 
-/* Dashboard Banner */
+// Dashboard Banner
 const String DashboardBannerURL = 'assets/icons/dashboard/dashboard_banner/';
 
 final Widget dashboard_infinite = SvgPicture.asset(
@@ -23,7 +23,7 @@ final Widget dashboard_drawer_btn = SvgPicture.asset(
   semanticsLabel: 'dashboard avatar icon',
 );
 
-/* Dashboard Script Popular */
+// Dashboard Script Popular
 const String DashboardScriptsURL = 'assets/icons/dashboard/dashboard_scripts/';
 
 final Widget dashboard_script_horizontal_dots = SvgPicture.asset(
@@ -37,7 +37,7 @@ final Widget dashboard_script_vertical_dots = SvgPicture.asset(
   semanticsLabel: 'dashboard script vertical dots icon',
 );
 
-/* Dashboard ADD Script */
+// Dashboard ADD Script
 const String DashboardAddScriptURL =
     'assets/icons/dashboard/dashboard_add_script/';
 
@@ -52,9 +52,11 @@ final Widget dashboard_bottom_dialog_put = SvgPicture.asset(
   semanticsLabel: 'dashboard plus icon',
 );
 
-/* Dashboard Drawer */
+// Dashboard Drawer
+// Button acive, disable
 const String DashboardDrawerURL = 'assets/icons/dashboard/dashboard_drawer/';
 
+// disable drawer button
 final Widget dashboard_drawer_billing = SvgPicture.asset(
   DashboardDrawerURL + 'dashboard_drawer_billing.svg',
   semanticsLabel: 'dashboard drawer billing',
@@ -92,7 +94,54 @@ final Widget dashboard_drawer = SvgPicture.asset(
   semanticsLabel: 'dashboard drawer billing',
 );
 
-/* Package */
+// active drawer button
+final Widget dashboard_drawer_billing_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer_billing.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+final Widget dashboard_drawer_campaign_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer_campaign.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+final Widget dashboard_drawer_contact_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer_contact.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+final Widget dashboard_drawer_down_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer_down.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+final Widget dashboard_drawer_kamus_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer_kamus.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+final Widget dashboard_drawer_script_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer_script.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+final Widget dashboard_drawer_settings_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer_settings.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+final Widget dashboard_drawer_up_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer_up.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+final Widget dashboard_drawer_blue_00AEFF = SvgPicture.asset(
+  DashboardDrawerURL + 'dashboard_drawer.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'dashboard drawer billing',
+);
+
+// Package
 const String PackageURL = 'assets/icons/paket/';
 
 final Widget package_left_button = SvgPicture.asset(
@@ -100,19 +149,16 @@ final Widget package_left_button = SvgPicture.asset(
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'dashboard drawer billing',
 );
-
 final Widget haveit_now_white = SvgPicture.asset(
   PackageURL + 'haveit_now.svg',
   color: AppColor.white,
   semanticsLabel: 'dashboard drawer billing',
 );
-
 final Widget haveit_now_blue_00AEFF = SvgPicture.asset(
   PackageURL + 'haveit_now.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'dashboard drawer billing',
 );
-
 final Widget tick_banner = SvgPicture.asset(
   PackageURL + 'tick_banner.svg',
   color: AppColor.blue_00AEFF,

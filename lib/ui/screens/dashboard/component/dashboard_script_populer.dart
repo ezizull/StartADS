@@ -35,7 +35,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        /* header section */
+        // header section
         Container(
           margin: const EdgeInsets.symmetric(
             horizontal: 20,
@@ -59,7 +59,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
           ),
         ),
 
-        /* body section */
+        // body section
         Container(
           height: 125,
           margin: const EdgeInsets.only(bottom: 20),
@@ -92,7 +92,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
     );
   }
 
-  /* Content of Script Popular */
+  // Content of Script Popular
   Widget ScriptContent(int index, ScriptCubit? cubit) {
     return GestureDetector(
       onTap: (() {
@@ -116,7 +116,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
         ),
         child: Column(
           children: [
-            /* title */
+            // title
             Container(
               margin: const EdgeInsets.only(bottom: 5),
               child: Row(
@@ -146,7 +146,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
                 ],
               ),
             ),
-            /* greeting */
+            // greeting
             Container(
               height: 18,
               width: 192,
@@ -161,7 +161,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
                 ],
               ),
             ),
-            /* body */
+            // body
             // ignore: sized_box_for_whitespace
             Container(
               width: 192,
@@ -182,7 +182,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
     );
   }
 
-  /* Dialog of each Content Script */
+  // Dialog of each Content Script
   Widget ScriptDialog(int index) {
     return Positioned(
       top: 5,
@@ -207,7 +207,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
     );
   }
 
-  /* Items of Script Dialog */
+  // Items of Script Dialog
   Widget ScriptDialogItem({
     required String itemText,
     required int numberItem,
@@ -217,7 +217,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
       onTap: (() {
         setState(() => widget.scriptItem = numberItem);
 
-        /* Handle onTap() */
+        // Handle onTap()
         onTap != null ? onTap() : null;
       }),
       child: Container(
@@ -229,7 +229,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
         padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
         child: Text(
           itemText,
-          style: AppText.Pops10w4_black,
+          style: AppText.Pops12w4_black,
         ),
       ),
     );

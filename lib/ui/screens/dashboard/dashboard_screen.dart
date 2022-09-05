@@ -72,7 +72,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               listenWhen: (previous, current) => previous != current,
               listener: (context, state) async {
                 if (state is ExpiredPaket) {
-                  /*  handle */
+                  //  handle
                   ExpiredPaketDialog(context); // comment to skip
                 }
               }),
@@ -90,15 +90,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   drawer: DashboardDrawer(),
                   body: Stack(
                     children: [
-                      /* dashboard banner */
+                      // dashboard banner
                       DashboardBanner(
                         onTapDrawer: (() {
-                          debugPrint('Avatar dashboard on click');
+                          // debugPrint('Avatar dashboard on click');
                           _key.currentState!.openDrawer(); // Open Drawer
                         }),
                       ),
 
-                      /* dashboard component */
+                      // dashboard component
                       DashboardComponent(
                         cubit: scriptCubit,
                         state: state,
@@ -122,7 +122,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /* Dialog when Expired Paket */
+  // Dialog when Expired Paket
   Future<dynamic> ExpiredPaketDialog(BuildContext context) {
     double swidth = MediaQuery.of(context).size.width;
     double sheight = MediaQuery.of(context).size.height;
@@ -131,7 +131,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       context: context,
       builder: (_) => BlocProvider.value(
         value: paketCubit,
-        /*  remove GestureDetector to SHOULD SUBSCRIBE first */
+        //  remove GestureDetector to SHOULD SUBSCRIBE first
         child: GestureDetector(
           onTap: (() => Navigator.pop(context, true)), // remove GestureDetector
           child: Scaffold(
@@ -196,7 +196,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /* Dashboard Component */
+  // Dashboard Component
   Widget DashboardComponent({
     required ScriptLoaded state,
     required ScriptCubit cubit,
@@ -219,7 +219,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             Column(
               children: [
-                /* component of dashboard */
+                // component of dashboard
                 const DashboardMenu(),
                 const AppDivider(),
                 DashboardScriptPopular(state: state, cubit: cubit),
@@ -232,7 +232,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /* 1 : Add Script Button */
+  // 1 : Add Script Button
   Widget AddScriptButton() {
     return FloatingActionButton(
       onPressed: (() => showModalBottomSheet(
@@ -242,7 +242,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             builder: (BuildContext context) {
               double sheight = MediaQuery.of(context).size.height;
 
-              /* Add Script Dialog */
+              // Add Script Dialog
               return AddScriptDialog(height: sheight * 0.35);
             },
           )),
@@ -254,7 +254,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /* 2 : Add Script Dialog */
+  // 2 : Add Script Dialog
   Container AddScriptDialog({double? height}) {
     return Container(
       height: height,
@@ -275,11 +275,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Pilih Script untuk dibuat',
-                  style: AppText.Inter10w6_black_222831),
+                  style: AppText.Inter12w6_black_222831),
               SizedBox(
                 height: 153,
                 child: Column(children: [
-                  /* Buat Script */
+                  // Buat Script
                   ScriptToCreated(
                     text: 'Buat Script',
                     action: () => (debugPrint('clicked: Buat Script')),
@@ -288,7 +288,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     bot: true,
                   ),
 
-                  /* Buat Script Campaign */
+                  // Buat Script Campaign
                   ScriptToCreated(
                     text: 'Buat Script Campaign',
                     action: () => (debugPrint('clicked: Buat Script Campaign')),
@@ -296,7 +296,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     bot: true,
                   ),
 
-                  /* Buat Campaign */
+                  // Buat Campaign
                   ScriptToCreated(
                     text: 'Buat Campaign',
                     action: () => (debugPrint('clicked: Buat Campaign')),
@@ -312,7 +312,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /* 3 : Script To Be Created */
+  // 3 : Script To Be Created
   Widget ScriptToCreated({
     required String text,
     required String image,

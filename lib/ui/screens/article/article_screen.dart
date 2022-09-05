@@ -192,7 +192,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
                       Text(
                         article.body,
                         textAlign: TextAlign.justify,
-                        style: AppText.Pops10w4_black,
+                        style: AppText.Pops12w4_black,
                       )
                     ],
                   ),

@@ -2,8 +2,8 @@
 
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
+import 'package:Scriptmatic/utils/transitions.dart';
 import 'package:flutter/material.dart';
-import 'package:Scriptmatic/ui/widgets/widgets.dart';
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;

@@ -94,9 +94,11 @@ flutter:
     # Package Icons
     - assets/icons/paket/
 
+    # Drawer Icons
+    - assets/icons/drawer/
+
     # Dashboard Icons
     - assets/icons/dashboard/
-    - assets/icons/dashboard/dashboard_drawer/
     - assets/icons/dashboard/dashboard_add_script/
     - assets/icons/dashboard/dashboard_banner/
     - assets/icons/dashboard/dashboard_menu/

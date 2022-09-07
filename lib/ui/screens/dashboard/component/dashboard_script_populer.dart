@@ -2,8 +2,8 @@
 
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
+import 'package:Scriptmatic/utils/transitions.dart';
 import 'package:flutter/material.dart';
-import 'package:Scriptmatic/ui/widgets/widgets.dart';
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;
@@ -163,17 +163,18 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
             ),
             // body
             // ignore: sized_box_for_whitespace
-            Container(
-              width: 192,
-              height: 30,
-              child: Column(
-                children: [
-                  Flexible(
-                      child: Text(
-                    widget.state!.scriptPopular[index]['body'],
-                    style: AppText.Pops10w4_white,
-                  )),
-                ],
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 5),
+                child: Column(
+                  children: [
+                    Flexible(
+                        child: Text(
+                      widget.state!.scriptPopular[index]['body'],
+                      style: AppText.Pops10w4_white,
+                    )),
+                  ],
+                ),
               ),
             )
           ],

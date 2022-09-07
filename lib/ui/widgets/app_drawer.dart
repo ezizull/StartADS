@@ -2,18 +2,19 @@
 
 import 'dart:async';
 
+import 'package:Scriptmatic/ui/widgets/app_driver.dart';
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:Scriptmatic/ui/screens/article/article_screen.dart';
-import 'package:Scriptmatic/ui/widgets/widgets.dart';
+import 'package:Scriptmatic/utils/transitions.dart';
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;
 import 'package:Scriptmatic/utils/images.dart' as AppImage;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
-class DashboardDrawer extends StatefulWidget {
-  DashboardDrawer({
+class AppDrawer extends StatefulWidget {
+  AppDrawer({
     Key? key,
     this.scriptDrop = false,
     this.contactDrop = false,
@@ -27,11 +28,11 @@ class DashboardDrawer extends StatefulWidget {
   String activeBtn;
 
   @override
-  State<DashboardDrawer> createState() => _DashboardDrawerState();
+  State<AppDrawer> createState() => _AppDrawerState();
 }
 
-class _DashboardDrawerState extends State<DashboardDrawer>
-    with TickerProviderStateMixin<DashboardDrawer> {
+class _AppDrawerState extends State<AppDrawer>
+    with TickerProviderStateMixin<AppDrawer> {
   // delay duaration before change color
   Duration delay = const Duration(milliseconds: 800);
 
@@ -41,10 +42,9 @@ class _DashboardDrawerState extends State<DashboardDrawer>
   // return list dropped items
   bool dropActive(List<dynamic> listDropItems) {
     for (var item in listDropItems) {
-      if (item == widget.activeBtn) {
-        return true;
-      }
+      if (item == widget.activeBtn) return true;
     }
+
     return false;
   }
 
@@ -74,9 +74,7 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 dropped: widget.userDrop,
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 margin: const EdgeInsets.only(left: 54),
-                children: [
-                  DroppedItems(text: UserList[0]),
-                ]),
+                children: UserList.map((e) => DroppedItems(text: e)).toList()),
 
             // divider line
             const AppDivider(
@@ -91,8 +89,8 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 // Dashboard
                 DrawerChild(
                   text: 'Dashboard',
-                  activeIcon: AppIcon.dashboard_drawer_blue_00AEFF,
-                  disableIcon: AppIcon.dashboard_drawer,
+                  activeIcon: AppIcon.drawer_dashboard_blue_00AEFF,
+                  disableIcon: AppIcon.drawer_dashboard,
                   onTap: (() {
                     setState(() => widget.activeBtn = 'Dashboard');
                   }),
@@ -103,8 +101,8 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                   text: 'Script',
                   activeParam: widget.scriptDrop,
                   listDropped: ScriptList,
-                  activeIcon: AppIcon.dashboard_drawer_script_blue_00AEFF,
-                  disableIcon: AppIcon.dashboard_drawer_script,
+                  activeIcon: AppIcon.drawer_script_blue_00AEFF,
+                  disableIcon: AppIcon.drawer_script,
                   onTap: (() {
                     setState(() => widget.scriptDrop = !widget.scriptDrop);
                   }),
@@ -113,17 +111,16 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 ListDroppedItems(
                   dropped: widget.scriptDrop,
                   margin: const EdgeInsets.only(left: 40, bottom: 30),
-                  children: [
-                    DroppedItems(text: ScriptList[0]),
-                    DroppedItems(text: ScriptList[1]),
-                  ],
+                  children: ScriptList.map((e) {
+                    return DroppedItems(text: e);
+                  }).toList(),
                 ),
 
                 // Kamus CS
                 DrawerChild(
                   text: 'Kamus CS',
-                  disableIcon: AppIcon.dashboard_drawer_kamus,
-                  activeIcon: AppIcon.dashboard_drawer_kamus_blue_00AEFF,
+                  disableIcon: AppIcon.drawer_kamus,
+                  activeIcon: AppIcon.drawer_kamus_blue_00AEFF,
                   onTap: (() {
                     setState(() => widget.activeBtn = 'Kamus CS');
                   }),
@@ -134,8 +131,8 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                   text: 'Contact Management',
                   activeParam: widget.contactDrop,
                   listDropped: ContactList,
-                  activeIcon: AppIcon.dashboard_drawer_contact_blue_00AEFF,
-                  disableIcon: AppIcon.dashboard_drawer_contact,
+                  activeIcon: AppIcon.drawer_contact_blue_00AEFF,
+                  disableIcon: AppIcon.drawer_contact,
                   onTap: (() {
                     setState(() => widget.contactDrop = !widget.contactDrop);
                   }),
@@ -144,17 +141,16 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 ListDroppedItems(
                   dropped: widget.contactDrop,
                   margin: const EdgeInsets.only(left: 40, bottom: 30),
-                  children: [
-                    DroppedItems(text: ContactList[0]),
-                    DroppedItems(text: ContactList[1]),
-                  ],
+                  children: ContactList.map((e) {
+                    return DroppedItems(text: e);
+                  }).toList(),
                 ),
 
                 // Campaign
                 DrawerChild(
                   text: 'Campaign',
-                  activeIcon: AppIcon.dashboard_drawer_campaign_blue_00AEFF,
-                  disableIcon: AppIcon.dashboard_drawer_campaign,
+                  activeIcon: AppIcon.drawer_campaign_blue_00AEFF,
+                  disableIcon: AppIcon.drawer_campaign,
                   onTap: (() {
                     setState(() => widget.activeBtn = 'Campaign');
                   }),
@@ -163,18 +159,28 @@ class _DashboardDrawerState extends State<DashboardDrawer>
                 // Billing
                 DrawerChild(
                   text: 'Billing',
-                  activeIcon: AppIcon.dashboard_drawer_billing_blue_00AEFF,
-                  disableIcon: AppIcon.dashboard_drawer_billing,
+                  activeIcon: AppIcon.drawer_billing_blue_00AEFF,
+                  disableIcon: AppIcon.drawer_billing,
                   onTap: (() {
                     setState(() => widget.activeBtn = 'Billing');
+                  }),
+                ),
+
+                // Rotate
+                DrawerChild(
+                  text: 'Rotate CS',
+                  activeIcon: AppIcon.drawer_rotate_blue_00AEFF,
+                  disableIcon: AppIcon.drawer_rotate,
+                  onTap: (() {
+                    setState(() => widget.activeBtn = 'Rotate CS');
                   }),
                 ),
 
                 // Settings
                 DrawerChild(
                   text: 'Settings',
-                  activeIcon: AppIcon.dashboard_drawer_settings_blue_00AEFF,
-                  disableIcon: AppIcon.dashboard_drawer_settings,
+                  activeIcon: AppIcon.drawer_settings_blue_00AEFF,
+                  disableIcon: AppIcon.drawer_settings,
                   onTap: (() {
                     setState(() => widget.activeBtn = 'Settings');
                   }),
@@ -278,11 +284,15 @@ class _DashboardDrawerState extends State<DashboardDrawer>
   // Dropped Items
   Widget DroppedItems({
     String text = '',
+    double height = 31,
     double spacing = 10,
     TextStyle? dotstyle,
     TextStyle? textstyle,
     Function? onTap,
   }) {
+    // screen width
+    double swidth = MediaQuery.of(context).size.width;
+
     // dotStyle
     var dotStyle = dotstyle ??
         (widget.activeBtn == text
@@ -303,10 +313,16 @@ class _DashboardDrawerState extends State<DashboardDrawer>
         // Handle onTap()
         onTap != null ? onTap() : null;
       }),
-      child: Wrap(direction: Axis.horizontal, spacing: spacing, children: [
-        Text('•', style: dotStyle),
-        Text(text, style: textStyle),
-      ]),
+      child: Container(
+        color: AppColor.transparent,
+        height: height,
+        width: swidth,
+        alignment: Alignment.centerLeft,
+        child: Wrap(direction: Axis.horizontal, spacing: spacing, children: [
+          Text('•', style: dotStyle),
+          Text(text, style: textStyle),
+        ]),
+      ),
     );
   }
 
@@ -319,12 +335,12 @@ class _DashboardDrawerState extends State<DashboardDrawer>
   }) {
     // condition
     var cond = (activeParam && listDropped.isNotEmpty && dropActive(listDropped)
-        ? AppIcon.dashboard_drawer_up_blue_00AEFF
+        ? AppIcon.drawer_up_blue_00AEFF
         : activeParam
-            ? AppIcon.dashboard_drawer_up
+            ? AppIcon.drawer_up
             : !activeParam && listDropped.isNotEmpty && dropActive(listDropped)
-                ? AppIcon.dashboard_drawer_down_blue_00AEFF
-                : AppIcon.dashboard_drawer_down);
+                ? AppIcon.drawer_down_blue_00AEFF
+                : AppIcon.drawer_down);
 
     return Container(
       color: AppColor.transparent,

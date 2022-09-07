@@ -52,93 +52,102 @@ final Widget dashboard_bottom_dialog_put = SvgPicture.asset(
   semanticsLabel: 'dashboard plus icon',
 );
 
-// Dashboard Drawer
+// App Drawer
 // Button acive, disable
-const String DashboardDrawerURL = 'assets/icons/dashboard/dashboard_drawer/';
+const String AppDrawerURL = 'assets/icons/drawer/';
 
 // disable drawer button
-final Widget dashboard_drawer_billing = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_billing.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_billing = SvgPicture.asset(
+  AppDrawerURL + 'drawer_billing.svg',
+  semanticsLabel: 'drawer billing',
 );
-final Widget dashboard_drawer_campaign = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_campaign.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_campaign = SvgPicture.asset(
+  AppDrawerURL + 'drawer_campaign.svg',
+  semanticsLabel: 'drawer campaign',
 );
-final Widget dashboard_drawer_contact = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_contact.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_contact = SvgPicture.asset(
+  AppDrawerURL + 'drawer_contact.svg',
+  semanticsLabel: 'drawer contact',
 );
-final Widget dashboard_drawer_down = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_down.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_down = SvgPicture.asset(
+  AppDrawerURL + 'drawer_down.svg',
+  semanticsLabel: 'drawer down',
 );
-final Widget dashboard_drawer_kamus = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_kamus.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_kamus = SvgPicture.asset(
+  AppDrawerURL + 'drawer_kamus.svg',
+  semanticsLabel: 'drawer kamus',
 );
-final Widget dashboard_drawer_script = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_script.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_script = SvgPicture.asset(
+  AppDrawerURL + 'drawer_script.svg',
+  semanticsLabel: 'drawer script',
 );
-final Widget dashboard_drawer_settings = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_settings.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_settings = SvgPicture.asset(
+  AppDrawerURL + 'drawer_settings.svg',
+  semanticsLabel: 'drawer settings',
 );
-final Widget dashboard_drawer_up = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_up.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_up = SvgPicture.asset(
+  AppDrawerURL + 'drawer_up.svg',
+  semanticsLabel: 'drawer up btn',
 );
-final Widget dashboard_drawer = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer.svg',
-  semanticsLabel: 'dashboard drawer billing',
+final Widget drawer_dashboard = SvgPicture.asset(
+  AppDrawerURL + 'drawer_dashboard.svg',
+  semanticsLabel: 'drawer dashboard',
+);
+final Widget drawer_rotate = SvgPicture.asset(
+  AppDrawerURL + 'drawer_rotate.svg',
+  semanticsLabel: 'drawer rotate',
 );
 
 // active drawer button
-final Widget dashboard_drawer_billing_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_billing.svg',
+final Widget drawer_billing_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_billing.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer billing active',
 );
-final Widget dashboard_drawer_campaign_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_campaign.svg',
+final Widget drawer_campaign_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_campaign.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer campaign active',
 );
-final Widget dashboard_drawer_contact_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_contact.svg',
+final Widget drawer_contact_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_contact.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer contact active',
 );
-final Widget dashboard_drawer_down_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_down.svg',
+final Widget drawer_down_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_down.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer down active',
 );
-final Widget dashboard_drawer_kamus_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_kamus.svg',
+final Widget drawer_kamus_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_kamus.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer kamus active',
 );
-final Widget dashboard_drawer_script_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_script.svg',
+final Widget drawer_script_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_script.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer script active',
 );
-final Widget dashboard_drawer_settings_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_settings.svg',
+final Widget drawer_settings_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_settings.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer settings active',
 );
-final Widget dashboard_drawer_up_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer_up.svg',
+final Widget drawer_up_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_up.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer up btn active',
 );
-final Widget dashboard_drawer_blue_00AEFF = SvgPicture.asset(
-  DashboardDrawerURL + 'dashboard_drawer.svg',
+final Widget drawer_dashboard_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_dashboard.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'drawer dashboard active',
+);
+final Widget drawer_rotate_blue_00AEFF = SvgPicture.asset(
+  AppDrawerURL + 'drawer_rotate.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'drawer rotate active',
 );
 
 // Package
@@ -147,20 +156,20 @@ const String PackageURL = 'assets/icons/paket/';
 final Widget package_left_button = SvgPicture.asset(
   PackageURL + 'package_left_button.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'package left btn',
 );
 final Widget haveit_now_white = SvgPicture.asset(
   PackageURL + 'haveit_now.svg',
   color: AppColor.white,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'package haveit now',
 );
 final Widget haveit_now_blue_00AEFF = SvgPicture.asset(
   PackageURL + 'haveit_now.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'package haveit now active',
 );
 final Widget tick_banner = SvgPicture.asset(
   PackageURL + 'tick_banner.svg',
   color: AppColor.blue_00AEFF,
-  semanticsLabel: 'dashboard drawer billing',
+  semanticsLabel: 'packge tick banner',
 );

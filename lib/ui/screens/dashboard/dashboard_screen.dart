@@ -7,7 +7,7 @@ import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
 import 'package:Scriptmatic/ui/screens/package/package_screen.dart';
-import 'package:Scriptmatic/ui/widgets/widgets.dart';
+import 'package:Scriptmatic/ui/widgets/app_driver.dart';
 
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
@@ -16,7 +16,7 @@ import 'package:Scriptmatic/utils/images.dart' as AppImage;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 
 import './component/dashboard_banner.dart';
-import './component/dashboard_drawer.dart';
+import '../../widgets/app_drawer.dart';
 import './component/dashboard_menu.dart';
 import './component/dashboard_script_populer.dart';
 import './component/dashboard_script_terbaru.dart';
@@ -87,7 +87,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   backgroundColor: AppColor.blue_00AEFF,
                   floatingActionButton: AddScriptButton(),
                   key: _key,
-                  drawer: DashboardDrawer(),
+                  drawer: AppDrawer(),
                   body: Stack(
                     children: [
                       // dashboard banner
@@ -255,7 +255,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   // 2 : Add Script Dialog
-  Container AddScriptDialog({double? height}) {
+  Widget AddScriptDialog({double? height}) {
     return Container(
       height: height,
       padding: const EdgeInsets.symmetric(horizontal: 25),

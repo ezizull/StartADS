@@ -1,6 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// Project imports:
 import 'package:Scriptmatic/api/api.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
 import 'package:Scriptmatic/data/repositories/article_repository.dart';

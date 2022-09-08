@@ -1,17 +1,21 @@
 // ignore_for_file: library_prefixes, unused_import, non_constant_identifier_names
 
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Project imports:
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
 import 'package:Scriptmatic/ui/screens/package/component/package_list.dart';
-
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
-import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
-import 'package:Scriptmatic/utils/typography.dart' as AppText;
-import 'package:Scriptmatic/utils/images.dart' as AppImage;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
+import 'package:Scriptmatic/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
 class PackageScreen extends StatelessWidget {
   PackageScreen({Key? key}) : super(key: key);

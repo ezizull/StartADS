@@ -1,5 +1,8 @@
+// Package imports:
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+// Project imports:
 import 'package:Scriptmatic/api/api.dart';
 import 'package:Scriptmatic/data/models/article.dart';
 import 'package:Scriptmatic/data/repositories/article_repository.dart';

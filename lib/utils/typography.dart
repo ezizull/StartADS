@@ -1,8 +1,12 @@
 // ignore_for_file: library_prefixes, constant_identifier_names, non_constant_identifier_names
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:google_fonts/google_fonts.dart';
 
+// Project imports:
 import 'colors.dart' as AppColor;
 
 // const double text12 = 12.0;

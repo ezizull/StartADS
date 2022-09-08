@@ -1,6 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:Scriptmatic/main.dart';
 
 final String BASE_URL = Config.baseUrl!;

@@ -1,7 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors
 
-import 'package:animations/animations.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:animations/animations.dart';
+
+// Project imports:
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 
 // Devider Widget

@@ -1,7 +1,12 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names, library_prefixes
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_svg/flutter_svg.dart';
+
+// Project imports:
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 
 // Dashboard Banner

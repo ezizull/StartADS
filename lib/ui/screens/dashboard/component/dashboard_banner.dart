@@ -1,11 +1,15 @@
+// Dart imports:
+import 'dart:math' as math;
 import 'dart:ui';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+
+// Project imports:
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
-import 'package:Scriptmatic/utils/typography.dart' as AppText;
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
 class DashboardBanner extends StatelessWidget {
   const DashboardBanner({

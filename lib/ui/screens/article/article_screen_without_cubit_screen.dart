@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Project imports:
 import 'package:Scriptmatic/data/blocs/article/without_cubit/article/article_bloc.dart';
 import 'package:Scriptmatic/data/models/article.dart';
 import 'package:Scriptmatic/ui/screens/article/entry_article_without_cubit_screen.dart';

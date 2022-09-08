@@ -1,7 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors
 
-import 'package:animations/animations.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:animations/animations.dart';
 
 class SharedAxisTransitionSwitcher extends StatelessWidget {
   const SharedAxisTransitionSwitcher({

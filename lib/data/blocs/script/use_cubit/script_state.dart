@@ -1,6 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
+// Package imports:
 import 'package:equatable/equatable.dart';
+
+// Project imports:
 import 'package:Scriptmatic/api/api.dart';
 
 abstract class ScriptState extends Equatable {

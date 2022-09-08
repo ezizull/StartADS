@@ -1,30 +1,25 @@
-// ignore_for_file: library_prefixes, non_constant_identifier_names, must_be_immutable, unused_element
+// ignore_for_file: library_prefixes, non_constant_identifier_names, must_be_immutable, unused_element, use_key_in_widget_constructors
 
+// Dart imports:
 import 'dart:async';
 
-import 'package:Scriptmatic/ui/widgets/app_driver.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:animations/animations.dart';
-import 'package:Scriptmatic/ui/screens/article/article_screen.dart';
-import 'package:Scriptmatic/utils/transitions.dart';
+
+// Project imports:
+import 'package:Scriptmatic/config/constant/const_drawer.dart';
+import 'package:Scriptmatic/ui/screens/dashboard/dashboard_screen.dart';
+import 'package:Scriptmatic/ui/screens/rotator_cs/rotator_screen.dart';
+import 'package:Scriptmatic/ui/widgets/app_divider.dart';
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
-import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
-import 'package:Scriptmatic/utils/typography.dart' as AppText;
-import 'package:Scriptmatic/utils/images.dart' as AppImage;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
+import 'package:Scriptmatic/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/transitions.dart';
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
 class AppDrawer extends StatefulWidget {
-  AppDrawer({
-    Key? key,
-    this.scriptDrop = false,
-    this.contactDrop = false,
-    this.userDrop = false,
-    this.activeBtn = '',
-  }) : super(key: key);
-
-  bool scriptDrop;
-  bool contactDrop;
-  bool userDrop;
+  AppDrawer(this.activeBtn);
   String activeBtn;
 
   @override
@@ -35,6 +30,11 @@ class _AppDrawerState extends State<AppDrawer>
     with TickerProviderStateMixin<AppDrawer> {
   // delay duaration before change color
   Duration delay = const Duration(milliseconds: 800);
+
+  // active button params
+  static bool scriptDrop = false;
+  static bool contactDrop = false;
+  static bool userDrop = false;
 
   // change color delay params
   bool actvColor = false;
@@ -48,146 +48,160 @@ class _AppDrawerState extends State<AppDrawer>
     return false;
   }
 
-  // list of dropped items
-  List<String> ScriptList = ['Script Chat', 'Script Campaign'];
+  @override
+  void initState() {
+    super.initState();
+  }
 
-  // list of dropped items
-  List<String> ContactList = ['Kontak Pelanggan', 'Grup Pelanggan'];
-
-  // List of dropped user
-  List<String> UserList = ['Ammed'];
+  void _onTap() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 284,
-      child: Drawer(
-        backgroundColor: AppColor.white,
-        child: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          children: [
-            // header and expanded
-            HeaderDrawer(
-              margin: const EdgeInsets.only(right: 16, left: 16, top: 25),
-            ),
-            ListDroppedItems(
-                dropped: widget.userDrop,
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                margin: const EdgeInsets.only(left: 54),
-                children: UserList.map((e) => DroppedItems(text: e)).toList()),
+    return GestureDetector(
+      onTap: _onTap,
+      child: SizedBox(
+        width: 284,
+        child: Drawer(
+          backgroundColor: AppColor.white,
+          child: ListView(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            children: [
+              // header and expanded
+              HeaderDrawer(
+                margin: const EdgeInsets.only(right: 16, left: 16, top: 25),
+              ),
+              ListDroppedItems(
+                  dropped: userDrop,
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  margin: const EdgeInsets.only(left: 54),
+                  children:
+                      UserList.map((e) => DroppedItems(text: e)).toList()),
 
-            // divider line
-            const AppDivider(
-              height: 1.5,
-              margin: EdgeInsets.symmetric(vertical: 20),
-              color: AppColor.grey_E5E5E5,
-            ),
+              // divider line
+              const AppDivider(
+                height: 1.5,
+                margin: EdgeInsets.symmetric(vertical: 20),
+                color: AppColor.grey_E5E5E5,
+              ),
 
-            // menus in drawer
-            ListDrawerChild(
-              children: [
-                // Dashboard
-                DrawerChild(
-                  text: 'Dashboard',
-                  activeIcon: AppIcon.drawer_dashboard_blue_00AEFF,
-                  disableIcon: AppIcon.drawer_dashboard,
-                  onTap: (() {
-                    setState(() => widget.activeBtn = 'Dashboard');
-                  }),
-                ),
+              // menus in drawer
+              ListDrawerChild(
+                children: [
+                  // Dashboard
+                  DrawerChild(
+                    text: Dashboard,
+                    activeIcon: AppIcon.drawer_dashboard_blue_00AEFF,
+                    disableIcon: AppIcon.drawer_dashboard,
+                    onTap: (() {
+                      setState(() => widget.activeBtn = Dashboard);
+                      AppExt.pushScreen(
+                        context,
+                        const DashboardScreen(),
+                        AppExt.RouteTransition.fade,
+                      );
+                    }),
+                  ),
 
-                // Script
-                DrawerChild(
-                  text: 'Script',
-                  activeParam: widget.scriptDrop,
-                  listDropped: ScriptList,
-                  activeIcon: AppIcon.drawer_script_blue_00AEFF,
-                  disableIcon: AppIcon.drawer_script,
-                  onTap: (() {
-                    setState(() => widget.scriptDrop = !widget.scriptDrop);
-                  }),
-                ),
-                // Script List
-                ListDroppedItems(
-                  dropped: widget.scriptDrop,
-                  margin: const EdgeInsets.only(left: 40, bottom: 30),
-                  children: ScriptList.map((e) {
-                    return DroppedItems(text: e);
-                  }).toList(),
-                ),
+                  // Script
+                  DrawerChild(
+                    text: Script,
+                    activeParam: scriptDrop,
+                    listDropped: ScriptList,
+                    activeIcon: AppIcon.drawer_script_blue_00AEFF,
+                    disableIcon: AppIcon.drawer_script,
+                    onTap: (() {
+                      setState(() => scriptDrop = !scriptDrop);
+                    }),
+                  ),
+                  // Script List
+                  ListDroppedItems(
+                    dropped: scriptDrop,
+                    margin: const EdgeInsets.only(left: 40, bottom: 30),
+                    children: ScriptList.map((e) {
+                      return DroppedItems(text: e);
+                    }).toList(),
+                  ),
 
-                // Kamus CS
-                DrawerChild(
-                  text: 'Kamus CS',
-                  disableIcon: AppIcon.drawer_kamus,
-                  activeIcon: AppIcon.drawer_kamus_blue_00AEFF,
-                  onTap: (() {
-                    setState(() => widget.activeBtn = 'Kamus CS');
-                  }),
-                ),
+                  // Kamus CS
+                  DrawerChild(
+                    text: Kamus,
+                    disableIcon: AppIcon.drawer_kamus,
+                    activeIcon: AppIcon.drawer_kamus_blue_00AEFF,
+                    onTap: (() {
+                      setState(() => widget.activeBtn = Kamus);
+                    }),
+                  ),
 
-                // Contact Management
-                DrawerChild(
-                  text: 'Contact Management',
-                  activeParam: widget.contactDrop,
-                  listDropped: ContactList,
-                  activeIcon: AppIcon.drawer_contact_blue_00AEFF,
-                  disableIcon: AppIcon.drawer_contact,
-                  onTap: (() {
-                    setState(() => widget.contactDrop = !widget.contactDrop);
-                  }),
-                ),
-                // List Contact Management
-                ListDroppedItems(
-                  dropped: widget.contactDrop,
-                  margin: const EdgeInsets.only(left: 40, bottom: 30),
-                  children: ContactList.map((e) {
-                    return DroppedItems(text: e);
-                  }).toList(),
-                ),
+                  // Rotate CS
+                  DrawerChild(
+                    text: Rotator,
+                    activeIcon: AppIcon.drawer_rotate_blue_00AEFF,
+                    disableIcon: AppIcon.drawer_rotate,
+                    onTap: (() {
+                      setState(() => widget.activeBtn = Rotator);
+                      AppExt.pushScreen(
+                        context,
+                        RotatorScreen(),
+                        AppExt.RouteTransition.fade,
+                      );
+                    }),
+                  ),
 
-                // Campaign
-                DrawerChild(
-                  text: 'Campaign',
-                  activeIcon: AppIcon.drawer_campaign_blue_00AEFF,
-                  disableIcon: AppIcon.drawer_campaign,
-                  onTap: (() {
-                    setState(() => widget.activeBtn = 'Campaign');
-                  }),
-                ),
+                  // Contact Management
+                  DrawerChild(
+                    text: Contact,
+                    activeParam: contactDrop,
+                    listDropped: ContactList,
+                    activeIcon: AppIcon.drawer_contact_blue_00AEFF,
+                    disableIcon: AppIcon.drawer_contact,
+                    onTap: (() {
+                      setState(() => contactDrop = !contactDrop);
+                    }),
+                  ),
+                  // List Contact Management
+                  ListDroppedItems(
+                    dropped: contactDrop,
+                    margin: const EdgeInsets.only(left: 40, bottom: 30),
+                    children: ContactList.map((e) {
+                      return DroppedItems(text: e);
+                    }).toList(),
+                  ),
 
-                // Billing
-                DrawerChild(
-                  text: 'Billing',
-                  activeIcon: AppIcon.drawer_billing_blue_00AEFF,
-                  disableIcon: AppIcon.drawer_billing,
-                  onTap: (() {
-                    setState(() => widget.activeBtn = 'Billing');
-                  }),
-                ),
+                  // Campaign
+                  DrawerChild(
+                    text: Campaign,
+                    activeIcon: AppIcon.drawer_campaign_blue_00AEFF,
+                    disableIcon: AppIcon.drawer_campaign,
+                    onTap: (() {
+                      setState(() => widget.activeBtn = Campaign);
+                    }),
+                  ),
 
-                // Rotate
-                DrawerChild(
-                  text: 'Rotate CS',
-                  activeIcon: AppIcon.drawer_rotate_blue_00AEFF,
-                  disableIcon: AppIcon.drawer_rotate,
-                  onTap: (() {
-                    setState(() => widget.activeBtn = 'Rotate CS');
-                  }),
-                ),
+                  // Billing
+                  DrawerChild(
+                    text: Billing,
+                    activeIcon: AppIcon.drawer_billing_blue_00AEFF,
+                    disableIcon: AppIcon.drawer_billing,
+                    onTap: (() {
+                      setState(() => widget.activeBtn = Billing);
+                    }),
+                  ),
 
-                // Settings
-                DrawerChild(
-                  text: 'Settings',
-                  activeIcon: AppIcon.drawer_settings_blue_00AEFF,
-                  disableIcon: AppIcon.drawer_settings,
-                  onTap: (() {
-                    setState(() => widget.activeBtn = 'Settings');
-                  }),
-                ),
-              ],
-            )
-          ],
+                  // Settings
+                  DrawerChild(
+                    text: Settings,
+                    activeIcon: AppIcon.drawer_settings_blue_00AEFF,
+                    disableIcon: AppIcon.drawer_settings,
+                    onTap: (() {
+                      setState(() => widget.activeBtn = Settings);
+                    }),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -206,19 +220,7 @@ class _AppDrawerState extends State<AppDrawer>
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: GestureDetector(
         onTap: (() {
-          setState(() => widget.userDrop = !widget.userDrop);
-
-          /* 
-            // delay when closing expand
-            if (!widget.userDrop) {
-              Future.delayed(delay, () => setState(() => actvColor = false));
-            }
-
-            // direct when open expand
-            else {
-              setState(() => actvColor = true);
-            } 
-          */
+          setState(() => userDrop = !userDrop);
         }),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -247,7 +249,7 @@ class _AppDrawerState extends State<AppDrawer>
             // tile
             UpDownBtn(
               padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 12),
-              activeParam: widget.userDrop,
+              activeParam: userDrop,
               listDropped: UserList,
             )
           ],
@@ -406,7 +408,7 @@ class _AppDrawerState extends State<AppDrawer>
         onTap != null ? onTap() : null;
 
         // delay when closing expand
-        if (!widget.userDrop) {
+        if (!userDrop) {
           Future.delayed(delay, () => setState(() => actvColor = false));
         }
 

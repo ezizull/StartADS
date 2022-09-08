@@ -1,13 +1,16 @@
 // ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, must_be_immutable
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
-import 'package:Scriptmatic/utils/transitions.dart';
-import 'package:flutter/material.dart';
-import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
-import 'package:Scriptmatic/utils/typography.dart' as AppText;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
+import 'package:Scriptmatic/utils/transitions.dart';
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
 class DashboardScriptTerbaru extends StatefulWidget {
   int scriptItem;

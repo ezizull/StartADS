@@ -1,13 +1,19 @@
+// Dart imports:
 import 'dart:io';
 
+// Flutter imports:
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// Package imports:
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+
+// Project imports:
 import 'package:Scriptmatic/api/api.dart';
 import 'package:Scriptmatic/ui/screens/screens.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 void main() async {
   //Handling certificate_failed

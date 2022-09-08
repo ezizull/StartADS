@@ -1,6 +1,9 @@
 // ignore_for_file: must_be_immutable
 
+// Package imports:
 import 'package:equatable/equatable.dart';
+
+// Project imports:
 import 'package:Scriptmatic/api/api.dart';
 
 abstract class PaketState extends Equatable {

@@ -1,14 +1,16 @@
 // ignore_for_file: library_prefixes, non_constant_identifier_names
 
-import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
 
+// Project imports:
+import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
+import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
-import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
-import 'package:Scriptmatic/utils/typography.dart' as AppText;
-import 'package:Scriptmatic/utils/images.dart' as AppImage;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
+import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
+import 'package:Scriptmatic/utils/images.dart' as AppImage;
+import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
 class PackageList extends StatelessWidget {
   PackageList({

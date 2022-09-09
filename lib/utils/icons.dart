@@ -178,3 +178,43 @@ final Widget tick_banner = SvgPicture.asset(
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'packge tick banner',
 );
+
+// Rotator
+const String RotatorURL = 'assets/icons/rotator/';
+
+final Widget rotator_down = SvgPicture.asset(
+  RotatorURL + 'rotator_down.svg',
+  semanticsLabel: 'rotator down',
+);
+final Widget rotator_down_active = SvgPicture.asset(
+  RotatorURL + 'rotator_down.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'rotator down active',
+);
+final Widget rotator_filter = SvgPicture.asset(
+  RotatorURL + 'rotator_filter.svg',
+  semanticsLabel: 'rotator filter',
+);
+final Widget rotator_filter_active = SvgPicture.asset(
+  RotatorURL + 'rotator_filter.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'rotator filter active',
+);
+final Widget rotator_sort = SvgPicture.asset(
+  RotatorURL + 'rotator_sort.svg',
+  semanticsLabel: 'rotator sort',
+);
+final Widget rotator_sort_active = SvgPicture.asset(
+  RotatorURL + 'rotator_sort.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'rotator sort active',
+);
+final Widget rotator_add = SvgPicture.asset(
+  RotatorURL + 'rotator_add.svg',
+  semanticsLabel: 'rotator add',
+);
+final Widget rotator_add_active = SvgPicture.asset(
+  RotatorURL + 'rotator_add.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'rotator add active',
+);

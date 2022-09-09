@@ -74,6 +74,7 @@ const white_D4D6DD = Color(0xFFD4D6DD);
 const black = Color(0xFF000000);
 const black_212121 = Color(0xFF212121);
 const black_1F2024 = Color(0xFF1F2024);
+const black_2F3036 = Color(0xFF2F3036);
 const black_464E5F = Color(0xFF464E5F);
 const black_222831 = Color(0xFF222831);
 const black_272727 = Color(0xFF272727);
@@ -85,7 +86,9 @@ const black_98A6AE = Color(0xFF98A6AE);
 const grey_777C7E = Color(0xFF777C7E);
 const grey_8F9098 = Color(0xFF8F9098);
 const grey_9F9FB9 = Color(0xFF9F9FB9);
+const grey_C5C6CC = Color(0xFFC5C6CC);
 const grey_F5F4F6 = Color(0xFFF5F4F6);
+const grey_F8F9FE = Color(0xFFF8F9FE);
 const grey_E0E2E2 = Color(0xFFE0E2E2);
 const grey_E5E5E5 = Color(0xFFE5E5E5);
 

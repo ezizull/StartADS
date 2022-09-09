@@ -92,6 +92,9 @@ flutter:
     # Icons
     - assets/icons/
 
+    # Rotator Icons
+    - assets/icons/rotator/
+
     # Package Icons
     - assets/icons/paket/
 

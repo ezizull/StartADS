@@ -35,3 +35,8 @@ const paket_habis = PaketURL + "paket_habis.png";
 const wave_banner = PaketURL + "wave_banner.png";
 const line_wave_banner = PaketURL + "line_wave_banner.png";
 const man_banner = PaketURL + "man_banner.png";
+
+// Packet Langganan
+const RotatorURL = "assets/images/rotator/";
+
+const rotator_kosong = RotatorURL + "rotator_kosong.png";

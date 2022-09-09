@@ -137,9 +137,9 @@ class RotatorHeader extends StatelessWidget {
     var styleFrom = ElevatedButton.styleFrom(
       shadowColor: AppColor.transparent,
       backgroundColor: backgroundColor ?? AppColor.transparent,
-      minimumSize: const Size.fromRadius(7.6),
-      padding: padding,
       side: side,
+      padding: padding,
+      minimumSize: const Size.fromRadius(7.6),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius),
       ),

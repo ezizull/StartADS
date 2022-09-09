@@ -23,6 +23,8 @@ class RotatorScreen extends StatefulWidget {
 }
 
 class _RotatorScreenState extends State<RotatorScreen> {
+  List<Map> ListRotator = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +32,84 @@ class _RotatorScreenState extends State<RotatorScreen> {
       backgroundColor: AppColor.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          RotatorHeader(),
+        children: [
+          // Header Rotator
+          const RotatorHeader(),
+
+          // Main Rotator
+          // Empty Link Rotator
+          if (ListRotator.isEmpty) ...[
+            RotatorEmpty(),
+          ],
+
+          // Main Rotator
+          // List Link Rotator
+          if (ListRotator.isNotEmpty) ...[
+            ListView.builder(
+              itemCount: 0,
+              itemBuilder: (context, index) {
+                return Container();
+              },
+            )
+          ],
         ],
+      ),
+    );
+  }
+
+  // Rotator List Empty
+  Expanded RotatorEmpty() {
+    return Expanded(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // image
+            Container(
+              width: 152,
+              margin: const EdgeInsets.only(bottom: 34.8),
+              child: Image.asset(AppImage.rotator_kosong),
+            ),
+
+            // text
+            Container(
+              margin: const EdgeInsets.only(bottom: 16),
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 7,
+                direction: Axis.vertical,
+                children: [
+                  Text(
+                    'Link Rotator Kosong',
+                    style: AppText.Inter14w7h17_black,
+                  ),
+                  SizedBox(
+                    width: 215,
+                    child: Text(
+                      'Silahkan tambahkan link rotator terlebih dahulu',
+                      style: AppText.Inter13w4h15_black_464E5F,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // button
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                backgroundColor: AppColor.blue_00AEFF,
+                shadowColor: AppColor.transparent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4.15),
+                ),
+              ),
+              child: const Text('Tambah Link'),
+            )
+          ],
+        ),
       ),
     );
   }

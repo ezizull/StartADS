@@ -88,6 +88,9 @@ flutter:
 
     # Paket Images
     - assets/images/paket/
+
+    # Rotator Images
+    - assets/images/rotator/
     
     # Icons
     - assets/icons/

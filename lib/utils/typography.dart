@@ -178,6 +178,14 @@ TextStyle Inter13w4h15_black_464E5F = GoogleFonts.inter(
   color: AppColor.black_464E5F,
 ));
 
+TextStyle Inter13w7h15_black_2F3036 = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 13,
+  height: 15.5 / 13,
+  fontWeight: FontWeight.w700,
+  color: AppColor.black_2F3036,
+));
+
 TextStyle Inter13w7_white = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: 13,
@@ -197,6 +205,22 @@ TextStyle Inter12w4_grey_777C7E = GoogleFonts.inter(
   fontSize: 12,
   fontWeight: FontWeight.w400,
   color: AppColor.grey_777C7E,
+));
+
+TextStyle Inter12w5h12_grey_9F9FB9 = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  height: 12.5 / 12,
+  fontWeight: FontWeight.w500,
+  color: AppColor.grey_9F9FB9,
+));
+
+TextStyle Inter12w7h12_blue_3699FF = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  height: 12.5 / 12,
+  fontWeight: FontWeight.w700,
+  color: AppColor.blue_3699FF,
 ));
 
 TextStyle Inter12w4_black_1F2024 = GoogleFonts.inter(

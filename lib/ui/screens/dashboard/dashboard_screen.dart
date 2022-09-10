@@ -12,7 +12,7 @@ import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_state.dart';
-import 'package:Scriptmatic/ui/screens/package/package_screen.dart';
+import 'package:Scriptmatic/ui/screens/dashboard_pkg/package_screen.dart';
 import 'package:Scriptmatic/ui/widgets/app_divider.dart';
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;

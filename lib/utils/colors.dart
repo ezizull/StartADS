@@ -8,6 +8,7 @@ const blue_CCF2F4 = Color(0xFFCCF2F4);
 const blue_CCFCFF = Color(0xFFCCFCFF);
 const blue_00AEFF = Color(0xFF00AEFF);
 const blue_0065B7 = Color(0xFF0065B7);
+const blue_3699FF = Color(0xFF3699FF);
 
 const purple_E8A3FD = Color(0xFFE8A3FD);
 const purple_C547FF = Color(0xFFC547FF);
@@ -87,9 +88,10 @@ const grey_777C7E = Color(0xFF777C7E);
 const grey_8F9098 = Color(0xFF8F9098);
 const grey_9F9FB9 = Color(0xFF9F9FB9);
 const grey_C5C6CC = Color(0xFFC5C6CC);
+const grey_E0E2E2 = Color(0xFFE0E2E2);
 const grey_F5F4F6 = Color(0xFFF5F4F6);
 const grey_F8F9FE = Color(0xFFF8F9FE);
-const grey_E0E2E2 = Color(0xFFE0E2E2);
+const grey_F3F6F9 = Color(0xFFF3F6F9);
 const grey_E5E5E5 = Color(0xFFE5E5E5);
 
 const red_EB4F4D = Color(0xFFEB4F4D);

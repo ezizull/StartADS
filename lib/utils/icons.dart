@@ -218,3 +218,12 @@ final Widget rotator_add_active = SvgPicture.asset(
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'rotator add active',
 );
+final Widget rotator_edit = SvgPicture.asset(
+  RotatorURL + 'rotator_edit.svg',
+  semanticsLabel: 'rotator edit',
+);
+final Widget rotator_edit_active = SvgPicture.asset(
+  RotatorURL + 'rotator_edit.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'rotator edit active',
+);

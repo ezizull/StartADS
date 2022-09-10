@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // Project imports:
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
-import 'package:Scriptmatic/ui/screens/package/component/package_list.dart';
+import 'package:Scriptmatic/ui/screens/dashboard_pkg/component/package_list.dart';
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;

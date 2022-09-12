@@ -94,7 +94,7 @@ const grey_F8F9FE = Color(0xFFF8F9FE);
 const grey_F3F6F9 = Color(0xFFF3F6F9);
 const grey_E5E5E5 = Color(0xFFE5E5E5);
 
-const red_EB4F4D = Color(0xFFEB4F4D);
+const red_FF616D = Color(0xFFFF616D);
 const yellow_F3AF48 = Color(0xFFF3AF48);
 const blue_2A90EE = Color(0xFF2A90EE);
 

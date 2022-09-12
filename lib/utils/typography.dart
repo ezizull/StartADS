@@ -52,6 +52,14 @@ TextStyle Pops12w6h12_black_1F2024 = GoogleFonts.poppins(
   color: AppColor.black_1F2024,
 ));
 
+TextStyle Pops14w4h21_black_464E5F = GoogleFonts.poppins(
+    textStyle: const TextStyle(
+  fontSize: 14,
+  height: 21 / 14,
+  fontWeight: FontWeight.w400,
+  color: AppColor.black_464E5F,
+));
+
 TextStyle Pops13w4_grey_9F9FB9 = GoogleFonts.poppins(
     textStyle: const TextStyle(
   fontSize: 13,
@@ -123,6 +131,13 @@ TextStyle Inter14w4_grey_8F9098 = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w400,
+  color: AppColor.grey_8F9098,
+));
+
+TextStyle Inter14w6_grey_8F9098 = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
   color: AppColor.grey_8F9098,
 ));
 
@@ -228,6 +243,13 @@ TextStyle Inter12w4_black_1F2024 = GoogleFonts.inter(
   fontSize: 12,
   fontWeight: FontWeight.w400,
   color: AppColor.black_1F2024,
+));
+
+TextStyle Inter12w4_red_FF616D = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  fontWeight: FontWeight.w400,
+  color: AppColor.red_FF616D,
 ));
 
 // font Lato

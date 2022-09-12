@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 // Flutter imports:
+import 'package:Scriptmatic/ui/screens/rotator_cs_add/rotator_add_screen.dart';
 import 'package:Scriptmatic/ui/widgets/app_divider.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +12,16 @@ import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/images.dart' as AppImage;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
-class RotatorHeader extends StatelessWidget {
+class RotatorHeader extends StatefulWidget {
   const RotatorHeader({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<RotatorHeader> createState() => _RotatorHeaderState();
+}
+
+class _RotatorHeaderState extends State<RotatorHeader> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +35,15 @@ class RotatorHeader extends StatelessWidget {
           OptionHeader(),
 
           // Tambah Link
-          AddRotator(),
+          AddRotator(
+            onPressed: (() {
+              AppExt.pushScreen(
+                context,
+                const RotatorAddScreen(),
+                AppExt.RouteTransition.fade,
+              );
+            }),
+          ),
 
           // Divider
           const AppDivider(
@@ -154,7 +168,7 @@ class RotatorHeader extends StatelessWidget {
   }
 
   // Add Rotator
-  Widget AddRotator() {
+  Widget AddRotator({Function? onPressed}) {
     var boxDecoration = BoxDecoration(
       color: AppColor.blue_00AEFF,
       borderRadius: BorderRadius.circular(5),
@@ -163,6 +177,7 @@ class RotatorHeader extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       child: OptionBtn(
+        onPressed: onPressed,
         padding: const EdgeInsets.all(0),
         children: [
           Container(

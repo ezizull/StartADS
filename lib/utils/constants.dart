@@ -16,3 +16,21 @@ final String STORAGE_URL = "$BASE_URL/storage";
 
 /// size in milimeters
 const A4_PAPER_SIZE = Size(210, 297);
+
+// APP Drawer
+
+// list of dropped items
+const List<String> ScriptList = ['Script Chat', 'Script Campaign'];
+const List<String> ContactList = ['Kontak Pelanggan', 'Grup Pelanggan'];
+const List<String> UserList = ['Ammed'];
+
+// Text
+const String Dashboard = 'Dashboard';
+const String Script = 'Script';
+const String Kamus = 'Kamus CS';
+const String Rotator = 'Rotator CS';
+const String RotatorAdd = 'Tambah Link Rotator';
+const String Contact = 'Contact Management';
+const String Campaign = 'Campaign';
+const String Billing = 'Billing';
+const String Settings = 'Settings';

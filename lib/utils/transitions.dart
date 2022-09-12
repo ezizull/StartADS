@@ -152,8 +152,13 @@ class _ExpandMotionState extends State<ExpandMotion>
 class FadeScaleMotion extends StatefulWidget {
   final Widget? child;
   final bool popup;
-  const FadeScaleMotion({Key? key, this.popup = false, this.child})
-      : super(key: key);
+  final Alignment alignment;
+  const FadeScaleMotion({
+    Key? key,
+    this.popup = false,
+    this.child,
+    this.alignment = Alignment.center,
+  }) : super(key: key);
 
   @override
   State<FadeScaleMotion> createState() => _FadeScaleMotionState();
@@ -194,7 +199,7 @@ class _FadeScaleMotionState extends State<FadeScaleMotion>
     return ScaleTransition(
       scale: Tween(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(parent: fadeController, curve: Curves.easeOut)),
-      alignment: Alignment.topRight,
+      alignment: widget.alignment,
       child: FadeTransition(
           opacity:
               CurvedAnimation(parent: fadeController, curve: Curves.easeOut),

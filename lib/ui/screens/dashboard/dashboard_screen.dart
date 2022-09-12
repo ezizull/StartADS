@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
-import 'package:Scriptmatic/config/constant/const_drawer.dart';
+import 'package:Scriptmatic/utils/constants.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_cubit.dart';
 import 'package:Scriptmatic/data/blocs/paket/use_cubit/paket_state.dart';
 import 'package:Scriptmatic/data/blocs/script/use_cubit/script_cubit.dart';

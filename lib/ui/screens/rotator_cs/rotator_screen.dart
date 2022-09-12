@@ -1,11 +1,11 @@
-// ignore_for_file: library_prefixes, unused_import, non_constant_identifier_names
+// ignore_for_file: library_prefixes, unused_import, non_constant_identifier_names, must_be_immutable
 
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // Project imports:
-import 'package:Scriptmatic/config/constant/const_drawer.dart';
+import 'package:Scriptmatic/utils/constants.dart';
 import 'package:Scriptmatic/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:Scriptmatic/ui/screens/rotator_cs/component/rotator_header.dart';
 import 'package:Scriptmatic/ui/widgets/app_drawer.dart';
@@ -15,14 +15,9 @@ import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/images.dart' as AppImage;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
-class RotatorScreen extends StatefulWidget {
-  const RotatorScreen({Key? key}) : super(key: key);
+class RotatorScreen extends StatelessWidget {
+  RotatorScreen({Key? key}) : super(key: key);
 
-  @override
-  State<RotatorScreen> createState() => _RotatorScreenState();
-}
-
-class _RotatorScreenState extends State<RotatorScreen> {
   List<Map> ListRotator = [
     {
       'title': 'Gamis Aqila',

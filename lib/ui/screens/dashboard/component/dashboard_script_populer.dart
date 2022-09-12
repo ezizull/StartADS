@@ -192,6 +192,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
       top: 5,
       right: 5,
       child: FadeScaleMotion(
+        alignment: Alignment.topRight,
         popup: widget.showDialog && scriptIndex == index,
         child: Container(
           width: 124,

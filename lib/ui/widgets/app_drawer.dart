@@ -7,7 +7,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:Scriptmatic/config/constant/const_drawer.dart';
+import 'package:Scriptmatic/utils/constants.dart';
 import 'package:Scriptmatic/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:Scriptmatic/ui/screens/rotator_cs/rotator_screen.dart';
 import 'package:Scriptmatic/ui/widgets/app_divider.dart';

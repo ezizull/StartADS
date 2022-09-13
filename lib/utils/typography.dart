@@ -274,6 +274,13 @@ TextStyle Inter12w6_black_222831 = GoogleFonts.lato(
   color: AppColor.black_222831,
 ));
 
+TextStyle Inter12w6_white = GoogleFonts.lato(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  fontWeight: FontWeight.w700,
+  color: AppColor.white,
+));
+
 // font Nunito
 
 TextStyle Nunito13w6_black = GoogleFonts.nunito(
@@ -340,6 +347,22 @@ TextStyle NunitoSans12w6h13_black = GoogleFonts.nunitoSans(
   height: 13.4 / 12,
   fontWeight: FontWeight.w600,
   color: AppColor.black,
+));
+
+TextStyle NunitoSans12w6h16_black_464E5F = GoogleFonts.nunitoSans(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  height: 16.4 / 12,
+  fontWeight: FontWeight.w600,
+  color: AppColor.black_464E5F,
+));
+
+TextStyle NunitoSans12w4h14_black_464E5F = GoogleFonts.nunitoSans(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  height: 14.4 / 12,
+  fontWeight: FontWeight.w400,
+  color: AppColor.black_464E5F,
 ));
 
 TextStyle NunitoSans12w6h13_white = GoogleFonts.nunitoSans(

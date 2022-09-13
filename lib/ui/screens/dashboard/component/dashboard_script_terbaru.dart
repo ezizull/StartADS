@@ -207,9 +207,7 @@ class _DashboardScriptTerbaruState extends State<DashboardScriptTerbaru> {
           width: 124,
           decoration: const BoxDecoration(
             color: AppColor.white,
-            boxShadow: [
-              BoxShadow(color: AppColor.black_272727),
-            ],
+            boxShadow: [BoxShadow(color: AppColor.black_272727)],
           ),
           padding: const EdgeInsets.all(10),
           child: Wrap(

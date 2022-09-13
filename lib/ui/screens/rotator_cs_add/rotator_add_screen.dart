@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
 
 import 'package:Scriptmatic/utils/constants.dart';
 import 'package:Scriptmatic/utils/transitions.dart';
@@ -19,8 +19,16 @@ class RotatorAddScreen extends StatefulWidget {
 }
 
 class _RotatorAddScreenState extends State<RotatorAddScreen> {
-  late TextEditingController customCtrl;
-  String? pesan;
+  // variable
+  String? isiPesan;
+
+  String? produk;
+  String? track;
+
+  String showDialog = '';
+
+  final _customURL = TextEditingController();
+  String? customURL;
 
   List<String> ListProduct = [
     'Gamis Aqila1',
@@ -30,76 +38,143 @@ class _RotatorAddScreenState extends State<RotatorAddScreen> {
     'Gamis Aqila5'
   ];
 
+  List<Map> listCS = [
+    {
+      'title': 'Susi Susanti',
+      'phone': '082150784267',
+      'photo': 'rotator_susi_susanti.png',
+    },
+    {
+      'title': 'Dwi Listya',
+      'phone': '082150784267',
+      'photo': 'rotator_dwi_listya.png',
+    },
+    {
+      'title': 'Savannah Nguyen',
+      'phone': '082150784267',
+      'photo': 'rotator_savannah_nguyen.png',
+    },
+  ];
+
+  @override
+  void dispose() {
+    _customURL.dispose();
+    super.dispose();
+  }
+
+  void onTap() {
+    FocusScope.of(context).requestFocus(new FocusNode());
+    setState(() => showDialog = '');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: RotatorAppBar(context),
-      backgroundColor: AppColor.white,
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        margin: const EdgeInsets.only(top: 35),
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          children: [
-            //
-            AddLink(
-              title: 'Nama Produk',
-              textBtn: 'Pilih Produk',
-              sectionMargin: const EdgeInsets.only(bottom: 16),
-              textBtnStyle: AppText.Inter14w4_grey_8F9098,
-              tile: AppIcon.drawer_down,
-            ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Scaffold(
+        appBar: RotatorAppBar(context),
+        backgroundColor: AppColor.white,
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          margin: const EdgeInsets.only(top: 35),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  // Pilih Produk
+                  TitleText('Nama Produk'),
+                  Button(
+                    textBtn: produk ?? 'Pilih Produk',
+                    tile: AppIcon.drawer_down,
+                    height: 48,
+                    textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                    margin: const EdgeInsets.only(bottom: 16),
+                    onPressed: () => setState(() => showDialog = 'Produk'),
+                  ),
 
-            RadioRotatorList(children: [
-              RadioRotator(
-                value: 'Custom Script',
-                groupValue: pesan,
-                spacing: 8,
-                width: 150,
+                  // Isi Pesan
+                  RowButtons(
+                    title: 'Isi Pesan',
+                    margin: const EdgeInsets.only(bottom: 16),
+                    children: [
+                      RadioBtn(
+                        value: 'Custom Script',
+                        groupValue: isiPesan,
+                        spacing: 8,
+                        width: 150,
+                      ),
+                      RadioBtn(
+                        value: 'Pilih Script',
+                        groupValue: isiPesan,
+                        spacing: 8,
+                        width: 120,
+                      ),
+                    ],
+                  ),
+
+                  // Custom URL
+                  TitleText('Custom URL'),
+                  InputRotator(
+                    hintText: 'Masukan URL (cth: Gamis Aqila)',
+                    controller: _customURL,
+                    onChanged: (value) => setState(() => customURL = value),
+                  ),
+                  ErrorMsg(
+                    'Wajib Diisi!',
+                    margin: const EdgeInsets.only(bottom: 16),
+                  ),
+
+                  // Pilih Tracking Option
+                  TitleText('Tracking Option'),
+                  Button(
+                    textBtn: track ?? 'Pilih Tracking Option',
+                    height: 48,
+                    tile: AppIcon.drawer_down,
+                    margin: const EdgeInsets.only(bottom: 16),
+                    textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                    onPressed: () => setState(() => showDialog = 'Tracking'),
+                  ),
+
+                  // Costumer Service
+                  TitleText('Customer Service'),
+                  Button(
+                    textBtn: 'Pilih Customer Service',
+                    onPressed: () => BottomModal(context),
+                    height: 48,
+                    textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                  ),
+
+                  // spacing
+                  const Expanded(child: SizedBox()),
+
+                  // Simpan
+                  Button(
+                    btnTextAlgn: Alignment.center,
+                    textBtn: 'Simpan',
+                    borderWidth: 1.5,
+                    height: 48,
+                    textBtnStyle: AppText.Inter14w6_grey_8F9098,
+                    margin: const EdgeInsets.only(bottom: 34),
+                  ),
+                ],
               ),
-              RadioRotator(
-                value: 'Pilih Script',
-                groupValue: pesan,
-                spacing: 8,
-                width: 120,
+
+              // Tambah Produk Dialog
+              RotatorDialog(popup: showDialog == Produk, top: 23, children: [
+                ...ListProduct.map((value) => RotatorDialogItem(value))
+              ]),
+
+              // Pilih Tracking Option
+              RotatorDialog(
+                popup: showDialog == Track,
+                top: customURL == '' ? 289 : 274,
+                children: [
+                  ...ListProduct.map((value) => RotatorDialogItem(value))
+                ],
               ),
-            ]),
-
-            // Custom URL
-            InputRotator(
-              text: 'Custom URL',
-              sectionMargin: const EdgeInsets.only(bottom: 16),
-            ),
-
-            //
-            AddLink(
-              title: 'Tracking Option',
-              textBtn: 'Pilih Tracking Option',
-              sectionMargin: const EdgeInsets.only(bottom: 16),
-              textBtnStyle: AppText.Inter14w4_grey_8F9098,
-              tile: AppIcon.drawer_down,
-            ),
-
-            // Costumer Service
-            AddLink(
-              title: 'Customer Service',
-              textBtn: 'Pilih Customer Service',
-              sectionMargin: const EdgeInsets.only(bottom: 16),
-              textBtnStyle: AppText.Inter14w4_grey_8F9098,
-            ),
-
-            // spacing
-            const Expanded(child: SizedBox()),
-
-            //
-            AddLink(
-              btnTextAlgn: Alignment.center,
-              textBtn: 'Simpan',
-              borderWidth: 1.5,
-              sectionMargin: const EdgeInsets.only(bottom: 34),
-              textBtnStyle: AppText.Inter14w6_grey_8F9098,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -126,31 +201,94 @@ class _RotatorAddScreenState extends State<RotatorAddScreen> {
     );
   }
 
-  // Radio Button List
-  Widget RadioRotatorList({List<Widget> children = const <Widget>[]}) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(bottom: 14),
-            child: Text(
-              'Isi Pesan',
-              style: AppText.Inter12w7h14_black_2F3036,
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: children,
-          ),
-        ],
+  // Dialog of Rotator
+  Widget RotatorDialog({
+    List<Widget> children = const <Widget>[],
+    double? bottom,
+    double left = 0,
+    double? top,
+    double right = 0,
+    bool popup = false,
+  }) {
+    const boxShadow = BoxShadow(
+      color: AppColor.grey_C5C6CC,
+      blurRadius: 2,
+      offset: Offset(0, 1),
+    );
+
+    return Positioned(
+      right: right,
+      left: left,
+      top: top,
+      bottom: bottom,
+      child: FadeScaleMotion(
+        alignment: Alignment.topCenter,
+        popup: popup,
+        child: Container(
+          clipBehavior: Clip.hardEdge,
+          decoration: BoxDecoration(
+              color: AppColor.white,
+              boxShadow: const [boxShadow],
+              borderRadius: BorderRadius.circular(12)),
+          child: Column(children: children),
+        ),
       ),
     );
   }
 
+  // Item of Rotator Dialog
+  Widget RotatorDialogItem(String value) {
+    return GestureDetector(
+      onTap: () => setState(() {
+        if (showDialog == Produk) produk = value;
+        if (showDialog == Track) track = value;
+      }),
+      child: Container(
+        height: 48,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        alignment: Alignment.centerLeft,
+        color: (showDialog == Produk && produk == value) ||
+                (showDialog == Track && track == value)
+            ? AppColor.grey_F5F4F6
+            : AppColor.transparent,
+        child: Text(value),
+      ),
+    );
+  }
+
+  // title in Rotator
+  Widget TitleText(String title) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      alignment: Alignment.centerLeft,
+      child: Text(title, style: AppText.Inter12w7h14_black_2F3036),
+    );
+  }
+
+  // Radio Button List
+  Widget RowButtons({
+    List<Widget> children = const <Widget>[],
+    String? title,
+    EdgeInsetsGeometry? margin,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(bottom: 14),
+          child: Text(title ?? '', style: AppText.Inter12w7h14_black_2F3036),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: children,
+        ),
+        Container(margin: margin)
+      ],
+    );
+  }
+
   // Radio Button
-  Widget RadioRotator({
+  Widget RadioBtn({
     required String? groupValue,
     required String value,
     EdgeInsetsGeometry? margin,
@@ -161,7 +299,7 @@ class _RotatorAddScreenState extends State<RotatorAddScreen> {
     // component
     var children = [
       Radio(
-        onChanged: (String? value) => setState(() => pesan = value),
+        onChanged: (String? value) => setState(() => isiPesan = value),
         groupValue: groupValue,
         value: value,
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -173,7 +311,7 @@ class _RotatorAddScreenState extends State<RotatorAddScreen> {
       SizedBox(width: spacing),
       Flexible(
           child: GestureDetector(
-        onTap: () => setState(() => pesan = value),
+        onTap: () => setState(() => isiPesan = value),
         child: Text(value, style: AppText.Pops14w4h21_black_464E5F),
       )),
     ];
@@ -189,113 +327,75 @@ class _RotatorAddScreenState extends State<RotatorAddScreen> {
     );
   }
 
-  // Dialog of each Content Script
-  Widget RotatorDialog(int index) {
-    return Positioned(
-      top: 5,
-      right: 5,
-      child: FadeScaleMotion(
-        alignment: Alignment.topCenter,
-        popup: false,
-        child: Container(
-          width: 124,
-          decoration: const BoxDecoration(
-            color: AppColor.white,
-            boxShadow: [
-              BoxShadow(color: AppColor.black_272727),
-            ],
-          ),
-          padding: const EdgeInsets.all(10),
-          child: Wrap(
-            direction: Axis.vertical,
-            spacing: 10,
-            children: [],
-          ),
-        ),
-      ),
-    );
-  }
-
   // Input Textfield
   Widget InputRotator({
     TextEditingController? controller,
-    String? text,
-    bool required = false,
+    String? hintText,
     Function(String)? onChanged,
-    EdgeInsetsGeometry? sectionMargin,
+    EdgeInsetsGeometry? margin,
   }) {
     const enableBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
       borderSide: BorderSide(
-          width: 1, color: AppColor.grey_C5C6CC, style: BorderStyle.solid),
+        width: 1,
+        color: AppColor.grey_C5C6CC,
+        style: BorderStyle.solid,
+      ),
     );
 
     const errorBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
       borderSide: BorderSide(
-          width: 1, color: AppColor.red_FF616D, style: BorderStyle.solid),
+        width: 1,
+        color: AppColor.red_FF616D,
+        style: BorderStyle.solid,
+      ),
     );
 
     var inputDecoration = InputDecoration(
       hintStyle: AppText.Inter14w4_grey_8F9098,
-      hintText: 'Masukan URL',
+      hintText: hintText,
       contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-      focusedBorder: enableBorder,
-      enabledBorder: enableBorder,
-      errorBorder: errorBorder,
+      focusedBorder: customURL != '' ? enableBorder : errorBorder,
+      enabledBorder: customURL != '' ? enableBorder : errorBorder,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // title
-        Container(
-            margin: const EdgeInsets.only(bottom: 8),
-            child: Text(text ?? '', style: AppText.Inter12w7h14_black_2F3036)),
-
-        // input
-        Container(
-          margin: const EdgeInsets.only(bottom: 8),
-          height: 48,
-          decoration: BoxDecoration(
-              color: AppColor.white, borderRadius: BorderRadius.circular(24)),
-          child: TextField(
-            controller: controller,
-            style: AppText.Inter14w4_black,
-            decoration: inputDecoration,
-            onChanged: onChanged,
-          ),
-        ),
-
-        // message
-        Visibility(
-          visible: true,
-          child: Text('Wajib Diisi!', style: AppText.Inter12w4_red_FF616D),
-        ),
-
-        // margin bottom
-        Container(
-          margin: sectionMargin,
-        )
-      ],
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      height: 48,
+      child: TextField(
+        controller: controller,
+        style: AppText.Inter14w4_black,
+        decoration: inputDecoration,
+        onChanged: onChanged,
+      ),
     );
   }
 
+  Widget ErrorMsg(String text, {EdgeInsets? margin}) {
+    return customURL == ''
+        ? Container(
+            alignment: Alignment.centerLeft,
+            margin: margin,
+            child: Text(text, style: AppText.Inter12w4_red_FF616D))
+        : Container();
+  }
+
   // Add Link Button
-  Widget AddLink({
-    AlignmentGeometry? btnTextAlgn,
+  Widget Button({
+    Alignment? btnTextAlgn,
     Color? backgroundColor,
-    List<Widget>? children,
     EdgeInsets? padding,
     Function? onPressed,
     double radius = 12,
     BorderSide? side,
     Widget? tile,
-    String? title,
     String? textBtn,
+    double height = 0,
+    ButtonStyle? btnStyle,
     double borderWidth = 1.0,
     TextStyle? textBtnStyle,
-    EdgeInsetsGeometry? sectionMargin,
+    EdgeInsetsGeometry? margin,
   }) {
     var shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(radius),
@@ -313,13 +413,13 @@ class _RotatorAddScreenState extends State<RotatorAddScreen> {
       side: side,
       padding: padding,
       alignment: btnTextAlgn ?? Alignment.centerLeft,
-      minimumSize: const Size.fromHeight(48),
+      minimumSize: Size.fromHeight(height),
       backgroundColor: backgroundColor ?? AppColor.transparent,
     );
 
     var elevatedButton = ElevatedButton(
       onPressed: (() => onPressed != null ? onPressed() : null),
-      style: styleFrom,
+      style: btnStyle ?? styleFrom,
       child: tile == null
           ? Text(textBtn ?? '', style: textBtnStyle)
           : Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -328,24 +428,108 @@ class _RotatorAddScreenState extends State<RotatorAddScreen> {
             ]),
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // title section
+    return Container(margin: margin, child: elevatedButton);
+  }
+
+  // 1 : Add Rotator CS Modal
+  Future<dynamic> BottomModal(BuildContext context) {
+    const shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+    );
+
+    builder(BuildContext context) {
+      double sheight = MediaQuery.of(context).size.height;
+
+      // Choose Rotator CS
+      return BottomModalBody(sheight: sheight);
+    }
+
+    return showModalBottomSheet(
+      context: context,
+      shape: shape,
+      builder: builder,
+    );
+  }
+
+  // 2 : Add Rotator CS
+  Widget BottomModalBody({double? sheight}) {
+    return Container(
+      height: sheight! * 0.46,
+      padding: const EdgeInsets.symmetric(horizontal: 25),
+      child: Column(children: [
+        // icons
         Container(
-          margin: const EdgeInsets.only(bottom: 8),
-          child: Text(title ?? '', style: AppText.Inter12w7h14_black_2F3036),
+          height: 6,
+          width: 38,
+          margin: const EdgeInsets.symmetric(vertical: 13),
+          child: AppIcon.dashboard_bottom_dialog_put,
         ),
 
-        // button
+        // header
         Container(
-          child: elevatedButton,
+          height: 27,
+          margin: const EdgeInsets.only(bottom: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Cancel button
+              GestureDetector(
+                child: Text('Cancel', style: AppText.Inter12w6_blue_00AEFF),
+              ),
+
+              // Title
+              Text('Pilih CS', style: AppText.Inter12w6h14_black_1F2024),
+
+              // Clear all button
+              GestureDetector(
+                child: Text('ClearAll', style: AppText.Inter12w6_blue_00AEFF),
+              ),
+            ],
+          ),
         ),
 
-        Container(
-          margin: sectionMargin,
+        //
+        BottomModalMain(sheight),
+
+        Button(
+          textBtn: 'Pilih',
+          height: 40,
+          textBtnStyle: AppText.Inter12w6_white,
+          btnTextAlgn: Alignment.center,
+          backgroundColor: AppColor.blue_00AEFF,
         ),
-      ],
+      ]),
+    );
+  }
+
+  Widget BottomModalMain(double sheight) {
+    const boxDecoration = BoxDecoration(
+        border: Border(
+      bottom: BorderSide(width: 1.5, color: AppColor.grey_E8EDF0),
+    ));
+
+    var titleStyle = AppText.NunitoSans12w6h16_black_464E5F;
+    var subtitleStyle = AppText.NunitoSans12w4h14_black_464E5F;
+
+    return Container(
+      height: sheight * 0.286,
+      margin: const EdgeInsets.only(bottom: 15),
+      child: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          ...listCS.map(
+            (e) => Container(
+              decoration: boxDecoration,
+              height: sheight * 0.095,
+              child: ListTile(
+                onTap: () {},
+                title: Text(e['title'], style: titleStyle),
+                subtitle: Text(e['phone'], style: subtitleStyle),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

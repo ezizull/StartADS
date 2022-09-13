@@ -34,3 +34,7 @@ const String Contact = 'Contact Management';
 const String Campaign = 'Campaign';
 const String Billing = 'Billing';
 const String Settings = 'Settings';
+
+// Rotator
+const String Produk = 'Produk';
+const String Track = 'Tracking';

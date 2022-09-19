@@ -83,10 +83,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
               ),
               child: Stack(
                 alignment: Alignment.topRight,
-                children: [
-                  ScriptContent(index, widget.cubit),
-                  ScriptDialog(index),
-                ],
+                children: [Content(index, widget.cubit), Dialog(index)],
               ),
             ),
           ),
@@ -96,7 +93,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
   }
 
   // Content of Script Popular
-  Widget ScriptContent(int index, ScriptCubit? cubit) {
+  Widget Content(int index, ScriptCubit? cubit) {
     return GestureDetector(
       onTap: (() {
         if (!widget.showDialog) {
@@ -187,7 +184,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
   }
 
   // Dialog of each Content Script
-  Widget ScriptDialog(int index) {
+  Widget Dialog(int index) {
     return Positioned(
       top: 5,
       right: 5,
@@ -202,9 +199,9 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
             direction: Axis.vertical,
             spacing: 10,
             children: [
-              ScriptDialogItem(itemText: 'Save Script', numberItem: 1),
-              ScriptDialogItem(itemText: 'Edit Script', numberItem: 2),
-              ScriptDialogItem(itemText: 'Delete Script', numberItem: 3),
+              DialogItem(itemText: 'Save Script', numberItem: 1),
+              DialogItem(itemText: 'Edit Script', numberItem: 2),
+              DialogItem(itemText: 'Delete Script', numberItem: 3),
             ],
           ),
         ),
@@ -213,7 +210,7 @@ class _DashboardScriptPopularState extends State<DashboardScriptPopular> {
   }
 
   // Items of Script Dialog
-  Widget ScriptDialogItem({
+  Widget DialogItem({
     required String itemText,
     required int numberItem,
     Function? onTap,

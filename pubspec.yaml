@@ -3,7 +3,7 @@ description: ADS Scriptmatic
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -29,7 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
+
   animations: ^2.0.2
   flutter_bloc: ^8.0.1
   http: ^0.13.3
@@ -68,7 +68,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -82,7 +81,7 @@ flutter:
     # Dashboard Images
     - assets/images/dashboard/dashboard_banner/
     - assets/images/dashboard/dashboard_scripts/
-    
+
     # Profile Images
     - assets/images/profile/
 
@@ -91,12 +90,14 @@ flutter:
 
     # Rotator Images
     - assets/images/rotator/
-    
+    - assets/images/rotator/rotator_add/
+
     # Icons
     - assets/icons/
 
     # Rotator Icons
     - assets/icons/rotator/
+    - assets/icons/rotator/rotator_add/
 
     # Package Icons
     - assets/icons/paket/
@@ -110,7 +111,7 @@ flutter:
     - assets/icons/dashboard/dashboard_banner/
     - assets/icons/dashboard/dashboard_menu/
     - assets/icons/dashboard/dashboard_scripts/
-    
+
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -124,8 +125,8 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  
+
   # fonts:
-   
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 // background
 const blue_CCF2F4 = Color(0xFFCCF2F4);
+const blue_EAF2FF = Color(0xFFEAF2FF);
 const blue_CCFCFF = Color(0xFFCCFCFF);
 const blue_00AEFF = Color(0xFF00AEFF);
 const blue_0065B7 = Color(0xFF0065B7);
@@ -17,6 +18,7 @@ const purple_951FFE = Color(0xFF951FFE);
 const orange_F5C450 = Color(0xFFF5C450);
 const orange_F9A254 = Color(0xFFF9A254);
 const orange_F67F55 = Color(0xFFF67F55);
+const orange_FF8C51 = Color(0xFFFF8C51);
 
 // tags
 const orange_FFA800 = Color(0xFFFFA800);

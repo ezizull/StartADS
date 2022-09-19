@@ -134,11 +134,26 @@ TextStyle Inter14w4_grey_8F9098 = GoogleFonts.inter(
   color: AppColor.grey_8F9098,
 ));
 
+TextStyle Inter14w4h20_blue_00AEFF = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 14,
+  height: 20 / 14,
+  fontWeight: FontWeight.w400,
+  color: AppColor.blue_00AEFF,
+));
+
 TextStyle Inter14w6_grey_8F9098 = GoogleFonts.inter(
     textStyle: const TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w600,
   color: AppColor.grey_8F9098,
+));
+
+TextStyle Inter14w6_white = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
+  color: AppColor.white,
 ));
 
 TextStyle Inter16w7_black = GoogleFonts.inter(
@@ -250,6 +265,23 @@ TextStyle Inter12w4_red_FF616D = GoogleFonts.inter(
   fontSize: 12,
   fontWeight: FontWeight.w400,
   color: AppColor.red_FF616D,
+));
+
+TextStyle Inter_12w4h20_orange_FF8C51 = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  height: 20 / 12,
+  fontWeight: FontWeight.w400,
+  color: AppColor.orange_FF8C51,
+));
+
+TextStyle Inter_italic_12w4h20_orange_FF8C51 = GoogleFonts.inter(
+    textStyle: const TextStyle(
+  fontSize: 12,
+  height: 20 / 12,
+  fontStyle: FontStyle.italic,
+  fontWeight: FontWeight.w400,
+  color: AppColor.orange_FF8C51,
 ));
 
 // font Lato

@@ -85,7 +85,7 @@ class PackageList extends StatelessWidget {
                 child: ButtonContent(
               icon: index.isEven
                   ? AppIcon.haveit_now_white
-                  : AppIcon.haveit_now_blue_00AEFF,
+                  : AppIcon.haveit_now_active,
               text: 'Miliki Sekarang',
               height: 26,
               width: 169,
@@ -163,7 +163,7 @@ class PackageList extends StatelessWidget {
                         width: 10,
                         margin: const EdgeInsets.only(right: 9),
                         child: baseIndex.isEven
-                            ? AppIcon.haveit_now_blue_00AEFF
+                            ? AppIcon.haveit_now_active
                             : AppIcon.haveit_now_white,
                       )
                     : Container(),

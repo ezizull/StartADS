@@ -104,52 +104,52 @@ final Widget drawer_rotate = SvgPicture.asset(
 );
 
 // active drawer button
-final Widget drawer_billing_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_billing_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_billing.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer billing active',
 );
-final Widget drawer_campaign_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_campaign_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_campaign.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer campaign active',
 );
-final Widget drawer_contact_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_contact_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_contact.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer contact active',
 );
-final Widget drawer_down_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_down_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_down.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer down active',
 );
-final Widget drawer_kamus_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_kamus_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_kamus.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer kamus active',
 );
-final Widget drawer_script_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_script_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_script.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer script active',
 );
-final Widget drawer_settings_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_settings_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_settings.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer settings active',
 );
-final Widget drawer_up_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_up_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_up.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer up btn active',
 );
-final Widget drawer_dashboard_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_dashboard_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_dashboard.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer dashboard active',
 );
-final Widget drawer_rotate_blue_00AEFF = SvgPicture.asset(
+final Widget drawer_rotate_active = SvgPicture.asset(
   AppDrawerURL + 'drawer_rotate.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'drawer rotate active',
@@ -168,7 +168,7 @@ final Widget haveit_now_white = SvgPicture.asset(
   color: AppColor.white,
   semanticsLabel: 'package haveit now',
 );
-final Widget haveit_now_blue_00AEFF = SvgPicture.asset(
+final Widget haveit_now_active = SvgPicture.asset(
   PackageURL + 'haveit_now.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'package haveit now active',
@@ -226,4 +226,28 @@ final Widget rotator_edit_active = SvgPicture.asset(
   RotatorURL + 'rotator_edit.svg',
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'rotator edit active',
+);
+// Rotator ADD
+const String RotatorAddURL = 'assets/icons/rotator/rotator_add/';
+
+final Widget rotator_info = SvgPicture.asset(
+  RotatorAddURL + 'rotator_info.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'rotator checkbox',
+);
+
+final Widget rotator_info_show = SvgPicture.asset(
+  RotatorAddURL + 'rotator_info.svg',
+  color: AppColor.orange_FF8C51,
+  semanticsLabel: 'rotator checkbox',
+);
+final Widget rotator_checkbox = SvgPicture.asset(
+  RotatorAddURL + 'rotator_checkbox.svg',
+  color: AppColor.grey_9F9FB9,
+  semanticsLabel: 'rotator checkbox',
+);
+final Widget rotator_checkbox_active = SvgPicture.asset(
+  RotatorAddURL + 'rotator_checkbox_active.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'rotator checkbox active',
 );

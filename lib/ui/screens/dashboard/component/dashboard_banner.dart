@@ -46,7 +46,7 @@ class DashboardBanner extends StatelessWidget {
             Positioned(
               right: 0,
               bottom: -20 - mirror,
-              child: Container(
+              child: SizedBox(
                 width: 367,
                 height: 301,
                 child: Image.asset(AppImage.dashboard_bg_girl),
@@ -99,7 +99,9 @@ class DashboardBanner extends StatelessWidget {
                                 icon: AppIcon.dashboard_search,
                                 border: const OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        width: 0, style: BorderStyle.none)),
+                                  width: 0,
+                                  style: BorderStyle.none,
+                                )),
                                 contentPadding:
                                     const EdgeInsets.symmetric(vertical: 7),
                               ),
@@ -111,20 +113,18 @@ class DashboardBanner extends StatelessWidget {
                   ),
                   Text("Paket Lifetime", style: AppText.Pops28w6_white),
                   Wrap(
-                    spacing: 13,
                     direction: Axis.horizontal,
+                    spacing: 13,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Text("Expired Date:", style: AppText.Pops15w6_white),
                       Container(
-                          height: 18,
-                          decoration: const BoxDecoration(boxShadow: [
-                            BoxShadow(
-                              blurRadius: 18,
-                              color: AppColor.white,
-                            )
-                          ]),
-                          child: AppIcon.dashboard_infinite)
+                        height: 18,
+                        decoration: const BoxDecoration(boxShadow: [
+                          BoxShadow(blurRadius: 18, color: AppColor.white),
+                        ]),
+                        child: AppIcon.dashboard_infinite,
+                      )
                     ],
                   ),
                 ],

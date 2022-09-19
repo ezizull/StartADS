@@ -36,5 +36,11 @@ const String Billing = 'Billing';
 const String Settings = 'Settings';
 
 // Rotator
-const String Produk = 'Produk';
-const String Track = 'Tracking';
+const String Produk = 'Nama Produk';
+const String Track = 'Tracking Option';
+const String PixelID = 'Pixel ID';
+const String CustomURL = 'Custom URL';
+const String CustomISI = 'Isi Pesan';
+const String GroubPel = 'Pilih Grub Pelanggan';
+const String CustomScript = 'Custom Script';
+const String PilihScript = 'Pilih Script';

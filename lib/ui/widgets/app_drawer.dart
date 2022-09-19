@@ -92,7 +92,7 @@ class _AppDrawerState extends State<AppDrawer>
                   // Dashboard
                   DrawerChild(
                     text: Dashboard,
-                    activeIcon: AppIcon.drawer_dashboard_blue_00AEFF,
+                    activeIcon: AppIcon.drawer_dashboard_active,
                     disableIcon: AppIcon.drawer_dashboard,
                     onTap: (() {
                       setState(() => widget.activeBtn = Dashboard);
@@ -109,7 +109,7 @@ class _AppDrawerState extends State<AppDrawer>
                     text: Script,
                     activeParam: scriptDrop,
                     listDropped: ScriptList,
-                    activeIcon: AppIcon.drawer_script_blue_00AEFF,
+                    activeIcon: AppIcon.drawer_script_active,
                     disableIcon: AppIcon.drawer_script,
                     onTap: (() {
                       setState(() => scriptDrop = !scriptDrop);
@@ -128,7 +128,7 @@ class _AppDrawerState extends State<AppDrawer>
                   DrawerChild(
                     text: Kamus,
                     disableIcon: AppIcon.drawer_kamus,
-                    activeIcon: AppIcon.drawer_kamus_blue_00AEFF,
+                    activeIcon: AppIcon.drawer_kamus_active,
                     onTap: (() {
                       setState(() => widget.activeBtn = Kamus);
                     }),
@@ -137,7 +137,7 @@ class _AppDrawerState extends State<AppDrawer>
                   // Rotate CS
                   DrawerChild(
                     text: Rotator,
-                    activeIcon: AppIcon.drawer_rotate_blue_00AEFF,
+                    activeIcon: AppIcon.drawer_rotate_active,
                     disableIcon: AppIcon.drawer_rotate,
                     onTap: (() {
                       setState(() => widget.activeBtn = Rotator);
@@ -154,7 +154,7 @@ class _AppDrawerState extends State<AppDrawer>
                     text: Contact,
                     activeParam: contactDrop,
                     listDropped: ContactList,
-                    activeIcon: AppIcon.drawer_contact_blue_00AEFF,
+                    activeIcon: AppIcon.drawer_contact_active,
                     disableIcon: AppIcon.drawer_contact,
                     onTap: (() {
                       setState(() => contactDrop = !contactDrop);
@@ -172,7 +172,7 @@ class _AppDrawerState extends State<AppDrawer>
                   // Campaign
                   DrawerChild(
                     text: Campaign,
-                    activeIcon: AppIcon.drawer_campaign_blue_00AEFF,
+                    activeIcon: AppIcon.drawer_campaign_active,
                     disableIcon: AppIcon.drawer_campaign,
                     onTap: (() {
                       setState(() => widget.activeBtn = Campaign);
@@ -182,7 +182,7 @@ class _AppDrawerState extends State<AppDrawer>
                   // Billing
                   DrawerChild(
                     text: Billing,
-                    activeIcon: AppIcon.drawer_billing_blue_00AEFF,
+                    activeIcon: AppIcon.drawer_billing_active,
                     disableIcon: AppIcon.drawer_billing,
                     onTap: (() {
                       setState(() => widget.activeBtn = Billing);
@@ -192,7 +192,7 @@ class _AppDrawerState extends State<AppDrawer>
                   // Settings
                   DrawerChild(
                     text: Settings,
-                    activeIcon: AppIcon.drawer_settings_blue_00AEFF,
+                    activeIcon: AppIcon.drawer_settings_active,
                     disableIcon: AppIcon.drawer_settings,
                     onTap: (() {
                       setState(() => widget.activeBtn = Settings);
@@ -337,11 +337,11 @@ class _AppDrawerState extends State<AppDrawer>
   }) {
     // condition
     var cond = (activeParam && listDropped.isNotEmpty && dropActive(listDropped)
-        ? AppIcon.drawer_up_blue_00AEFF
+        ? AppIcon.drawer_up_active
         : activeParam
             ? AppIcon.drawer_up
             : !activeParam && listDropped.isNotEmpty && dropActive(listDropped)
-                ? AppIcon.drawer_down_blue_00AEFF
+                ? AppIcon.drawer_down_active
                 : AppIcon.drawer_down);
 
     return Container(

@@ -1,6 +1,6 @@
 {
-	"dart.flutterSdkPath": "C:\\src\\flutter\\2.10.3",
-	"dart.lineLength": 80,
-	"editor.glyphMargin": true,
-	"editor.wordWrapColumn": 80
+  "dart.flutterSdkPath": "C:\\src\\flutter\\2.10.3",
+  "dart.lineLength": 80,
+  "editor.glyphMargin": true,
+  "editor.wordWrapColumn": 80
 }

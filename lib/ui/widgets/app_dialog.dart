@@ -20,6 +20,8 @@ class DialogApp extends StatelessWidget {
     this.color = AppColor.white,
     this.borderRadius,
     this.boxShadow,
+    this.btwDialog = 22,
+    this.listVal = const [],
     this.children = const [],
     this.alignment = Alignment.topCenter,
   }) : super(key: key);
@@ -35,6 +37,16 @@ class DialogApp extends StatelessWidget {
   final Clip clipBehavior;
   final Color? color;
   final BoxShadow? boxShadow;
+  final double btwDialog;
+  final List<bool> listVal;
+
+  double? dialogPos(double? value) {
+    for (bool val in listVal) {
+      if (value != null && val) value += btwDialog;
+    }
+
+    return value;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +60,7 @@ class DialogApp extends StatelessWidget {
       return Positioned(
         right: right,
         left: left,
-        top: top,
+        top: dialogPos(top),
         bottom: bottom,
         child: FadeScaleMotion(
           alignment: alignment,

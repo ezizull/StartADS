@@ -34,7 +34,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
   bool showBobot = false;
   bool canSubmit = false;
 
-  String? isiPesan;
+  String? isiPesan = CustomScript;
 
   String? customISI;
   String? customURL;
@@ -77,10 +77,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
   ];
 
   List<String> cboxActive = [];
-  List<String> _cboxActive = [];
-
-  double grubDialog = 0;
-  double topSimpan = 0;
+  List<String> cboxActiveTmp = [];
 
   @override
   void dispose() {
@@ -106,18 +103,6 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
     double sheight = MediaQuery.of(context).size.height;
 
     setState(() {
-      // Group Dialog
-      if (customURL == '' && pixelID == '') {
-        grubDialog = 615;
-      } else if (customURL != '' && pixelID != '') {
-        grubDialog = 576;
-      } else {
-        grubDialog = 591;
-      }
-
-      // Simpan Button
-      topSimpan = sheight * 0.29;
-
       var bool = customURL != '' &&
           cboxActive.isNotEmpty &&
           track != '' &&
@@ -220,8 +205,14 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       controller: isiPesanCtrl,
                       height: 97,
                       maxLines: 5,
+                      onError: customISI == '',
                       onChanged: (value) => setState(() => customISI = value),
                       margin: EdgeInsets.only(bottom: customISI == '' ? 8 : 16),
+                    ),
+                    ErrorMessage(
+                      text: 'Wajib Diisi!',
+                      showError: customISI == '',
+                      margin: const EdgeInsets.only(bottom: 16),
                     ),
 
                     // Custom URL
@@ -243,9 +234,9 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                     const RotatorTitle(Track),
                     RotatorButton(
                       textBtn: track ?? 'Pilih Tracking Option',
+                      height: 48,
                       margin: const EdgeInsets.only(bottom: 16),
                       tile: AppIcon.drawer_down,
-                      height: 48,
                       textBtnStyle: AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = Track),
                     ),
@@ -255,6 +246,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                     RotatorInput(
                       controller: pixelIdCtrl,
                       hintText: 'XXXXXX',
+                      onError: pixelID == '',
                       onChanged: (value) => setState(() => pixelID = value),
                       margin: EdgeInsets.only(bottom: pixelID == '' ? 8 : 16),
                       textCapitalization: TextCapitalization.characters,
@@ -339,7 +331,6 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                     // Tambah Customer Service
                     RotatorButton(
                       textBtn: 'Tambah Customer Service +',
-                      onPressed: () => BottomModal(context, sheight),
                       btnTextAlgn: Alignment.center,
                       height: 48,
                       margin: const EdgeInsets.only(bottom: 35),
@@ -381,7 +372,12 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
 
                 // Pilih Tracking Option
                 DialogApp(
-                  top: customURL != '' ? 394 : 417,
+                  top: 394,
+                  listChangePos: [
+                    customISI == '',
+                    customURL == '',
+                    pixelID == '',
+                  ],
                   popup: showDialog == Track,
                   borderRadius: BorderRadius.circular(12),
                   children: [
@@ -391,7 +387,12 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
 
                 // Group Pelanggan
                 DialogApp(
-                  top: grubDialog,
+                  top: 567,
+                  listChangePos: [
+                    customISI == '',
+                    customURL == '',
+                    pixelID == '',
+                  ],
                   popup: showDialog == GroubPel,
                   borderRadius: BorderRadius.circular(12),
                   children: [
@@ -429,7 +430,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
             GestureDetector(
               child: Text('Cancel', style: AppText.Inter12w6_blue_00AEFF),
               onTap: () {
-                setState(() => _cboxActive = List.from(cboxActive));
+                setState(() => cboxActiveTmp = List.from(cboxActive));
                 Navigator.pop(context);
               },
             ),
@@ -441,7 +442,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
             GestureDetector(
               onTap: () {
                 setState(() => cboxActive.clear());
-                setState(() => _cboxActive.clear());
+                setState(() => cboxActiveTmp.clear());
               },
               child: Text('ClearAll', style: AppText.Inter12w6_blue_00AEFF),
             ),
@@ -449,7 +450,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
           items: [
             ...listCS.map(
               (e) {
-                var trailing = _cboxActive.contains(e['title'])
+                var trailing = cboxActiveTmp.contains(e['title'])
                     ? AppIcon.rotator_checkbox_active
                     : AppIcon.rotator_checkbox;
 
@@ -462,10 +463,10 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                   decoration: boxDecoration,
                   child: ListTile(
                     onTap: () {
-                      if (_cboxActive.contains(e['title'])) {
-                        setState(() => _cboxActive.remove(e['title']));
+                      if (cboxActiveTmp.contains(e['title'])) {
+                        setState(() => cboxActiveTmp.remove(e['title']));
                       } else {
-                        setState(() => _cboxActive.add(e['title']));
+                        setState(() => cboxActiveTmp.add(e['title']));
                       }
                     },
                     title: Text(e['title'], style: titleStyle),
@@ -483,7 +484,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
             textBtn: 'Pilih',
             height: 40,
             onPressed: () {
-              setState(() => cboxActive = List.from(_cboxActive));
+              setState(() => cboxActive = List.from(cboxActiveTmp));
               FocusScope.of(context).requestFocus(FocusNode());
               Navigator.pop(context);
             },

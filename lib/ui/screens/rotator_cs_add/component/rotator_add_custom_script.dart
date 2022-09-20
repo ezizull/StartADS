@@ -366,10 +366,24 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                   ],
                 ),
 
+                // Tambah Produk Dialog
+                DialogApp(
+                    popup: showDialog == Produk,
+                    top: 23,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: const BoxShadow(
+                        color: AppColor.grey_C5C6CC,
+                        blurRadius: 2,
+                        offset: Offset(0, 1)),
+                    children: [
+                      ...ListProduct.map((value) => RotatorDialogItem(value))
+                    ]),
+
                 // Pilih Tracking Option
                 DialogApp(
-                  top: customURL != '' ? 402 : 417,
+                  top: customURL != '' ? 394 : 417,
                   popup: showDialog == Track,
+                  borderRadius: BorderRadius.circular(12),
                   children: [
                     ...ListProduct.map((value) => RotatorDialogItem(value))
                   ],
@@ -379,6 +393,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                 DialogApp(
                   top: grubDialog,
                   popup: showDialog == GroubPel,
+                  borderRadius: BorderRadius.circular(12),
                   children: [
                     ...ListProduct.map((value) => RotatorDialogItem(value))
                   ],

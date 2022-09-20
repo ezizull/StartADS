@@ -16,6 +16,7 @@ class RotatorInput extends StatelessWidget {
     this.maxLines = 1,
     this.height,
     this.margin,
+    this.onError = false,
     this.textCapitalization,
   }) : super(key: key);
 
@@ -23,6 +24,7 @@ class RotatorInput extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final TextEditingController controller;
   final bool showButton;
+  final bool onError;
   final String? hintText;
   final int? maxLines;
   final double? height;
@@ -50,12 +52,11 @@ class RotatorInput extends StatelessWidget {
     );
 
     InputBorder border() {
-      if (controller.text == '') {
-        return errorBorder;
-      }
-
+      if (onError) return errorBorder;
       return enableBorder;
     }
+
+    // debugPrint(onError.toString());
 
     var inputDecoration = InputDecoration(
       hintStyle: AppText.Inter14w4_grey_8F9098,

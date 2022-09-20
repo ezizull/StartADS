@@ -1,0 +1,49 @@
+import 'package:Scriptmatic/api/api.dart';
+import 'package:equatable/equatable.dart';
+
+abstract class RotatorState extends Equatable {
+  const RotatorState();
+
+  @override
+  List<Object> get props => [];
+}
+
+class RotatorInitial extends RotatorState {}
+
+class RotatorLoading extends RotatorState {}
+
+class RotatorLoaded extends RotatorState {
+  const RotatorLoaded({
+    this.isiPesan = '',
+    required this.listCS,
+    required this.listProduct,
+  });
+
+  // isi pesan
+  final String isiPesan;
+
+  // script popular
+  final List<Map> listCS;
+
+  // script terbaru
+  final List<dynamic> listProduct;
+
+  @override
+  List<Object> get props => [isiPesan, listCS, listProduct];
+}
+
+class RotatorFailure extends RotatorState {
+  final ErrorType type;
+  final String message;
+
+  const RotatorFailure({this.type = ErrorType.general, this.message = ""});
+
+  const RotatorFailure.network(String message)
+      : this(type: ErrorType.network, message: message);
+
+  const RotatorFailure.general(String message)
+      : this(type: ErrorType.general, message: message);
+
+  @override
+  List<Object> get props => [type, message];
+}

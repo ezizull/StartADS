@@ -13,7 +13,7 @@ class RotatorButton extends StatelessWidget {
     this.backgroundColor = AppColor.white,
     this.foregroundColor = AppColor.transparent,
     this.radius = 12,
-    required this.height,
+    this.height = 0,
     this.tile,
     this.child,
     this.textBtn = '',
@@ -50,7 +50,7 @@ class RotatorButton extends StatelessWidget {
 
     var defShape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
-      side: defSide,
+      side: btnSide ?? defSide,
     );
 
     var styleFrom = ElevatedButton.styleFrom(

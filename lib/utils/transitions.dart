@@ -144,7 +144,10 @@ class _ExpandMotionState extends State<ExpandMotion>
   @override
   Widget build(BuildContext context) {
     return SizeTransition(
-        axisAlignment: 1.0, sizeFactor: animation, child: widget.child);
+      axisAlignment: 1.0,
+      sizeFactor: animation,
+      child: widget.child,
+    );
   }
 }
 
@@ -177,11 +180,15 @@ class _FadeScaleMotionState extends State<FadeScaleMotion>
   void initState() {
     super.initState();
     fadeController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this, value: 1.0);
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+      value: 1.0,
+    );
   }
 
   @override
   void dispose() {
+    fadeController.reverse();
     fadeController.dispose();
     super.dispose();
   }
@@ -197,12 +204,16 @@ class _FadeScaleMotionState extends State<FadeScaleMotion>
     }
 
     return ScaleTransition(
-      scale: Tween(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(parent: fadeController, curve: Curves.easeOut)),
+      scale: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: fadeController,
+        curve: Curves.easeOut,
+      )),
       alignment: widget.alignment,
       child: FadeTransition(
-          opacity:
-              CurvedAnimation(parent: fadeController, curve: Curves.easeOut),
+          opacity: CurvedAnimation(
+            parent: fadeController,
+            curve: Curves.easeOut,
+          ),
           child: widget.child),
     );
   }

@@ -18,8 +18,10 @@ class ScriptInitial extends ScriptState {}
 class ScriptLoading extends ScriptState {}
 
 class ScriptLoaded extends ScriptState {
-  const ScriptLoaded(
-      {required this.scriptPopular, required this.scriptTerbaru});
+  const ScriptLoaded({
+    required this.scriptPopular,
+    required this.scriptTerbaru,
+  });
 
   // script popular
   final List<Map> scriptPopular;

@@ -10,9 +10,13 @@ class RotatorAppBar extends StatelessWidget implements PreferredSizeWidget {
   const RotatorAppBar({
     Key? key,
     required this.context,
+    this.text = '',
+    this.onTap,
   }) : super(key: key);
 
   final BuildContext context;
+  final Function()? onTap;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +25,14 @@ class RotatorAppBar extends StatelessWidget implements PreferredSizeWidget {
         statusBarIconBrightness: Brightness.dark,
       ),
       leading: GestureDetector(
-        onTap: () => AppExt.popScreen(context),
+        onTap: onTap ?? () => AppExt.popScreen(context),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 18),
           color: AppColor.transparent,
           child: AppIcon.package_left_button,
         ),
       ),
-      title: Text(RotatorAdd, style: AppText.Inter16w7_black_1F2024),
+      title: Text(text, style: AppText.Inter16w7_black_1F2024),
       centerTitle: true,
       backgroundColor: AppColor.transparent,
       elevation: 0, // 1

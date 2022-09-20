@@ -251,3 +251,13 @@ final Widget rotator_checkbox_active = SvgPicture.asset(
   color: AppColor.blue_00AEFF,
   semanticsLabel: 'rotator checkbox active',
 );
+final Widget rotator_radio = SvgPicture.asset(
+  RotatorAddURL + 'rotator_radio.svg',
+  color: AppColor.grey_9F9FB9,
+  semanticsLabel: 'rotator checkbox',
+);
+final Widget rotator_radio_active = SvgPicture.asset(
+  RotatorAddURL + 'rotator_radio_active.svg',
+  color: AppColor.blue_00AEFF,
+  semanticsLabel: 'rotator checkbox active',
+);

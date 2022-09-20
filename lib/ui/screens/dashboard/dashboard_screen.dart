@@ -71,13 +71,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 }
               }),
           BlocListener<PaketCubit, PaketState>(
-              listenWhen: (previous, current) => previous != current,
-              listener: (context, state) async {
-                if (state is ExpiredPaket) {
-                  //  handle
-                  ExpiredPaketDialog(context); // comment to skip
-                }
-              }),
+            listenWhen: (previous, current) => previous != current,
+            listener: (context, state) async {
+              if (state is ExpiredPaket) {
+                //  handle
+                ExpiredPaketDialog(context); // comment to skip
+              }
+            },
+          ),
         ],
         child: BlocBuilder<ScriptCubit, ScriptState>(
           bloc: scriptCubit,
@@ -127,7 +128,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // Dialog when Expired Paket
   Future<dynamic> ExpiredPaketDialog(BuildContext context) {
     double swidth = MediaQuery.of(context).size.width;
-    double sheight = MediaQuery.of(context).size.height;
 
     return showDialog(
       context: context,

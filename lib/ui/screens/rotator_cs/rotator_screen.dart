@@ -84,7 +84,7 @@ class RotatorScreen extends StatelessWidget {
 
           // Main Rotator : List Link
           if (ListRotator.isNotEmpty) ...[
-            RotatorLinks(),
+            ListLink(),
           ],
         ],
       ),
@@ -169,22 +169,22 @@ class RotatorScreen extends StatelessWidget {
     );
   }
 
-  // Rotator Links
-  Expanded RotatorLinks() {
+  // List Link
+  Expanded ListLink() {
     return Expanded(
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         itemCount: ListRotator.length,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          return LinkButton(index);
+          return LinkRotator(index);
         },
       ),
     );
   }
 
-  // Each Link Button
-  Widget LinkButton(int index) {
+  // Each Link Rotator
+  Widget LinkRotator(int index) {
     const boxDecoration = BoxDecoration(
       border: Border(bottom: BorderSide(width: 1, color: AppColor.grey_F3F6F9)),
     );

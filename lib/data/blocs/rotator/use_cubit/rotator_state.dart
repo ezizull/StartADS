@@ -15,6 +15,7 @@ class RotatorLoading extends RotatorState {}
 class RotatorLoaded extends RotatorState {
   const RotatorLoaded({
     this.isiPesan = '',
+    this.pilihScript = const {},
     required this.listCS,
     required this.listProduct,
   });
@@ -28,8 +29,10 @@ class RotatorLoaded extends RotatorState {
   // script terbaru
   final List<dynamic> listProduct;
 
+  final Map pilihScript;
+
   @override
-  List<Object> get props => [isiPesan, listCS, listProduct];
+  List<Object> get props => [isiPesan, listCS, listProduct, pilihScript];
 }
 
 class RotatorFailure extends RotatorState {

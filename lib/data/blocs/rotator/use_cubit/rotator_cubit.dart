@@ -53,18 +53,17 @@ class RotatorCubit extends Cubit<RotatorState> {
     } catch (error) {
       // network error
       if (error is NetworkException) {
-        emit(RotatorFailure.network(error.toString()));
-        return;
+        return emit(RotatorFailure.network(error.toString()));
       }
       // general error
       emit(RotatorFailure.general(error.toString()));
     }
   }
 
-  setRotatorMethod(String param) {
+  setRotatorMethod({String param = '', Map pilihScript = const {}}) {
     try {
       if (param == CustomScript) {
-        emit(RotatorLoaded(
+        return emit(RotatorLoaded(
           isiPesan: param,
           listCS: listCS,
           listProduct: listProduct,
@@ -72,19 +71,19 @@ class RotatorCubit extends Cubit<RotatorState> {
       }
 
       if (param == PilihScript) {
-        emit(RotatorLoaded(
+        return emit(RotatorLoaded(
           isiPesan: param,
           listCS: listCS,
           listProduct: listProduct,
+          pilihScript: pilihScript,
         ));
       }
 
-      if (param == '') {
-        emit(RotatorLoaded(
-          listCS: listCS,
-          listProduct: listProduct,
-        ));
-      }
+      return emit(RotatorLoaded(
+        listCS: listCS,
+        listProduct: listProduct,
+        pilihScript: pilihScript,
+      ));
     } catch (error) {
       // general error
       emit(RotatorFailure.general(error.toString()));

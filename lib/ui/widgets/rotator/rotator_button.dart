@@ -3,23 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:Scriptmatic/utils/colors.dart' as AppColor;
 
 class RotatorButton extends StatelessWidget {
-  const RotatorButton({
+  RotatorButton({
     Key? key,
     this.btnSide,
     this.borderWidth = 1,
     this.onPressed,
     this.padding,
     this.btnTextAlgn,
-    this.backgroundColor = AppColor.white,
-    this.foregroundColor = AppColor.transparent,
+    this.backgroundColor = AppColor.transparent,
+    this.foregroundColor = AppColor.grey_E5E5E5,
     this.radius = 12,
-    this.height = 0,
+    this.height = 40,
     this.tile,
     this.child,
     this.textBtn = '',
     this.showButton = true,
     this.textBtnStyle,
-    this.margin = const EdgeInsets.only(bottom: 16),
+    this.width = 0,
+    this.margin,
     this.shadowColor = AppColor.transparent,
   }) : super(key: key);
 
@@ -32,6 +33,7 @@ class RotatorButton extends StatelessWidget {
   final Color? foregroundColor;
   final double radius;
   final double height;
+  double width;
   final Widget? tile;
   final Widget? child;
   final String textBtn;
@@ -42,6 +44,8 @@ class RotatorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (width == 0) width = MediaQuery.of(context).size.width;
+
     var defSide = BorderSide(
       width: borderWidth,
       color: AppColor.grey_C5C6CC,
@@ -59,7 +63,7 @@ class RotatorButton extends StatelessWidget {
       shape: defShape,
       padding: padding,
       alignment: btnTextAlgn ?? Alignment.centerLeft,
-      minimumSize: Size.fromHeight(height),
+      fixedSize: Size(width, height),
       backgroundColor: backgroundColor,
     );
 
@@ -82,7 +86,7 @@ class RotatorButton extends StatelessWidget {
     );
 
     return showButton
-        ? Container(margin: margin, child: elevatedButton)
+        ? Container(padding: margin, child: elevatedButton)
         : Container();
   }
 }

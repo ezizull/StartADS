@@ -267,7 +267,7 @@ class PackageList extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             minimumSize: Size.fromHeight(height),
             primary: backgroundColor,
-            onPrimary: foregroundColor,
+            backgroundColor: foregroundColor,
             shape: const StadiumBorder()),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

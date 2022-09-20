@@ -33,7 +33,7 @@ Widget ModalApp({
   double mainHeight = 0,
   List<Widget> headers = const <Widget>[],
   List<Widget> items = const <Widget>[],
-  RotatorButton? submitBtn = const RotatorButton(showButton: false),
+  RotatorButton? submitBtn,
 }) {
   return Container(
     height: height,

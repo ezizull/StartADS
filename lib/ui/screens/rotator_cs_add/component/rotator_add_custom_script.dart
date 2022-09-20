@@ -110,7 +110,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
           customISI != '' &&
           group != '' &&
           pixelID != '' &&
-          bobot != '';
+          !AppExt.isString(bobot);
 
       if (bool) canSubmit = true;
       if (!bool) canSubmit = false;
@@ -118,7 +118,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
 
     BorderSide submitSide;
     if (canSubmit) {
-      submitSide = const BorderSide();
+      submitSide = const BorderSide(width: 0);
     } else {
       submitSide = const BorderSide(
         width: 1,
@@ -133,7 +133,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
         appBar: RotatorAppBar(
           text: 'Edit Link Rotator',
           context: context,
-          onTap: () => widget.cubit.setRotatorMethod(''),
+          onTap: () => widget.cubit.setRotatorMethod(),
         ),
         backgroundColor: AppColor.white,
         resizeToAvoidBottomInset: false,
@@ -153,6 +153,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       tile: AppIcon.drawer_down,
                       textBtnStyle: AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = Produk),
+                      margin: const EdgeInsets.only(bottom: 16),
                       btnSide: const BorderSide(
                         width: 1,
                         color: AppColor.grey_C5C6CC,
@@ -177,7 +178,8 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                                 : AppIcon.rotator_radio,
                             onTap: () {
                               setState(() => isiPesan = CustomScript);
-                              widget.cubit.setRotatorMethod(CustomScript);
+                              widget.cubit
+                                  .setRotatorMethod(param: CustomScript);
                             },
                           ),
                           const SizedBox(width: 32),
@@ -191,7 +193,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                                 : AppIcon.rotator_radio,
                             onTap: () {
                               setState(() => isiPesan = PilihScript);
-                              widget.cubit.setRotatorMethod(PilihScript);
+                              widget.cubit.setRotatorMethod(param: PilihScript);
                             },
                           ),
                         ],
@@ -264,7 +266,6 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       textBtn: group ?? 'New Costumer',
                       height: 48,
                       tile: AppIcon.drawer_down,
-                      showButton: isiPesan == CustomScript,
                       margin: const EdgeInsets.only(bottom: 16),
                       textBtnStyle: AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = GroubPel),
@@ -292,7 +293,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       hintText: '1',
                       height: 48,
                       controller: bobotCtrl,
-                      onError: bobotCtrl.text.isNotEmpty,
+                      onError: AppExt.isString(bobot),
                       margin: const EdgeInsets.only(bottom: 16),
                       onChanged: ((value) => setState(() => bobot = value)),
                     ),
@@ -333,6 +334,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       textBtn: 'Tambah Customer Service +',
                       btnTextAlgn: Alignment.center,
                       height: 48,
+                      foregroundColor: AppColor.blue_00AEFF,
                       margin: const EdgeInsets.only(bottom: 35),
                       textBtnStyle: AppText.Inter14w4h20_blue_00AEFF,
                       btnSide: const BorderSide(
@@ -351,7 +353,9 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       backgroundColor: canSubmit
                           ? AppColor.blue_00AEFF
                           : AppColor.transparent,
-                      textBtnStyle: AppText.Inter14w6_grey_8F9098,
+                      textBtnStyle: canSubmit
+                          ? AppText.Inter14w6_white
+                          : AppText.Inter14w6_grey_8F9098,
                       btnTextAlgn: Alignment.center,
                     ),
                   ],
@@ -359,25 +363,17 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
 
                 // Tambah Produk Dialog
                 DialogApp(
-                    popup: showDialog == Produk,
                     top: 23,
+                    popup: showDialog == Produk,
                     borderRadius: BorderRadius.circular(12),
-                    boxShadow: const BoxShadow(
-                        color: AppColor.grey_C5C6CC,
-                        blurRadius: 2,
-                        offset: Offset(0, 1)),
                     children: [
                       ...ListProduct.map((value) => RotatorDialogItem(value))
                     ]),
 
                 // Pilih Tracking Option
                 DialogApp(
-                  top: 394,
-                  listChangePos: [
-                    customISI == '',
-                    customURL == '',
-                    pixelID == '',
-                  ],
+                  top: 393,
+                  changePos: [customISI == '', customURL == '', pixelID == ''],
                   popup: showDialog == Track,
                   borderRadius: BorderRadius.circular(12),
                   children: [
@@ -388,11 +384,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                 // Group Pelanggan
                 DialogApp(
                   top: 567,
-                  listChangePos: [
-                    customISI == '',
-                    customURL == '',
-                    pixelID == '',
-                  ],
+                  changePos: [customISI == '', customURL == '', pixelID == ''],
                   popup: showDialog == GroubPel,
                   borderRadius: BorderRadius.circular(12),
                   children: [
@@ -407,6 +399,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
     );
   }
 
+  // Bottom Modal
   Future<dynamic> BottomModal(BuildContext context, double sheight) {
     const boxDecoration = BoxDecoration(
       border: Border(
@@ -498,10 +491,11 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
 
   // Item of Rotator Dialog
   Widget RotatorDialogItem(String value) {
-    var color = (showDialog == Produk && produk == value) ||
-            (showDialog == Track && track == value)
-        ? AppColor.grey_F5F4F6
-        : AppColor.transparent;
+    var validate = (showDialog == Produk && produk == value) ||
+        (showDialog == Track && track == value) ||
+        (showDialog == GroubPel && group == value);
+
+    var color = validate ? AppColor.grey_F5F4F6 : AppColor.transparent;
 
     return DialogItemApp(
       height: 48,
@@ -511,6 +505,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
       onTap: () => setState(() {
         if (showDialog == Produk) produk = value;
         if (showDialog == Track) track = value;
+        if (showDialog == GroubPel) group = value;
       }),
       text: value,
     );

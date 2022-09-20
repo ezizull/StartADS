@@ -88,3 +88,10 @@ String convCurr(int number) {
   final currencyFormatter = NumberFormat.compact(locale: 'ID');
   return currencyFormatter.format(number);
 }
+
+bool isString(String? text) {
+  if (text == null) return false;
+  if (text == '') return false;
+
+  return double.tryParse(text) == null;
+}

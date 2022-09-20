@@ -21,7 +21,7 @@ class DialogApp extends StatelessWidget {
     this.borderRadius,
     this.boxShadow,
     this.btwDialog = 22,
-    this.listVal = const [],
+    this.changePos = const [],
     this.children = const [],
     this.alignment = Alignment.topCenter,
   }) : super(key: key);
@@ -38,10 +38,10 @@ class DialogApp extends StatelessWidget {
   final Color? color;
   final BoxShadow? boxShadow;
   final double btwDialog;
-  final List<bool> listVal;
+  final List<bool> changePos;
 
   double? dialogPos(double? value) {
-    for (bool val in listVal) {
+    for (bool val in changePos) {
       if (value != null && val) value += btwDialog;
     }
 

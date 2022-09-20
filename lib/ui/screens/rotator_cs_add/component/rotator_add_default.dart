@@ -72,6 +72,14 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
   List<String> _cboxActive = [];
 
   @override
+  void initState() {
+    super.initState();
+    setState(() {
+      if (widget.state.pilihScript.isNotEmpty) isiPesan = PilihScript;
+    });
+  }
+
+  @override
   void dispose() {
     inputCustomURL.dispose();
     super.dispose();
@@ -103,7 +111,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
 
     BorderSide submitSide;
     if (canSubmit) {
-      submitSide = const BorderSide();
+      submitSide = const BorderSide(width: 0);
     } else {
       submitSide = const BorderSide(
         width: 1,
@@ -135,6 +143,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                       tile: AppIcon.drawer_down,
                       textBtnStyle: AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = Produk),
+                      margin: const EdgeInsets.only(bottom: 16),
                       btnSide: const BorderSide(
                         width: 1,
                         color: AppColor.grey_C5C6CC,
@@ -159,7 +168,8 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                                 : AppIcon.rotator_radio,
                             onTap: () {
                               setState(() => isiPesan = CustomScript);
-                              widget.cubit.setRotatorMethod(CustomScript);
+                              widget.cubit
+                                  .setRotatorMethod(param: CustomScript);
                             },
                           ),
                           const SizedBox(width: 32),
@@ -173,7 +183,10 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                                 : AppIcon.rotator_radio,
                             onTap: () {
                               setState(() => isiPesan = PilihScript);
-                              widget.cubit.setRotatorMethod(PilihScript);
+                              widget.cubit.setRotatorMethod(
+                                param: PilihScript,
+                                pilihScript: widget.state.pilihScript,
+                              );
                             },
                           ),
                         ],
@@ -186,6 +199,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                       hintText: 'Masukan URL (cth: Gamis Aqila)',
                       controller: inputCustomURL,
                       height: 48,
+                      onError: customURL == '',
                       onChanged: (value) => setState(() => customURL = value),
                       margin: EdgeInsets.only(bottom: customURL == '' ? 8 : 16),
                     ),
@@ -228,7 +242,9 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                       backgroundColor: canSubmit
                           ? AppColor.blue_00AEFF
                           : AppColor.transparent,
-                      textBtnStyle: AppText.Inter14w6_grey_8F9098,
+                      textBtnStyle: canSubmit
+                          ? AppText.Inter14w6_white
+                          : AppText.Inter14w6_grey_8F9098,
                       btnTextAlgn: Alignment.center,
                     ),
                   ],
@@ -239,10 +255,6 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                     popup: showDialog == Produk,
                     top: 23,
                     borderRadius: BorderRadius.circular(12),
-                    boxShadow: const BoxShadow(
-                        color: AppColor.grey_C5C6CC,
-                        blurRadius: 2,
-                        offset: Offset(0, 1)),
                     children: [
                       ...ListProduct.map((value) => RotatorDialogItem(value))
                     ]),
@@ -250,12 +262,9 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                 // Pilih Tracking Option
                 DialogApp(
                   popup: showDialog == Track,
-                  top: customURL == '' ? 282 : 257,
+                  top: 257,
+                  changePos: [customURL == ''],
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: const BoxShadow(
-                      color: AppColor.grey_C5C6CC,
-                      blurRadius: 2,
-                      offset: Offset(0, 1)),
                   children: [
                     ...ListProduct.map((value) => RotatorDialogItem(value))
                   ],

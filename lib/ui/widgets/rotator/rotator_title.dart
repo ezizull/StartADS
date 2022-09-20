@@ -11,6 +11,8 @@ class RotatorTitle extends StatelessWidget {
     this.spacing = 8,
     this.onTap,
     this.iconTap,
+    this.textStyle,
+    this.margin,
   }) : super(key: key);
 
   final String title;
@@ -19,11 +21,13 @@ class RotatorTitle extends StatelessWidget {
   final double spacing;
   final Function? onTap;
   final Function? iconTap;
+  final TextStyle? textStyle;
+  final EdgeInsets? margin;
 
   @override
   Widget build(BuildContext context) {
     var localChildren = [
-      Text(title, style: AppText.Inter12w7h14_black_2F3036),
+      Text(title, style: textStyle ?? AppText.Inter12w7h14_black_2F3036),
 
       // with onTap
       if (onTap != null) ...[
@@ -43,7 +47,7 @@ class RotatorTitle extends StatelessWidget {
         ? GestureDetector(
             onTap: () => onTap != null ? onTap!() : null,
             child: Container(
-              margin: const EdgeInsets.only(bottom: 8),
+              margin: margin ?? const EdgeInsets.only(bottom: 8),
               alignment: Alignment.centerLeft,
               child: Wrap(
                 direction: Axis.horizontal,

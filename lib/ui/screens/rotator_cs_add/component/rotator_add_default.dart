@@ -168,8 +168,9 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                                 : AppIcon.rotator_radio,
                             onTap: () {
                               setState(() => isiPesan = CustomScript);
-                              widget.cubit
-                                  .setRotatorMethod(param: CustomScript);
+                              widget.cubit.setRotatorMethod(
+                                param: CustomScript,
+                              );
                             },
                           ),
                           const SizedBox(width: 32),

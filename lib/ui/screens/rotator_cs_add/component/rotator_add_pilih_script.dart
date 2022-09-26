@@ -31,9 +31,11 @@ class RotatorAddPilihScript extends StatefulWidget {
 
 class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
   bool canSubmit = false;
+  bool sortList = true;
 
   List<Map> ListPilih = [
     {
+      'id': 1,
       'title': 'Greeting 1',
       'copied': '10',
       'status': 'Tutup',
@@ -41,6 +43,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
     },
     {
+      'id': 2,
       'title': 'Greeting 2',
       'copied': '10',
       'status': 'Tutup',
@@ -48,6 +51,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
     },
     {
+      'id': 3,
       'title': 'Greeting 3',
       'copied': '10',
       'status': 'Tutup',
@@ -55,6 +59,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
     },
     {
+      'id': 4,
       'title': 'Greeting 4',
       'copied': '10',
       'status': 'Tutup',
@@ -62,6 +67,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
     },
     {
+      'id': 5,
       'title': 'Greeting 5',
       'copied': '10',
       'status': 'Tutup',
@@ -69,6 +75,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
     },
     {
+      'id': 6,
       'title': 'Greeting 6',
       'copied': '10',
       'status': 'Tutup',
@@ -76,6 +83,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
     },
     {
+      'id': 7,
       'title': 'Greeting 7',
       'copied': '10',
       'status': 'Preview',
@@ -83,6 +91,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
     },
     {
+      'id': 8,
       'title': 'Greeting 8',
       'copied': '10',
       'status': 'Preview',
@@ -90,6 +99,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
     },
     {
+      'id': 9,
       'title': 'Greeting 9',
       'copied': '10',
       'status': 'Preview',
@@ -98,7 +108,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
     },
   ];
 
-  int? indexActive;
+  int? idActive;
 
   @override
   void initState() {
@@ -109,7 +119,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
   contPilihScript() {
     for (var pilih in ListPilih) {
       if (mapEquals(pilih, widget.state.pilihScript)) {
-        setState(() => indexActive = ListPilih.indexOf(pilih));
+        setState(() => idActive = ListPilih.indexOf(pilih) + 1);
       }
     }
   }
@@ -119,15 +129,25 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
   }
 
   submitVal() {
-    if (indexActive != null && canSubmit) {
-      widget.cubit.setRotatorMethod(pilihScript: ListPilih[indexActive!]);
+    if (idActive != null && canSubmit) {
+      widget.cubit.setRotatorMethod(
+        pilihScript: ListPilih[getItemIndex(idActive!)],
+      );
     }
+  }
+
+  int getItemIndex(int id) {
+    debugPrint(id.toString());
+    for (var pilih in ListPilih) {
+      if (pilih["id"] == id) return ListPilih.indexOf(pilih);
+    }
+    return 0;
   }
 
   @override
   Widget build(BuildContext context) {
     setState(() {
-      var bool = indexActive != null && indexActive! < ListPilih.length;
+      var bool = idActive != null && idActive! - 1 < ListPilih.length;
 
       if (bool) canSubmit = true;
       if (!bool) canSubmit = false;
@@ -182,14 +202,14 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
             ListScript(),
 
             // Selected Item
-            if (indexActive != null) ...[
+            if (idActive != null) ...[
               const AppDivider(
                 color: AppColor.white_D4D6DD,
                 margin: EdgeInsets.only(right: 25, left: 25, bottom: 12),
               ),
 
               // Selected Item
-              ContHeader(indexActive!),
+              ContHeader(getItemIndex(idActive!)),
 
               const AppDivider(
                 color: AppColor.white_D4D6DD,
@@ -262,20 +282,42 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
               padding: const EdgeInsets.all(7.5),
               radius: 8,
               backgroundColor: AppColor.white,
+              onPressed: () {
+                setState(() {
+                  sortList = !sortList;
+
+                  if (sortList) {
+                    ListPilih.sort((a, b) => a["title"].compareTo(b["title"]));
+                  }
+
+                  if (!sortList) {
+                    ListPilih.sort((a, b) => b["title"].compareTo(a["title"]));
+                  }
+                });
+              },
               side: const BorderSide(width: 1, color: AppColor.grey_C5C6CC),
               children: [
                 Container(
                   height: 12,
                   width: 12,
                   margin: const EdgeInsets.only(right: 5),
-                  child: AppIcon.rotator_sort,
+                  child: sortList
+                      ? AppIcon.rotator_sort
+                      : AppIcon.rotator_sort_active,
                 ),
-                Text('Sort', style: AppText.Inter12w4_black_1F2024),
+                Text(
+                  'Sort',
+                  style: sortList
+                      ? AppText.Inter12w4_black_1F2024
+                      : AppText.Inter12w6h14_blue_00AEFF,
+                ),
                 Container(
                   height: 12,
                   width: 12,
                   margin: const EdgeInsets.only(left: 7),
-                  child: AppIcon.rotator_down,
+                  child: sortList
+                      ? AppIcon.rotator_down
+                      : AppIcon.rotator_down_active,
                 ),
               ]),
 
@@ -452,17 +494,17 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
 
           // Button
           RotatorButton(
-            textBtn: indexActive == index ? 'Terpilih' : 'Pilih',
+            textBtn: idActive == ListPilih[index]["id"] ? 'Terpilih' : 'Pilih',
             width: 70,
             padding: const EdgeInsets.all(12),
-            onPressed: () => setState(() => indexActive = index),
+            onPressed: () => setState(() => idActive = ListPilih[index]["id"]),
             foregroundColor: AppColor.blue_00AEFF,
             btnSide: const BorderSide(width: 1.5, color: AppColor.blue_00AEFF),
             btnTextAlgn: Alignment.center,
-            textBtnStyle: indexActive == index
+            textBtnStyle: idActive == ListPilih[index]["id"]
                 ? AppText.Inter12w6h14_white
                 : AppText.Inter12w6h14_blue_00AEFF,
-            backgroundColor: indexActive == index
+            backgroundColor: idActive == ListPilih[index]["id"]
                 ? AppColor.blue_00AEFF
                 : AppColor.transparent,
           ),

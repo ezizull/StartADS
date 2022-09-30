@@ -18,6 +18,7 @@ class RotatorInput extends StatelessWidget {
     this.margin,
     this.prefixIcon,
     this.suffixIcon,
+    this.keyboardType,
     this.onError = false,
     this.textCapitalization,
   }) : super(key: key);
@@ -33,6 +34,7 @@ class RotatorInput extends StatelessWidget {
   final Widget? prefixIcon;
   final double? height;
   final EdgeInsets? margin;
+  final TextInputType? keyboardType;
   final TextCapitalization? textCapitalization;
 
   @override
@@ -77,7 +79,7 @@ class RotatorInput extends StatelessWidget {
         margin: margin,
         height: height,
         child: TextField(
-          keyboardType: TextInputType.text,
+          keyboardType: keyboardType,
           controller: controller,
           style: AppText.Inter14w4_black,
           maxLines: maxLines,

@@ -89,6 +89,10 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
   @override
   void initState() {
     if (widget.baseCbox.isNotEmpty) cboxActive = List.from(widget.baseCbox);
+    bobotCtrl = List.generate(
+      cboxActive.length,
+      (index) => TextEditingController(),
+    );
     super.initState();
   }
 
@@ -105,14 +109,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
   Widget build(BuildContext context) {
     double sheight = MediaQuery.of(context).size.height;
 
-    debugPrint(cboxActive.toString());
-
     setState(() {
-      bobotCtrl = List.generate(
-        cboxActive.length,
-        (index) => TextEditingController(),
-      );
-
       var bool = customURL != '' &&
           widget.baseCbox.isNotEmpty &&
           track != '' &&
@@ -321,9 +318,14 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                         hintText: '1',
                         height: 48,
                         controller: bobotCtrl[index],
-                        onError: bobot.isNotEmpty,
-                        onChanged: (value) =>
-                            setState(() => bobot[index] = value),
+                        onError: bobot.isNotEmpty
+                            ? bobot[index].isEmpty
+                            : bobot.isEmpty,
+                        keyboardType: TextInputType.number,
+                        onChanged: (value) {
+                          debugPrint(value.toString());
+                          setState(() => bobot.insert(index, value));
+                        },
                         margin: const EdgeInsets.only(bottom: 16),
                       ),
                     ],

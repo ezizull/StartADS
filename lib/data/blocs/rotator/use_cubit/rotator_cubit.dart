@@ -38,13 +38,28 @@ class RotatorCubit extends Cubit<RotatorState> {
   ];
 
   late List<TextEditingController> controllerRotator;
-  late List<String> contentsRotator;
+  late List<dynamic> choicesRotator;
+  late List<String?> contentsRotator;
+  late List<bool> conditionRotator;
+  late String showDialog = '';
 
-  bool get canSubmitAddRotator =>
-      controllerRotator.where((element) => element.text == "").isEmpty &&
-              contentsRotator.where((element) => element == "").isEmpty
+  bool get conditionTrue =>
+      conditionRotator.where((element) => element == false).isEmpty
           ? true
           : false;
+
+  bool get contentsTrue =>
+      contentsRotator.where((element) => element == null).isEmpty
+          ? true
+          : false;
+
+  bool get controllerTrue =>
+      controllerRotator.where((element) => element.text == "").isEmpty
+          ? true
+          : false;
+
+  bool get choisesTrue =>
+      choicesRotator.where((element) => element.isEmpty).isEmpty ? true : false;
 
   Future<void> fetchRotator() async {
     emit(RotatorLoading());
@@ -91,8 +106,6 @@ class RotatorCubit extends Cubit<RotatorState> {
   }
 
   void dispose() {
-    for (var element in controllerRotator) {
-      element.dispose();
-    }
+    for (var element in controllerRotator) element.dispose();
   }
 }

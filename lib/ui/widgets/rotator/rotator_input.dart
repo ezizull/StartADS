@@ -18,6 +18,7 @@ class RotatorInput extends StatelessWidget {
     this.margin,
     this.prefixIcon,
     this.suffixIcon,
+    this.onSubmitted,
     this.keyboardType,
     this.onError = false,
     this.textCapitalization,
@@ -35,6 +36,7 @@ class RotatorInput extends StatelessWidget {
   final double? height;
   final EdgeInsets? margin;
   final TextInputType? keyboardType;
+  final Function(String)? onSubmitted;
   final TextCapitalization? textCapitalization;
 
   @override
@@ -86,6 +88,7 @@ class RotatorInput extends StatelessWidget {
           decoration: inputDecoration,
           onChanged: onChanged,
           inputFormatters: inputFormatters,
+          onSubmitted: onSubmitted,
         ),
       );
     } else {

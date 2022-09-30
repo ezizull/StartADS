@@ -16,6 +16,8 @@ class RotatorInput extends StatelessWidget {
     this.maxLines = 1,
     this.height,
     this.margin,
+    this.prefixIcon,
+    this.suffixIcon,
     this.onError = false,
     this.textCapitalization,
   }) : super(key: key);
@@ -27,6 +29,8 @@ class RotatorInput extends StatelessWidget {
   final bool onError;
   final String? hintText;
   final int? maxLines;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final double? height;
   final EdgeInsets? margin;
   final TextCapitalization? textCapitalization;
@@ -61,6 +65,8 @@ class RotatorInput extends StatelessWidget {
     var inputDecoration = InputDecoration(
       hintStyle: AppText.Inter14w4_grey_8F9098,
       hintText: hintText,
+      suffixIcon: suffixIcon,
+      prefixIcon: prefixIcon,
       contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
       focusedBorder: border(),
       enabledBorder: border(),

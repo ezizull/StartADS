@@ -2,9 +2,10 @@
 
 import 'package:Scriptmatic/data/blocs/rotator/use_cubit/rotator_cubit.dart';
 import 'package:Scriptmatic/data/blocs/rotator/use_cubit/rotator_state.dart';
+import 'package:Scriptmatic/ui/screens/rotator_cs/rotator_screen.dart';
 import 'package:Scriptmatic/ui/widgets/app_bottom_modal.dart';
 import 'package:Scriptmatic/ui/widgets/app_dialog.dart';
-import 'package:Scriptmatic/ui/widgets/app_error_message.dart';
+import 'package:Scriptmatic/ui/widgets/app_message.dart';
 import 'package:Scriptmatic/ui/widgets/app_radio_button.dart';
 import 'package:Scriptmatic/ui/widgets/rotator/rotator_appbar.dart';
 import 'package:Scriptmatic/ui/widgets/rotator/rotator_button.dart';
@@ -20,9 +21,15 @@ import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
 class RotatorAddDefault extends StatefulWidget {
-  const RotatorAddDefault({required this.cubit, required this.state}) : super();
+  RotatorAddDefault({
+    required this.cubit,
+    required this.state,
+    this.cboxActive = const [],
+  }) : super();
+
   final RotatorCubit cubit;
   final RotatorLoaded state;
+  List<dynamic> cboxActive;
 
   @override
   State<RotatorAddDefault> createState() => _RotatoAddrDefaultState();
@@ -68,14 +75,23 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
     },
   ];
 
-  List<String> cboxActive = [];
-  List<String> _cboxActive = [];
+  List<String> cboxActiveTmp = [];
+
+  Map pilihScript = {};
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      if (widget.state.pilihScript.isNotEmpty) isiPesan = PilihScript;
+      if (widget.state.pilihScript.isNotEmpty) {
+        // pilih script status
+        isiPesan = PilihScript;
+
+        // pilih script data
+        pilihScript = widget.state.pilihScript;
+
+        debugPrint(pilihScript.toString());
+      }
     });
   }
 
@@ -101,7 +117,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
 
     setState(() {
       var bool = customURL != '' &&
-          cboxActive.isNotEmpty &&
+          widget.cboxActive.isNotEmpty &&
           track != '' &&
           produk != '';
 
@@ -111,7 +127,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
 
     BorderSide submitSide;
     if (canSubmit) {
-      submitSide = const BorderSide(width: 0);
+      submitSide = const BorderSide(color: AppColor.transparent);
     } else {
       submitSide = const BorderSide(
         width: 1,
@@ -124,7 +140,13 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
     return GestureDetector(
       onTap: onTap,
       child: Scaffold(
-        appBar: RotatorAppBar(context: context, text: RotatorAdd),
+        appBar: RotatorAppBar(
+          context: context,
+          text: RotatorAdd,
+          onTap: () {
+            AppExt.pushAndRemoveScreen(context, pageRef: const RotatorScreen());
+          },
+        ),
         backgroundColor: AppColor.white,
         resizeToAvoidBottomInset: false,
         body: ListView(
@@ -141,7 +163,9 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                       textBtn: produk ?? 'Pilih Produk',
                       height: 48,
                       tile: AppIcon.drawer_down,
-                      textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                      textBtnStyle: produk != null
+                          ? AppText.Inter14w4_black
+                          : AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = Produk),
                       margin: const EdgeInsets.only(bottom: 16),
                       btnSide: const BorderSide(
@@ -194,6 +218,42 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                       ),
                     ),
 
+                    // Pilih Script
+                    RotatorTitle(
+                      PilihScript,
+                      showTitle: isiPesan == PilihScript,
+                    ),
+                    RotatorButton(
+                      showButton: isiPesan == PilihScript,
+                      textBtn: pilihScript['title'] ?? '',
+                      height: 48,
+                      textBtnStyle: AppText.Inter14w4_black,
+                      margin: const EdgeInsets.only(bottom: 8),
+                      tile: InkWell(
+                        onTap: () => widget.cubit.setRotatorMethod(
+                          param: PilihScript,
+                          pilihScript: widget.state.pilihScript,
+                        ),
+                        child: Text(
+                          'Ganti',
+                          style: AppText.Inter12w7h12_blue_00AEFF,
+                        ),
+                      ),
+                    ),
+                    AppMessage(
+                      text: pilihScript['status'] ?? '',
+                      showMsg: isiPesan == PilihScript,
+                      prefixIcon: pilihScript['status'] == 'Preview'
+                          ? SizedBox(
+                              height: 12, child: AppIcon.rotator_eye_preview)
+                          : SizedBox(
+                              height: 12, child: AppIcon.rotator_eye_close),
+                      textStyle: pilihScript['status'] == 'Preview'
+                          ? AppText.Inter12w6h14_blue_00AEFF
+                          : AppText.Inter12w4_red_FF616D,
+                      margin: const EdgeInsets.only(bottom: 16),
+                    ),
+
                     // Custom URL
                     const RotatorTitle(CustomURL),
                     RotatorInput(
@@ -204,9 +264,9 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                       onChanged: (value) => setState(() => customURL = value),
                       margin: EdgeInsets.only(bottom: customURL == '' ? 8 : 16),
                     ),
-                    ErrorMessage(
+                    AppMessage(
                       text: 'Wajib Diisi!',
-                      showError: customURL == '',
+                      showMsg: customURL == '',
                       margin: const EdgeInsets.only(bottom: 16),
                     ),
 
@@ -217,19 +277,23 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                       textBtn: track ?? 'Pilih Tracking Option',
                       margin: const EdgeInsets.only(bottom: 16),
                       height: 48,
-                      textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                      textBtnStyle: track != null
+                          ? AppText.Inter14w4_black
+                          : AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = Track),
                     ),
 
                     // Costumer Service
                     const RotatorTitle('Customer Service'),
                     RotatorButton(
-                      textBtn: cboxActive.isNotEmpty
-                          ? cboxActive.join(', ')
+                      textBtn: widget.cboxActive.isNotEmpty
+                          ? widget.cboxActive.join(', ')
                           : 'Pilih Customer Service',
                       onPressed: () => BottomModal(context, sheight),
                       height: 48,
-                      textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                      textBtnStyle: widget.cboxActive.isNotEmpty
+                          ? AppText.Inter14w4_black
+                          : AppText.Inter14w4_grey_8F9098,
                       margin: const EdgeInsets.only(bottom: 16),
                     ),
 
@@ -239,7 +303,9 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                       textBtn: 'Submit',
                       btnSide: submitSide,
                       height: 48,
-                      margin: EdgeInsets.only(top: sheight * 0.275),
+                      margin: isiPesan == PilihScript
+                          ? EdgeInsets.only(top: sheight * 0.15)
+                          : EdgeInsets.only(top: sheight * 0.275),
                       backgroundColor: canSubmit
                           ? AppColor.blue_00AEFF
                           : AppColor.transparent,
@@ -281,6 +347,8 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
   }
 
   Future<dynamic> BottomModal(BuildContext context, double sheight) {
+    cboxActiveTmp = List.from(widget.cboxActive);
+
     const boxDecoration = BoxDecoration(
       border: Border(
         bottom: BorderSide(width: 1.5, color: AppColor.grey_E8EDF0),
@@ -294,7 +362,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
 
     return BottomModalApp(
       context: context,
-      builder: (BuildContext context) => StatefulBuilder(
+      builder: (context) => StatefulBuilder(
         builder: (context, setState) => ModalApp(
           height: sheight * 0.46,
           mainHeight: sheight * 0.286,
@@ -303,7 +371,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
             GestureDetector(
               child: Text('Cancel', style: AppText.Inter12w6_blue_00AEFF),
               onTap: () {
-                setState(() => _cboxActive = List.from(cboxActive));
+                setState(() => cboxActiveTmp = List.from(widget.cboxActive));
                 Navigator.pop(context);
               },
             ),
@@ -314,8 +382,16 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
             // Button Clear all
             GestureDetector(
               onTap: () {
-                setState(() => cboxActive.clear());
-                setState(() => _cboxActive.clear());
+                setState(() => widget.cboxActive.clear());
+                setState(() => cboxActiveTmp.clear());
+                AppExt.pushAndRemoveScreen(
+                  context,
+                  pageRef: RotatorAddDefault(
+                    cubit: widget.cubit,
+                    state: widget.state,
+                    cboxActive: widget.cboxActive,
+                  ),
+                );
               },
               child: Text('ClearAll', style: AppText.Inter12w6_blue_00AEFF),
             ),
@@ -323,7 +399,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
           items: [
             ...listCS.map(
               (e) {
-                var trailing = _cboxActive.contains(e['title'])
+                var trailing = cboxActiveTmp.contains(e['title'])
                     ? AppIcon.rotator_checkbox_active
                     : AppIcon.rotator_checkbox;
 
@@ -336,10 +412,10 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                   decoration: boxDecoration,
                   child: ListTile(
                     onTap: () {
-                      if (_cboxActive.contains(e['title'])) {
-                        setState(() => _cboxActive.remove(e['title']));
+                      if (cboxActiveTmp.contains(e['title'])) {
+                        setState(() => cboxActiveTmp.remove(e['title']));
                       } else {
-                        setState(() => _cboxActive.add(e['title']));
+                        setState(() => cboxActiveTmp.add(e['title']));
                       }
                     },
                     title: Text(e['title'], style: titleStyle),
@@ -357,9 +433,15 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
             textBtn: 'Pilih',
             height: 40,
             onPressed: () {
-              setState(() => cboxActive = List.from(_cboxActive));
-              FocusScope.of(context).requestFocus(FocusNode());
-              Navigator.pop(context);
+              setState(() => widget.cboxActive = List.from(cboxActiveTmp));
+              AppExt.pushAndRemoveScreen(
+                context,
+                pageRef: RotatorAddDefault(
+                  cubit: widget.cubit,
+                  state: widget.state,
+                  cboxActive: widget.cboxActive,
+                ),
+              );
             },
             btnTextAlgn: Alignment.center,
             backgroundColor: AppColor.blue_00AEFF,

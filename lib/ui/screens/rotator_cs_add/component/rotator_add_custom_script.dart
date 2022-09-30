@@ -2,9 +2,11 @@
 
 import 'package:Scriptmatic/data/blocs/rotator/use_cubit/rotator_cubit.dart';
 import 'package:Scriptmatic/data/blocs/rotator/use_cubit/rotator_state.dart';
+import 'package:Scriptmatic/ui/screens/rotator_cs_add/component/rotator_add_default.dart';
+import 'package:Scriptmatic/ui/screens/rotator_cs_add/rotator_add_screen.dart';
 import 'package:Scriptmatic/ui/widgets/app_bottom_modal.dart';
 import 'package:Scriptmatic/ui/widgets/app_dialog.dart';
-import 'package:Scriptmatic/ui/widgets/app_error_message.dart';
+import 'package:Scriptmatic/ui/widgets/app_message.dart';
 import 'package:Scriptmatic/ui/widgets/app_informat.dart';
 import 'package:Scriptmatic/ui/widgets/app_radio_button.dart';
 import 'package:Scriptmatic/ui/widgets/rotator/rotator_appbar.dart';
@@ -20,10 +22,15 @@ import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;
 
 class RotatorAddCustomScript extends StatefulWidget {
-  const RotatorAddCustomScript({required this.cubit, required this.state})
-      : super();
+  RotatorAddCustomScript({
+    required this.cubit,
+    required this.state,
+    this.baseCbox = const [[]],
+  }) : super();
+
   final RotatorCubit cubit;
-  final RotatorState state;
+  final RotatorLoaded state;
+  List<dynamic> baseCbox;
 
   @override
   State<RotatorAddCustomScript> createState() => _RotatorAddCustomScriptState();
@@ -41,14 +48,14 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
   String? produk;
   String? track;
   String? group;
-  String? bobot;
+  List<String> bobot = [];
   String? pixelID;
   String? showDialog;
 
   final customUrlCtrl = TextEditingController();
   final isiPesanCtrl = TextEditingController();
   final pixelIdCtrl = TextEditingController();
-  final bobotCtrl = TextEditingController();
+  List<TextEditingController> bobotCtrl = [];
 
   List<String> ListProduct = [
     'Gamis Aqila1',
@@ -76,41 +83,44 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
     },
   ];
 
-  List<String> cboxActive = [];
+  List<dynamic> cboxActive = [[]];
   List<String> cboxActiveTmp = [];
+
+  @override
+  void initState() {
+    if (widget.baseCbox.isNotEmpty) cboxActive = List.from(widget.baseCbox);
+    super.initState();
+  }
 
   @override
   void dispose() {
     customUrlCtrl.dispose();
-    bobotCtrl.dispose();
     isiPesanCtrl.dispose();
     pixelIdCtrl.dispose();
+    for (var element in bobotCtrl) element.dispose();
     super.dispose();
-  }
-
-  void onTap() {
-    FocusScope.of(context).requestFocus(FocusNode());
-    setState(() => showDialog = '');
-  }
-
-  submitVal() {
-    if (customURL == null) setState(() => customURL = '');
-    if (customURL != '' && canSubmit) AppExt.popScreen(context);
   }
 
   @override
   Widget build(BuildContext context) {
     double sheight = MediaQuery.of(context).size.height;
 
+    debugPrint(cboxActive.toString());
+
     setState(() {
+      bobotCtrl = List.generate(
+        cboxActive.length,
+        (index) => TextEditingController(),
+      );
+
       var bool = customURL != '' &&
-          cboxActive.isNotEmpty &&
+          widget.baseCbox.isNotEmpty &&
           track != '' &&
           produk != '' &&
           customISI != '' &&
           group != '' &&
           pixelID != '' &&
-          !AppExt.isString(bobot);
+          bobot.isNotEmpty;
 
       if (bool) canSubmit = true;
       if (!bool) canSubmit = false;
@@ -118,7 +128,7 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
 
     BorderSide submitSide;
     if (canSubmit) {
-      submitSide = const BorderSide(width: 0);
+      submitSide = const BorderSide(color: AppColor.transparent);
     } else {
       submitSide = const BorderSide(
         width: 1,
@@ -128,12 +138,20 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
     }
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+        setState(() => showDialog = '');
+      },
       child: Scaffold(
         appBar: RotatorAppBar(
-          text: 'Edit Link Rotator',
+          text: 'Tambah Link Rotator',
           context: context,
-          onTap: () => widget.cubit.setRotatorMethod(),
+          onTap: () {
+            AppExt.pushAndRemoveScreen(
+              context,
+              pageRef: const RotatorAddScreen(),
+            );
+          },
         ),
         backgroundColor: AppColor.white,
         resizeToAvoidBottomInset: false,
@@ -151,7 +169,9 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       textBtn: produk ?? 'Pilih Produk',
                       height: 48,
                       tile: AppIcon.drawer_down,
-                      textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                      textBtnStyle: produk != null
+                          ? AppText.Inter14w4_black
+                          : AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = Produk),
                       margin: const EdgeInsets.only(bottom: 16),
                       btnSide: const BorderSide(
@@ -211,9 +231,9 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       onChanged: (value) => setState(() => customISI = value),
                       margin: EdgeInsets.only(bottom: customISI == '' ? 8 : 16),
                     ),
-                    ErrorMessage(
+                    AppMessage(
                       text: 'Wajib Diisi!',
-                      showError: customISI == '',
+                      showMsg: customISI == '',
                       margin: const EdgeInsets.only(bottom: 16),
                     ),
 
@@ -226,9 +246,9 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       onChanged: (value) => setState(() => customURL = value),
                       margin: EdgeInsets.only(bottom: customURL == '' ? 8 : 16),
                     ),
-                    ErrorMessage(
+                    AppMessage(
                       text: 'Wajib Diisi!',
-                      showError: customURL == '',
+                      showMsg: customURL == '',
                       margin: const EdgeInsets.only(bottom: 16),
                     ),
 
@@ -239,7 +259,9 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       height: 48,
                       margin: const EdgeInsets.only(bottom: 16),
                       tile: AppIcon.drawer_down,
-                      textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                      textBtnStyle: track != null
+                          ? AppText.Inter14w4_black
+                          : AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = Track),
                     ),
 
@@ -254,9 +276,9 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       textCapitalization: TextCapitalization.characters,
                       inputFormatters: [UpperCaseText()],
                     ),
-                    ErrorMessage(
+                    AppMessage(
                       text: 'Wajib Diisi!',
-                      showError: pixelID == '',
+                      showMsg: pixelID == '',
                       margin: const EdgeInsets.only(bottom: 16),
                     ),
 
@@ -267,36 +289,44 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                       height: 48,
                       tile: AppIcon.drawer_down,
                       margin: const EdgeInsets.only(bottom: 16),
-                      textBtnStyle: AppText.Inter14w4_grey_8F9098,
+                      textBtnStyle: group != null
+                          ? AppText.Inter14w4_black
+                          : AppText.Inter14w4_grey_8F9098,
                       onPressed: () => setState(() => showDialog = GroubPel),
                     ),
 
                     // Costumer Service
-                    const RotatorTitle('Customer Service'),
-                    RotatorButton(
-                      textBtn: cboxActive.isNotEmpty
-                          ? cboxActive.join(', ')
-                          : 'Pilih Customer Service',
-                      onPressed: () => BottomModal(context, sheight),
-                      height: 48,
-                      textBtnStyle: AppText.Inter14w4_grey_8F9098,
-                      margin: const EdgeInsets.only(bottom: 16),
-                    ),
+                    for (var index = 0; index < cboxActive.length; index++) ...[
+                      const RotatorTitle('Customer Service'),
+                      RotatorButton(
+                        textBtn: cboxActive[index].isNotEmpty
+                            ? cboxActive[index].join(', ')
+                            : 'Pilih Customer Service',
+                        onPressed: () =>
+                            BottomModal(context, sheight, index: index),
+                        height: 48,
+                        textBtnStyle: cboxActive[index].isNotEmpty
+                            ? AppText.Inter14w4_black
+                            : AppText.Inter14w4_grey_8F9098,
+                        margin: const EdgeInsets.only(bottom: 16),
+                      ),
 
-                    // Bobot
-                    RotatorTitle(
-                      'Bobot',
-                      onTap: () => setState(() => showBobot = !showBobot),
-                      icon: AppIcon.rotator_info,
-                    ),
-                    RotatorInput(
-                      hintText: '1',
-                      height: 48,
-                      controller: bobotCtrl,
-                      onError: AppExt.isString(bobot),
-                      margin: const EdgeInsets.only(bottom: 16),
-                      onChanged: ((value) => setState(() => bobot = value)),
-                    ),
+                      // Bobot
+                      RotatorTitle(
+                        'Bobot',
+                        onTap: () => setState(() => showBobot = !showBobot),
+                        icon: AppIcon.rotator_info,
+                      ),
+                      RotatorInput(
+                        hintText: '1',
+                        height: 48,
+                        controller: bobotCtrl[index],
+                        onError: bobot.isNotEmpty,
+                        onChanged: (value) =>
+                            setState(() => bobot[index] = value),
+                        margin: const EdgeInsets.only(bottom: 16),
+                      ),
+                    ],
 
                     // Show Info
                     RotatorButton(
@@ -332,6 +362,9 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
                     // Tambah Customer Service
                     RotatorButton(
                       textBtn: 'Tambah Customer Service +',
+                      onPressed: () {
+                        setState(() => cboxActive.add([]));
+                      },
                       btnTextAlgn: Alignment.center,
                       height: 48,
                       foregroundColor: AppColor.blue_00AEFF,
@@ -346,7 +379,11 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
 
                     // Simpan
                     RotatorButton(
-                      onPressed: submitVal,
+                      onPressed: () {
+                        if (customURL == null) setState(() => customURL = '');
+                        if (customURL != '' && canSubmit)
+                          AppExt.popScreen(context);
+                      },
                       textBtn: 'Submit',
                       btnSide: submitSide,
                       height: 48,
@@ -400,7 +437,17 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
   }
 
   // Bottom Modal
-  Future<dynamic> BottomModal(BuildContext context, double sheight) {
+  Future<dynamic> BottomModal(
+    BuildContext context,
+    double sheight, {
+    required int index,
+  }) {
+    if (cboxActive.isEmpty) {
+      cboxActiveTmp = List.from([]);
+    } else {
+      cboxActiveTmp = List.from(cboxActive[index]);
+    }
+
     const boxDecoration = BoxDecoration(
       border: Border(
         bottom: BorderSide(width: 1.5, color: AppColor.grey_E8EDF0),
@@ -434,8 +481,18 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
             // Button Clear all
             GestureDetector(
               onTap: () {
-                setState(() => cboxActive.clear());
+                setState(() => cboxActive[index] = []);
                 setState(() => cboxActiveTmp.clear());
+
+                AppExt.pushScreen(
+                  context,
+                  RotatorAddCustomScript(
+                    cubit: widget.cubit,
+                    state: widget.state,
+                    baseCbox: cboxActive,
+                  ),
+                  AppExt.RouteTransition.fade,
+                );
               },
               child: Text('ClearAll', style: AppText.Inter12w6_blue_00AEFF),
             ),
@@ -477,9 +534,16 @@ class _RotatorAddCustomScriptState extends State<RotatorAddCustomScript> {
             textBtn: 'Pilih',
             height: 40,
             onPressed: () {
-              setState(() => cboxActive = List.from(cboxActiveTmp));
-              FocusScope.of(context).requestFocus(FocusNode());
-              Navigator.pop(context);
+              setState(() => cboxActive[index] = List.from(cboxActiveTmp));
+              AppExt.pushScreen(
+                context,
+                RotatorAddCustomScript(
+                  cubit: widget.cubit,
+                  state: widget.state,
+                  baseCbox: cboxActive,
+                ),
+                AppExt.RouteTransition.fade,
+              );
             },
             btnTextAlgn: Alignment.center,
             backgroundColor: AppColor.blue_00AEFF,

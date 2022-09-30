@@ -68,9 +68,7 @@ Future pushScreen(BuildContext context, Widget buildScreen,
 }
 
 void pushAndRemoveScreen(BuildContext context, {required Widget pageRef}) {
-  Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (context) => pageRef),
+  Navigator.pushAndRemoveUntil(context, AppRoute.FadeRoute(page: pageRef),
       (Route<dynamic> route) => false);
 }
 

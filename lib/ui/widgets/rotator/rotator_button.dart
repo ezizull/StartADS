@@ -68,21 +68,21 @@ class RotatorButton extends StatelessWidget {
     );
 
     var localText = Text(textBtn, style: textBtnStyle);
-    var locaChild = child ??
+    var localChild = child ??
         (tile == null
             ? localText
             : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   localText,
-                  SizedBox(width: 12, height: 12, child: tile),
+                  tile ?? Container(),
                 ],
               ));
 
     var elevatedButton = ElevatedButton(
       onPressed: (() => onPressed != null ? onPressed!() : null),
       style: styleFrom,
-      child: locaChild,
+      child: localChild,
     );
 
     return showButton

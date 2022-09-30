@@ -155,7 +155,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
 
     BorderSide submitSide;
     if (canSubmit) {
-      submitSide = const BorderSide(width: 0);
+      submitSide = const BorderSide(color: AppColor.transparent);
     } else {
       submitSide = const BorderSide(
         width: 1,

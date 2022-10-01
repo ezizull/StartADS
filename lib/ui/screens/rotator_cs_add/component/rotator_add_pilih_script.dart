@@ -62,12 +62,6 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
   }
 
   @override
-  void dispose() {
-    widget.cubit.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocProvider<RotatorCubit>(
       create: (context) => RotatorCubit(),

@@ -207,7 +207,8 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                   controller: cubit.controllerRotator[0],
                   height: 48,
                   onError: cubit.contentsRotator[1] == '',
-                  onChanged: (value) => cubit.contentsRotator[1] = value,
+                  onChanged: (value) =>
+                      setState(() => cubit.contentsRotator[1] = value),
                   margin: EdgeInsets.only(
                     bottom: cubit.contentsRotator[1] == '' ? 8 : 16,
                   ),

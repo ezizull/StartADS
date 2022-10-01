@@ -134,7 +134,8 @@ class _RotatorScreenState extends State<RotatorScreen> {
 
   Widget RotatorHeader(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 25, left: 25, top: 37),
+      padding: const EdgeInsets.only(right: 25, left: 25, top: 37),
+      color: AppColor.white,
       child: Column(
         children: [
           // Search Input

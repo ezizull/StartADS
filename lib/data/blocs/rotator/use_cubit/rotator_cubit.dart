@@ -37,14 +37,97 @@ class RotatorCubit extends Cubit<RotatorState> {
     },
   ];
 
+  List<Map> listPilihScript = [
+    {
+      'id': 1,
+      'title': 'Greeting 1',
+      'copied': '10',
+      'status': 'Tutup',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+    {
+      'id': 2,
+      'title': 'Greeting 2',
+      'copied': '10',
+      'status': 'Tutup',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+    {
+      'id': 3,
+      'title': 'Greeting 3',
+      'copied': '10',
+      'status': 'Tutup',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+    {
+      'id': 4,
+      'title': 'Greeting 4',
+      'copied': '10',
+      'status': 'Tutup',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+    {
+      'id': 5,
+      'title': 'Greeting 5',
+      'copied': '10',
+      'status': 'Tutup',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+    {
+      'id': 6,
+      'title': 'Greeting 6',
+      'copied': '10',
+      'status': 'Tutup',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+    {
+      'id': 7,
+      'title': 'Greeting 7',
+      'copied': '10',
+      'status': 'Preview',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+    {
+      'id': 8,
+      'title': 'Greeting 8',
+      'copied': '10',
+      'status': 'Preview',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+    {
+      'id': 9,
+      'title': 'Greeting 9',
+      'copied': '10',
+      'status': 'Preview',
+      'pesan':
+          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
+    },
+  ];
+
   late List<TextEditingController> controllerRotator;
-  late List<dynamic> choicesRotator;
+  late List<dynamic> multipleRotator;
   late List<String?> contentsRotator;
   late List<bool> conditionRotator;
+  late List<int?> numberRotator;
   late String showDialog = '';
 
-  bool get conditionTrue =>
-      conditionRotator.where((element) => element == false).isEmpty
+  /// Makesure index[0] used for canSubmit (validate)
+  /// Example:
+  /// ```dart
+  /// var canSubmit = cubit.conditionRotator[0];
+  /// canSubmit = cubit.conditionTrue && cubit.multipleTrue && cubit.contentsTrue;
+  /// ```
+  bool get conditionTrue => conditionRotator.where((element) {
+        return element == false && conditionRotator.indexOf(element) > 0;
+      }).isEmpty
           ? true
           : false;
 
@@ -58,8 +141,31 @@ class RotatorCubit extends Cubit<RotatorState> {
           ? true
           : false;
 
-  bool get choisesTrue =>
-      choicesRotator.where((element) => element.isEmpty).isEmpty ? true : false;
+  /// Check:
+  /// debugPrint((element[i].runtimeType).toString());
+  bool get multipleTrue => multipleRotator.where((element) {
+        for (var i = 0; i < element.length; i++) {
+          if (element[i] is List) return element[i].isEmpty;
+
+          if (element[i] is String) {
+            return element[i] == null.toString() || element[i] == "";
+          }
+
+          if (element[i] is String?) {
+            return element[i] == null.toString() || element[i] == null;
+          }
+
+          if (element[i] is TextEditingController) {
+            return element[i].text == '"';
+          }
+        }
+        return element.isEmpty;
+      }).isEmpty
+          ? true
+          : false;
+
+  bool get numberTrue =>
+      numberRotator.where((element) => element == null).isEmpty ? true : false;
 
   Future<void> fetchRotator() async {
     emit(RotatorLoading());

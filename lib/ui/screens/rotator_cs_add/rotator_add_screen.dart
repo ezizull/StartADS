@@ -23,6 +23,7 @@ class _RotatorAddScreenState extends State<RotatorAddScreen> {
 
   @override
   void dispose() {
+    rotatorCubit.dispose();
     rotatorCubit.close();
     super.dispose();
   }

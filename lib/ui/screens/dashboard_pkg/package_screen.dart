@@ -122,7 +122,7 @@ class PackageScreen extends StatelessWidget {
   AppBar PackageAppBar(BuildContext context) {
     return AppBar(
       leading: GestureDetector(
-        onTap: () => Navigator.of(context).pop(),
+        onTap: () => AppExt.popScreen(context),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 18),
           color: AppColor.transparent,

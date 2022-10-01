@@ -18,6 +18,7 @@ import 'package:Scriptmatic/utils/extensions.dart' as AppExt;
 import 'package:Scriptmatic/utils/icons.dart' as AppIcon;
 import 'package:Scriptmatic/utils/typography.dart' as AppText;
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RotatorAddPilihScript extends StatefulWidget {
   const RotatorAddPilihScript({required this.cubit, required this.state})
@@ -30,128 +31,97 @@ class RotatorAddPilihScript extends StatefulWidget {
 }
 
 class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
-  bool canSubmit = false;
-  bool sortList = true;
-
-  List<Map> ListPilih = [
-    {
-      'id': 1,
-      'title': 'Greeting 1',
-      'copied': '10',
-      'status': 'Tutup',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-    {
-      'id': 2,
-      'title': 'Greeting 2',
-      'copied': '10',
-      'status': 'Tutup',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-    {
-      'id': 3,
-      'title': 'Greeting 3',
-      'copied': '10',
-      'status': 'Tutup',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-    {
-      'id': 4,
-      'title': 'Greeting 4',
-      'copied': '10',
-      'status': 'Tutup',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-    {
-      'id': 5,
-      'title': 'Greeting 5',
-      'copied': '10',
-      'status': 'Tutup',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-    {
-      'id': 6,
-      'title': 'Greeting 6',
-      'copied': '10',
-      'status': 'Tutup',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-    {
-      'id': 7,
-      'title': 'Greeting 7',
-      'copied': '10',
-      'status': 'Preview',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-    {
-      'id': 8,
-      'title': 'Greeting 8',
-      'copied': '10',
-      'status': 'Preview',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-    {
-      'id': 9,
-      'title': 'Greeting 9',
-      'copied': '10',
-      'status': 'Preview',
-      'pesan':
-          'Hallo, Saya tertarik dengan Nacific Toner, bisa dijelaskan apa saja manfaatnya lebih dulu?',
-    },
-  ];
-
-  int? idActive;
-
   @override
   void initState() {
-    super.initState();
-    contPilihScript();
-  }
+    widget.cubit.numberRotator = List.generate(1, (index) => null);
+    widget.cubit.conditionRotator = List.generate(2, (index) {
+      // sortList
+      if (index == 1) return true;
 
-  contPilihScript() {
-    for (var pilih in ListPilih) {
+      // else
+      return false;
+    });
+
+    for (var pilih in widget.cubit.listPilihScript) {
       if (mapEquals(pilih, widget.state.pilihScript)) {
-        setState(() => idActive = ListPilih.indexOf(pilih) + 1);
+        setState(() {
+          widget.cubit.numberRotator[0] =
+              widget.cubit.listPilihScript.indexOf(pilih) + 1;
+        });
       }
     }
-  }
 
-  void onTap() {
-    FocusScope.of(context).requestFocus(FocusNode());
-  }
-
-  submitVal() {
-    if (idActive != null && canSubmit) {
-      widget.cubit.setRotatorMethod(
-        pilihScript: ListPilih[getItemIndex(idActive!)],
-      );
-    }
+    super.initState();
   }
 
   int getItemIndex(int id) {
-    debugPrint(id.toString());
-    for (var pilih in ListPilih) {
-      if (pilih["id"] == id) return ListPilih.indexOf(pilih);
+    for (var pilih in widget.cubit.listPilihScript) {
+      if (pilih["id"] == id) return widget.cubit.listPilihScript.indexOf(pilih);
     }
     return 0;
   }
 
   @override
-  Widget build(BuildContext context) {
-    setState(() {
-      var bool = idActive != null && idActive! - 1 < ListPilih.length;
+  void dispose() {
+    widget.cubit.dispose();
+    super.dispose();
+  }
 
-      if (bool) canSubmit = true;
-      if (!bool) canSubmit = false;
-    });
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<RotatorCubit>(
+      create: (context) => RotatorCubit(),
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<RotatorCubit, RotatorState>(
+              bloc: widget.cubit,
+              listener: (context, state) {
+                if (state is RotatorLoaded) {
+                  debugPrint("SUKSES FETCH");
+                }
+                if (state is RotatorFailure) {
+                  debugPrint("GAGAL FETCH :" + state.message);
+                }
+              }),
+        ],
+        child: BlocBuilder<RotatorCubit, RotatorState>(
+          bloc: widget.cubit,
+          builder: (context, state) {
+            if (state is RotatorLoaded) {
+              return GestureDetector(
+                onTap: () => AppExt.hideKeyboard(context),
+                child: Scaffold(
+                  appBar: RotatorAppBar(
+                    text: 'Pilih Script',
+                    context: context,
+                    onTap: () => widget.cubit.setRotatorMethod(
+                      pilihScript: widget.state.pilihScript,
+                    ),
+                  ),
+                  backgroundColor: AppColor.white,
+                  resizeToAvoidBottomInset: false,
+                  body: BodyRotator(context, widget.cubit, state),
+                ),
+              );
+            }
+
+            return const Scaffold(
+              backgroundColor: AppColor.white,
+              body: Center(child: CircularProgressIndicator()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget BodyRotator(
+    BuildContext context,
+    RotatorCubit cubit,
+    RotatorLoaded state,
+  ) {
+    var canSubmit = cubit.conditionRotator[0];
+    canSubmit = cubit.numberTrue;
 
     BorderSide submitSide;
     if (canSubmit) {
@@ -164,81 +134,74 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
       );
     }
 
-    return GestureDetector(
-      onTap: onTap,
-      child: Scaffold(
-        appBar: RotatorAppBar(
-          text: 'Pilih Script',
-          context: context,
-          onTap: () => widget.cubit.setRotatorMethod(
-            pilihScript: widget.state.pilihScript,
+    return Column(
+      children: [
+        // Header
+        Container(
+          margin: const EdgeInsets.only(right: 25, left: 25, top: 37),
+          child: Column(
+            children: [
+              // Search Input
+              SearchHeader(),
+
+              // Option Button
+              OptionHeader(),
+            ],
           ),
         ),
-        backgroundColor: AppColor.white,
-        resizeToAvoidBottomInset: false,
-        body: Column(
-          children: [
-            // Header
-            Container(
-              margin: const EdgeInsets.only(right: 25, left: 25, top: 37),
-              child: Column(
-                children: [
-                  // Search Input
-                  SearchHeader(),
 
-                  // Option Button
-                  OptionHeader(),
-                ],
-              ),
-            ),
-
-            // Divider
-            const AppDivider(
-              color: AppColor.white_D4D6DD,
-              margin: EdgeInsets.only(right: 0, left: 0),
-            ),
-
-            // List Content
-            ListScript(),
-
-            // Selected Item
-            if (idActive != null) ...[
-              const AppDivider(
-                color: AppColor.white_D4D6DD,
-                margin: EdgeInsets.only(right: 25, left: 25, bottom: 12),
-              ),
-
-              // Selected Item
-              ContHeader(getItemIndex(idActive!)),
-
-              const AppDivider(
-                color: AppColor.white_D4D6DD,
-                margin: EdgeInsets.only(right: 25, left: 25),
-              ),
-            ],
-
-            // Submit Content
-            RotatorButton(
-              onPressed: submitVal,
-              textBtn: 'Submit',
-              btnSide: submitSide,
-              height: 48,
-              margin: const EdgeInsets.only(
-                bottom: 34,
-                top: 18,
-                left: 32,
-                right: 32,
-              ),
-              backgroundColor:
-                  canSubmit ? AppColor.blue_00AEFF : AppColor.transparent,
-              textBtnStyle: canSubmit
-                  ? AppText.Inter14w6_white
-                  : AppText.Inter14w6_grey_8F9098,
-              btnTextAlgn: Alignment.center,
-            ),
-          ],
+        // Divider
+        const AppDivider(
+          color: AppColor.white_D4D6DD,
+          margin: EdgeInsets.only(right: 0, left: 0),
         ),
-      ),
+
+        // List Content
+        ListScript(),
+
+        // Selected Item
+        if (cubit.numberRotator[0] != null) ...[
+          const AppDivider(
+            color: AppColor.white_D4D6DD,
+            margin: EdgeInsets.only(right: 25, left: 25, bottom: 12),
+          ),
+
+          // Selected Item
+          ContHeader(getItemIndex(cubit.numberRotator[0]!)),
+
+          const AppDivider(
+            color: AppColor.white_D4D6DD,
+            margin: EdgeInsets.only(right: 25, left: 25),
+          ),
+        ],
+
+        // Submit Content
+        RotatorButton(
+          onPressed: () {
+            if (cubit.numberRotator[0] != null && canSubmit) {
+              widget.cubit.setRotatorMethod(
+                pilihScript: widget.cubit
+                    .listPilihScript[getItemIndex(cubit.numberRotator[0]!)],
+              );
+            }
+          },
+          textBtn: 'Submit',
+          btnSide: submitSide,
+          height: 48,
+          margin: const EdgeInsets.only(
+            bottom: 34,
+            top: 18,
+            left: 32,
+            right: 32,
+          ),
+          backgroundColor:
+              canSubmit ? AppColor.blue_00AEFF : AppColor.transparent,
+          textBtnStyle: canSubmit
+              ? AppText.Inter14w6_white
+              : AppText.Inter14w6_grey_8F9098,
+          btnTextAlgn: Alignment.center,
+        ),
+      ],
     );
   }
 
@@ -284,14 +247,17 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
               backgroundColor: AppColor.white,
               onPressed: () {
                 setState(() {
-                  sortList = !sortList;
+                  widget.cubit.conditionRotator[1] =
+                      !widget.cubit.conditionRotator[1];
 
-                  if (sortList) {
-                    ListPilih.sort((a, b) => a["title"].compareTo(b["title"]));
+                  if (widget.cubit.conditionRotator[1]) {
+                    widget.cubit.listPilihScript
+                        .sort((a, b) => a["title"].compareTo(b["title"]));
                   }
 
-                  if (!sortList) {
-                    ListPilih.sort((a, b) => b["title"].compareTo(a["title"]));
+                  if (!widget.cubit.conditionRotator[1]) {
+                    widget.cubit.listPilihScript
+                        .sort((a, b) => b["title"].compareTo(a["title"]));
                   }
                 });
               },
@@ -301,13 +267,13 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
                   height: 12,
                   width: 12,
                   margin: const EdgeInsets.only(right: 5),
-                  child: sortList
+                  child: widget.cubit.conditionRotator[1]
                       ? AppIcon.rotator_sort
                       : AppIcon.rotator_sort_active,
                 ),
                 Text(
                   'Sort',
-                  style: sortList
+                  style: widget.cubit.conditionRotator[1]
                       ? AppText.Inter12w4_black_1F2024
                       : AppText.Inter12w6h14_blue_00AEFF,
                 ),
@@ -315,7 +281,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
                   height: 12,
                   width: 12,
                   margin: const EdgeInsets.only(left: 7),
-                  child: sortList
+                  child: widget.cubit.conditionRotator[1]
                       ? AppIcon.rotator_down
                       : AppIcon.rotator_down_active,
                 ),
@@ -374,7 +340,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
   Expanded ListScript() {
     return Expanded(
       child: ListView.builder(
-        itemCount: ListPilih.length,
+        itemCount: widget.cubit.listPilihScript.length,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           return ScriptContent(index);
@@ -404,7 +370,8 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
             ContPesan(index, color: AppColor.white),
           ],
 
-          if (index == ListPilih.length - 1) const SizedBox(height: 24),
+          if (index == widget.cubit.listPilihScript.length - 1)
+            const SizedBox(height: 24),
         ],
       ),
     );
@@ -427,7 +394,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
             height: 101,
             padding: const EdgeInsets.all(16),
             foregroundColor: AppColor.grey_E5E5E5,
-            textBtn: ListPilih[index]['pesan'],
+            textBtn: widget.cubit.listPilihScript[index]['pesan'],
             textBtnStyle: AppText.Inter14w4h20_black,
           ),
         ],
@@ -447,16 +414,16 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
           // Title
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
-              ListPilih[index]['title'],
+              widget.cubit.listPilihScript[index]['title'],
               style: AppText.Inter12w7h14_black_2F3036,
             ),
             Text(
-              "Copied ${ListPilih[index]['copied']} times",
+              "Copied ${widget.cubit.listPilihScript[index]['copied']} times",
               style: AppText.Inter12w4_grey_777C7E,
             ),
 
             // Status Tutup
-            if (ListPilih[index]['status'] == 'Tutup') ...[
+            if (widget.cubit.listPilihScript[index]['status'] == 'Tutup') ...[
               Flexible(
                   child: Wrap(
                 direction: Axis.horizontal,
@@ -465,7 +432,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
                 children: [
                   SizedBox(child: AppIcon.rotator_eye_close),
                   Text(
-                    ListPilih[index]['status'],
+                    widget.cubit.listPilihScript[index]['status'],
                     style: AppText.Inter12w7h12_red_FF616D,
                   )
                 ],
@@ -473,7 +440,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
             ],
 
             // Status Preview
-            if (ListPilih[index]['status'] == 'Preview') ...[
+            if (widget.cubit.listPilihScript[index]['status'] == 'Preview') ...[
               Flexible(
                   child: Wrap(
                 direction: Axis.horizontal,
@@ -482,7 +449,7 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
                 children: [
                   SizedBox(child: AppIcon.rotator_eye_preview),
                   Text(
-                    ListPilih[index]['status'],
+                    widget.cubit.listPilihScript[index]['status'],
                     style: AppText.Inter12w7h12_blue_00AEFF,
                   )
                 ],
@@ -494,17 +461,23 @@ class _RotatorAdPilihScriptState extends State<RotatorAddPilihScript> {
 
           // Button
           RotatorButton(
-            textBtn: idActive == ListPilih[index]["id"] ? 'Terpilih' : 'Pilih',
+            textBtn: widget.cubit.numberRotator[0] ==
+                    widget.cubit.listPilihScript[index]["id"]
+                ? 'Terpilih'
+                : 'Pilih',
             width: 70,
             padding: const EdgeInsets.all(12),
-            onPressed: () => setState(() => idActive = ListPilih[index]["id"]),
+            onPressed: () => setState(() => widget.cubit.numberRotator[0] =
+                widget.cubit.listPilihScript[index]["id"]),
             foregroundColor: AppColor.blue_00AEFF,
             btnSide: const BorderSide(width: 1.5, color: AppColor.blue_00AEFF),
             btnTextAlgn: Alignment.center,
-            textBtnStyle: idActive == ListPilih[index]["id"]
+            textBtnStyle: widget.cubit.numberRotator[0] ==
+                    widget.cubit.listPilihScript[index]["id"]
                 ? AppText.Inter12w6h14_white
                 : AppText.Inter12w6h14_blue_00AEFF,
-            backgroundColor: idActive == ListPilih[index]["id"]
+            backgroundColor: widget.cubit.numberRotator[0] ==
+                    widget.cubit.listPilihScript[index]["id"]
                 ? AppColor.blue_00AEFF
                 : AppColor.transparent,
           ),

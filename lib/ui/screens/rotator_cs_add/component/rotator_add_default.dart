@@ -36,17 +36,11 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
   @override
   void initState() {
     widget.cubit.contentsRotator = List.generate(3, (index) => null);
-    widget.cubit.choicesRotator = List.generate(1, (index) => []);
+    widget.cubit.multipleRotator = List.generate(1, (index) => []);
     widget.cubit.conditionRotator = List.generate(1, (index) => false);
     widget.cubit.controllerRotator =
         List.generate(1, (index) => TextEditingController());
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    widget.cubit.dispose();
-    super.dispose();
   }
 
   @override
@@ -102,9 +96,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
     double sheight = MediaQuery.of(context).size.height;
 
     var canSubmit = cubit.conditionRotator[0];
-    canSubmit = cubit.conditionTrue && cubit.choisesTrue && cubit.contentsTrue;
-
-    debugPrint(cubit.choicesRotator[0].toString());
+    canSubmit = cubit.conditionTrue && cubit.multipleTrue && cubit.contentsTrue;
 
     BorderSide submitSide;
     if (canSubmit) {
@@ -242,12 +234,12 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
                 // Costumer Service
                 const RotatorTitle('Customer Service'),
                 RotatorButton(
-                  textBtn: cubit.choicesRotator[0].isNotEmpty
-                      ? cubit.choicesRotator[0].join(', ')
+                  textBtn: cubit.multipleRotator[0].isNotEmpty
+                      ? cubit.multipleRotator[0].join(', ')
                       : 'Pilih Customer Service',
                   onPressed: () => BottomModal(context, sheight, cubit, state),
                   height: 48,
-                  textBtnStyle: cubit.choicesRotator[0].isNotEmpty
+                  textBtnStyle: cubit.multipleRotator[0].isNotEmpty
                       ? AppText.Inter14w4_black
                       : AppText.Inter14w4_grey_8F9098,
                   margin: const EdgeInsets.only(bottom: 16),
@@ -299,7 +291,8 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
             DialogApp(
               popup: cubit.showDialog == Track,
               top: 257,
-              changePos: [cubit.contentsRotator[1] == ''],
+              changePos: [state.pilihScript.isNotEmpty],
+              btwDialog: 111,
               borderRadius: BorderRadius.circular(12),
               children: [
                 ...state.listProduct.map((value) => DialogItemApp(
@@ -329,7 +322,7 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
     RotatorCubit cubit,
     RotatorLoaded state,
   ) {
-    List<String> cboxActiveTmp = List.from(cubit.choicesRotator[0]);
+    List<String> cboxActiveTmp = List.from(cubit.multipleRotator[0]);
 
     return BottomModalApp(
       context: context,
@@ -342,8 +335,8 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
             child: Text('Cancel', style: AppText.Inter12w6_blue_00AEFF),
             onTap: () {
               setState(
-                  () => cboxActiveTmp = List.from(cubit.choicesRotator[0]));
-              Navigator.pop(context);
+                  () => cboxActiveTmp = List.from(cubit.multipleRotator[0]));
+              AppExt.popScreen(context);
             },
           ),
 
@@ -353,9 +346,9 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
           // Button Clear all
           GestureDetector(
             onTap: () {
-              setState(() => cubit.choicesRotator[0].clear());
+              setState(() => cubit.multipleRotator[0].clear());
               setState(() => cboxActiveTmp.clear());
-              Navigator.of(context).pop();
+              AppExt.popScreen(context);
             },
             child: Text('ClearAll', style: AppText.Inter12w6_blue_00AEFF),
           ),
@@ -404,8 +397,8 @@ class _RotatoAddrDefaultState extends State<RotatorAddDefault> {
           textBtn: 'Pilih',
           height: 40,
           onPressed: () {
-            setState(() => cubit.choicesRotator[0] = List.from(cboxActiveTmp));
-            Navigator.of(context).pop();
+            setState(() => cubit.multipleRotator[0] = List.from(cboxActiveTmp));
+            AppExt.popScreen(context);
           },
           btnTextAlgn: Alignment.center,
           backgroundColor: AppColor.blue_00AEFF,
